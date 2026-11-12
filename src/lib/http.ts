@@ -12,7 +12,7 @@ interface HandlerResult {
 
 type Handler = (
   request: Request,
-  context?: { params?: Promise<Record<string, string>> }
+  context: { params: Promise<Record<string, string>> }
 ) => Promise<HandlerResult | NextResponse>;
 
 /**
@@ -21,7 +21,7 @@ type Handler = (
 export function manejar(handler: Handler) {
   return async (
     request: Request,
-    context?: { params?: Promise<Record<string, string>> }
+    context: { params: Promise<Record<string, string>> }
   ): Promise<NextResponse> => {
     try {
       const result = await handler(request, context);

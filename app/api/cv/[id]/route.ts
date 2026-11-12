@@ -5,7 +5,7 @@ import { obtenerCV, actualizarCV, eliminarCV } from "@/services/cv-service";
 
 export const GET = manejar(async (request, context) => {
   const uid = await requerirUsuario(request);
-  const params = await context?.params;
+  const params = await context.params;
   const id = params?.id || "";
   const cv = await obtenerCV(uid, id);
 
@@ -22,7 +22,7 @@ export const PUT = manejar(async (request, context) => {
   const uid = await requerirUsuario(request);
   const body = await request.json();
   const data = actualizarCvSchema.parse(body);
-  const params = await context?.params;
+  const params = await context.params;
   const id = params?.id || "";
 
   const cv = await actualizarCV(uid, id, data);
@@ -38,7 +38,7 @@ export const DELETE = manejar(async (request, context) => {
   }
 
   const uid = await requerirUsuario(request);
-  const params = await context?.params;
+  const params = await context.params;
   const id = params?.id || "";
 
   await eliminarCV(uid, id);

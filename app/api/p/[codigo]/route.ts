@@ -2,7 +2,7 @@ import { manejar } from "@/lib/http";
 import { obtenerCVPublico } from "@/services/cv-service";
 
 export const GET = manejar(async (request, context) => {
-  const params = await context?.params;
+  const params = await context.params;
   const codigo = params?.codigo || "";
   const cv = await obtenerCVPublico(codigo);
 
