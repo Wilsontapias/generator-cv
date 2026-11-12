@@ -1,0 +1,1230 @@
+<!doctype html>
+
+<html class="light" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_standard" name="shell-type" />
+    <title>GeneradorCV</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#ffffff",
+              "on-primary-container": "#a3faef",
+              "on-secondary": "#ffffff",
+              "primary-container": "#0f766e",
+              "secondary-fixed-dim": "#4fdbc8",
+              "surface-variant": "#d9e3f6",
+              "on-primary-fixed": "#00201d",
+              "surface-container-high": "#dee9fc",
+              "tertiary-container": "#007a33",
+              "on-tertiary-fixed": "#002109",
+              outline: "#6e7977",
+              "secondary-fixed": "#71f8e4",
+              error: "#ba1a1a",
+              tertiary: "#005f26",
+              "on-primary-fixed-variant": "#00504a",
+              "surface-container-highest": "#d9e3f6",
+              "on-surface": "#121c2a",
+              "inverse-primary": "#80d5cb",
+              "primary-fixed-dim": "#80d5cb",
+              "secondary-container": "#6df5e1",
+              "on-primary": "#ffffff",
+              "on-secondary-container": "#006f64",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#eff4ff",
+              "surface-bright": "#f8f9ff",
+              "on-tertiary": "#ffffff",
+              "surface-tint": "#006a63",
+              background: "#f8f9ff",
+              primary: "#005c55",
+              "surface-dim": "#d0dbed",
+              "on-secondary-fixed-variant": "#005048",
+              "on-tertiary-container": "#a1ffad",
+              "surface-container-lowest": "#ffffff",
+              "outline-variant": "#bdc9c6",
+              "tertiary-fixed": "#7ffc97",
+              "on-surface-variant": "#3e4947",
+              secondary: "#006b5f",
+              "surface-container": "#e6eeff",
+              "tertiary-fixed-dim": "#62df7d",
+              "inverse-on-surface": "#eaf1ff",
+              "on-secondary-fixed": "#00201c",
+              "inverse-surface": "#27313f",
+              "on-tertiary-fixed-variant": "#005320",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#9cf2e8",
+              surface: "#f8f9ff",
+              "on-background": "#121c2a",
+            },
+            borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+            spacing: {
+              gutter: "1.5rem",
+              "margin-sm": "1rem",
+              "space-md": "1rem",
+              "space-xs": "0.25rem",
+              margin: "2rem",
+              "space-lg": "1.5rem",
+              "gutter-sm": "1rem",
+              "space-sm": "0.5rem",
+              "space-xl": "2rem",
+            },
+            fontFamily: {
+              "body-lg": ["Inter"],
+              "headline-sm": ["Inter"],
+              "label-badge": ["Inter"],
+              "body-sm": ["Inter"],
+              "headline-xl": ["Inter"],
+              "body-md-medium": ["Inter"],
+              "headline-lg": ["Inter"],
+              "body-md": ["Inter"],
+              "label-code": ["JetBrains Mono"],
+              "headline-md": ["Inter"],
+              "headline-xl-mobile": ["Inter"],
+            },
+            fontSize: {
+              "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "headline-sm": [
+                "18px",
+                { lineHeight: "26px", letterSpacing: "-0.005em", fontWeight: "600" },
+              ],
+              "label-badge": [
+                "11px",
+                { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "600" },
+              ],
+              "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }],
+              "headline-xl": [
+                "32px",
+                { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" },
+              ],
+              "body-md-medium": ["14px", { lineHeight: "20px", fontWeight: "500" }],
+              "headline-lg": [
+                "24px",
+                { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" },
+              ],
+              "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+              "label-code": [
+                "12px",
+                { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" },
+              ],
+              "headline-md": [
+                "20px",
+                { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" },
+              ],
+              "headline-xl-mobile": [
+                "26px",
+                { lineHeight: "34px", letterSpacing: "-0.015em", fontWeight: "700" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-surface font-body-md text-on-surface antialiased">
+    <a
+      class="sr-only focus:not-sr-only focus:fixed focus:top-space-sm focus:left-space-sm focus:z-50 focus:px-space-md focus:py-space-sm focus:bg-primary-container focus:text-on-primary-container focus:rounded-lg focus:outline focus:outline-3 focus:outline-primary focus:outline-offset-2 font-body-md-medium text-body-md-medium transition-all"
+      href="#main-content"
+      >Saltar al contenido principal</a
+    >
+    <header
+      class="fixed top-0 left-0 w-full z-40 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"
+    >
+      <div class="h-16 max-w-7xl mx-auto px-margin flex items-center justify-between gap-space-md">
+        <div class="flex items-center gap-space-lg">
+          <a
+            class="flex items-center gap-space-sm focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded-lg"
+            data-path="landing"
+            href="#"
+            ><img
+              alt="GeneradorCV Brand Logo"
+              class="h-8 w-auto object-contain"
+              src="https://lh3.googleusercontent.com/aida/ALJJyrBTC5_bMzzNownUImDrfF9n8J9m6NypKkFTaI1c7EI3I-Vg8iUtiRiH6icxDusKNT6joJe9g1Bj404l8aV-_kcABugpi0UYX8ucYBGSZd0kpd2owLos1dMJiWtrQcwIVd-AB8cQ9eXUgZa2ZSx8-nINKiDr2HGUvBnUq3WQQSX8MVdYWe1gimrnwad4_LHIB7TbEL3vPmvHGeynQC_-GhPY74pYu1NloRK43v9zI8SYLQ"
+            /><span class="font-headline-sm text-headline-sm text-primary tracking-tight"
+              >GeneradorCV</span
+            ></a
+          >
+          <nav
+            aria-label="Navegación pública principal"
+            class="hidden md:flex items-center gap-space-lg"
+            data-active-classes="text-primary font-body-md-medium"
+          >
+            <a
+              aria-current="page"
+              class="transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded text-primary font-body-md-medium"
+              data-path="landing"
+              href="#"
+              >Inicio</a
+            ><a
+              class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+              data-path="caracteristicas"
+              href="#"
+              >Características</a
+            ><a
+              class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+              data-path="plantillas"
+              href="#"
+              >Plantillas</a
+            ><a
+              class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+              data-path="guias-y-consejos"
+              href="#"
+              >Guía y Consejos</a
+            >
+          </nav>
+        </div>
+        <div class="flex items-center gap-space-md">
+          <button
+            aria-label="Cambiar modo de tema"
+            class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+            title="Cambiar a modo oscuro"
+            type="button"
+          >
+            <span class="material-symbols-outlined text-[20px]">dark_mode</span></button
+          ><a
+            class="font-body-md-medium text-body-md-medium text-on-surface-variant hover:text-on-surface px-space-md py-space-sm rounded-lg transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+            data-path="login"
+            href="#"
+            >Iniciar Sesión</a
+          ><a
+            class="h-11 px-space-md flex items-center justify-center rounded-lg bg-primary text-on-primary font-body-md-medium text-body-md-medium hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-[0.99] focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+            data-path="registro"
+            href="#"
+            >Comenzar Gratis</a
+          >
+        </div>
+      </div>
+    </header>
+    <main class="w-full pt-16 bg-surface min-h-[calc(100vh-16rem)]" id="main-content">
+      <div class="flex flex-col w-full">
+        <!-- Hero Section -->
+        <section
+          class="relative w-full overflow-hidden px-margin py-space-xl lg:py-24 bg-gradient-to-b from-surface via-surface-container-low/40 to-surface"
+        >
+          <!-- Subtle Ambient Backdrop Blurs -->
+          <div
+            aria-hidden="true"
+            class="absolute -top-24 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl pointer-events-none"
+          ></div>
+          <div
+            aria-hidden="true"
+            class="absolute top-1/2 right-0 w-[30rem] h-[30rem] bg-secondary-fixed-dim/20 rounded-full blur-3xl pointer-events-none"
+          ></div>
+          <div
+            class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center relative z-10"
+          >
+            <!-- Left Column: Copy, Badges, CTAs, Proof -->
+            <div class="lg:col-span-6 flex flex-col items-start gap-space-lg">
+              <!-- Accessible Status Pill -->
+              <div
+                class="inline-flex items-center gap-space-xs px-space-md py-1.5 rounded-full bg-surface-container-lowest shadow-sm text-primary"
+              >
+                <span aria-hidden="true" class="material-symbols-outlined text-[18px] text-tertiary"
+                  >verified</span
+                >
+                <span
+                  class="font-label-badge text-label-badge uppercase tracking-wider font-semibold text-on-surface"
+                  >Diseñado para estudiantes &amp; recién graduados • WCAG 2.2 AA</span
+                >
+              </div>
+              <!-- Headline -->
+              <h1
+                class="font-headline-xl text-headline-xl lg:text-[42px] lg:leading-[50px] font-bold text-on-surface tracking-tight"
+              >
+                Crea tu hoja de vida profesional y consigue tu primera
+                <span
+                  class="text-primary underline decoration-secondary-container decoration-wavy decoration-2 underline-offset-4"
+                  >práctica o empleo</span
+                >
+              </h1>
+              <!-- Subtitle -->
+              <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                Plantillas estructuradas y verificadas por reclutadores ATS. Redacción asistida con
+                guías universitarias y exportación en formato A4 sin tarifas ocultas ni marcas de
+                agua.
+              </p>
+              <!-- CTAs -->
+              <div
+                class="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-space-md pt-space-xs"
+              >
+                <a
+                  class="min-h-[48px] px-space-xl rounded-lg bg-primary text-on-primary font-body-md-medium text-body-md-medium flex items-center justify-center gap-space-sm hover:bg-primary-container hover:text-on-primary-container shadow-md hover:shadow-lg transition-all active:scale-[0.99] focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                  data-path="editor"
+                  href="#"
+                >
+                  <span>Crear mi CV gratis ahora</span>
+                  <span aria-hidden="true" class="material-symbols-outlined text-[20px]"
+                    >arrow_forward</span
+                  >
+                </a>
+                <a
+                  class="min-h-[48px] px-space-lg rounded-lg bg-surface-container-lowest text-on-surface font-body-md-medium text-body-md-medium flex items-center justify-center gap-space-sm hover:bg-surface-container-low shadow-sm hover:shadow transition-all focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                  href="#plantillas-destacadas"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="material-symbols-outlined text-[20px] text-on-surface-variant"
+                    >visibility</span
+                  >
+                  <span>Ver plantillas de ejemplo</span>
+                </a>
+              </div>
+              <!-- Social Proof Stats & Ratings -->
+              <div class="pt-space-md flex flex-wrap items-center gap-space-lg w-full">
+                <div class="flex items-center gap-space-sm">
+                  <div aria-hidden="true" class="flex -space-x-2 overflow-hidden">
+                    <span
+                      class="inline-flex h-9 w-9 rounded-full bg-primary-container text-on-primary-container font-headline-sm text-headline-sm items-center justify-center font-bold"
+                      >A</span
+                    >
+                    <span
+                      class="inline-flex h-9 w-9 rounded-full bg-surface-container-high text-on-surface font-headline-sm text-headline-sm items-center justify-center font-bold"
+                      >M</span
+                    >
+                    <span
+                      class="inline-flex h-9 w-9 rounded-full bg-tertiary-container text-on-tertiary-container font-headline-sm text-headline-sm items-center justify-center font-bold"
+                      >L</span
+                    >
+                  </div>
+                  <div>
+                    <div
+                      aria-label="Calificación 4.9 de 5 estrellas"
+                      class="flex items-center gap-1 text-tertiary"
+                    >
+                      <span
+                        class="material-symbols-outlined text-[18px]"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined text-[18px]"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined text-[18px]"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined text-[18px]"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >star</span
+                      >
+                      <span
+                        class="material-symbols-outlined text-[18px]"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >star_half</span
+                      >
+                      <span class="font-body-md-medium text-body-md-medium text-on-surface ml-1"
+                        >4.9 / 5</span
+                      >
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant font-medium">
+                      +45,000 universitarios contratados
+                    </p>
+                  </div>
+                </div>
+                <div aria-hidden="true" class="hidden sm:block h-8 w-px bg-surface-variant"></div>
+                <div class="flex items-center gap-space-xs text-on-surface-variant">
+                  <span
+                    aria-hidden="true"
+                    class="material-symbols-outlined text-[20px] text-tertiary"
+                    >task_alt</span
+                  >
+                  <span class="font-body-sm text-body-sm font-medium"
+                    >99.4% Compatibilidad ATS Verificada</span
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Right Column: Interactive Resume Mockup Card -->
+            <div class="lg:col-span-6 flex justify-center lg:justify-end relative">
+              <div
+                class="w-full max-w-lg bg-surface-container-lowest rounded-xl shadow-xl p-space-md sm:p-space-lg transition-transform duration-300 hover:scale-[1.01] relative"
+              >
+                <!-- Top Mockup Controls Bar -->
+                <div
+                  class="flex items-center justify-between pb-space-sm mb-space-md bg-surface-container-low/50 px-space-sm py-2 rounded-lg"
+                >
+                  <div class="flex items-center gap-space-xs">
+                    <span aria-hidden="true" class="w-3 h-3 rounded-full bg-error"></span>
+                    <span
+                      aria-hidden="true"
+                      class="w-3 h-3 rounded-full bg-secondary-fixed-dim"
+                    ></span>
+                    <span aria-hidden="true" class="w-3 h-3 rounded-full bg-tertiary-fixed"></span>
+                    <span class="font-label-code text-label-code text-on-surface-variant ml-2"
+                      >formato_a4_estudiante.pdf</span
+                    >
+                  </div>
+                  <span
+                    class="inline-flex items-center gap-1 font-label-badge text-label-badge bg-tertiary-container/20 text-tertiary font-semibold px-2 py-0.5 rounded-full"
+                  >
+                    <span
+                      aria-hidden="true"
+                      class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"
+                    ></span>
+                    Vista Previa Activa
+                  </span>
+                </div>
+                <!-- Document Canvas (Simulating A4 CV Sheet) -->
+                <div
+                  class="bg-surface-container-lowest rounded-lg shadow-sm grid grid-cols-12 min-h-[460px] overflow-hidden"
+                >
+                  <!-- CV Left Sidebar Accent -->
+                  <div
+                    class="col-span-4 bg-primary p-space-md text-on-primary flex flex-col justify-between"
+                  >
+                    <div class="space-y-space-md">
+                      <div
+                        class="w-16 h-16 rounded-full bg-on-primary/10 flex items-center justify-center font-headline-lg text-headline-lg font-bold"
+                      >
+                        VT
+                      </div>
+                      <div>
+                        <h2
+                          class="font-headline-sm text-headline-sm text-on-primary font-bold leading-tight"
+                        >
+                          Valeria Torres
+                        </h2>
+                        <p class="font-body-sm text-body-sm text-on-primary-container">
+                          Ing. en Software (8º Semestre)
+                        </p>
+                      </div>
+                      <div
+                        class="pt-space-xs space-y-space-xs text-on-primary/80 font-body-sm text-body-sm"
+                      >
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[14px]">mail</span>
+                          <span class="truncate">valeria@uni.edu</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[14px]">location_on</span>
+                          <span>Bogotá, Colombia</span>
+                        </div>
+                        <div class="flex items-center gap-1">
+                          <span class="material-symbols-outlined text-[14px]">link</span>
+                          <span>github.com/vtorres</span>
+                        </div>
+                      </div>
+                      <div class="pt-space-sm">
+                        <h3
+                          class="font-label-badge text-label-badge text-on-primary-container tracking-wider uppercase mb-space-xs"
+                        >
+                          Habilidades Clave
+                        </h3>
+                        <div class="flex flex-wrap gap-1">
+                          <span
+                            class="font-label-code text-[10px] bg-on-primary/15 px-2 py-0.5 rounded text-on-primary"
+                            >Python</span
+                          >
+                          <span
+                            class="font-label-code text-[10px] bg-on-primary/15 px-2 py-0.5 rounded text-on-primary"
+                            >React</span
+                          >
+                          <span
+                            class="font-label-code text-[10px] bg-on-primary/15 px-2 py-0.5 rounded text-on-primary"
+                            >SQL</span
+                          >
+                          <span
+                            class="font-label-code text-[10px] bg-on-primary/15 px-2 py-0.5 rounded text-on-primary"
+                            >Git</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="pt-space-md">
+                      <span class="font-label-code text-[10px] text-on-primary/60"
+                        >Índice ATS: 98/100</span
+                      >
+                    </div>
+                  </div>
+                  <!-- CV Main Content Stream -->
+                  <div class="col-span-8 p-space-md space-y-space-md bg-surface-container-lowest">
+                    <!-- Perfil Profesional -->
+                    <section>
+                      <h3
+                        class="font-headline-sm text-[15px] font-bold text-primary pb-1 flex items-center gap-1"
+                      >
+                        <span class="material-symbols-outlined text-[16px]">person</span> Perfil
+                        Académico
+                      </h3>
+                      <p class="font-body-sm text-[11px] text-on-surface-variant leading-relaxed">
+                        Estudiante sobresaliente de Ingeniería de Sistemas con énfasis en analítica
+                        de datos y desarrollo web. Primer puesto en Hackathon Universitaria 2024.
+                      </p>
+                    </section>
+                    <!-- Educación y Reconocimientos -->
+                    <section>
+                      <h3
+                        class="font-headline-sm text-[15px] font-bold text-primary pb-1 flex items-center gap-1"
+                      >
+                        <span class="material-symbols-outlined text-[16px]">school</span> Educación
+                      </h3>
+                      <div class="space-y-1">
+                        <div class="flex justify-between items-start">
+                          <span
+                            class="font-body-md-medium text-[12px] font-semibold text-on-surface"
+                            >Pregrado en Ing. de Sistemas</span
+                          >
+                          <span class="font-label-code text-[10px] text-on-surface-variant"
+                            >2021 — Presente</span
+                          >
+                        </div>
+                        <p class="font-body-sm text-[11px] text-on-surface-variant">
+                          Universidad Nacional • Promedio: 4.6 / 5.0 (Top 5%)
+                        </p>
+                      </div>
+                    </section>
+                    <!-- Proyectos Universitarios -->
+                    <section>
+                      <h3
+                        class="font-headline-sm text-[15px] font-bold text-primary pb-1 flex items-center gap-1"
+                      >
+                        <span class="material-symbols-outlined text-[16px]">folder</span> Proyectos
+                        Académicos
+                      </h3>
+                      <div class="space-y-2">
+                        <div>
+                          <span
+                            class="font-body-md-medium text-[11px] font-semibold text-on-surface"
+                            >Portal de Gestión de Tutorías Académicas</span
+                          >
+                          <p class="font-body-sm text-[10px] text-on-surface-variant">
+                            Desarrollé la API REST con FastAPI y PostgreSQL, logrando que 1,200
+                            estudiantes agendaran asesorías activas.
+                          </p>
+                        </div>
+                        <div>
+                          <span
+                            class="font-body-md-medium text-[11px] font-semibold text-on-surface"
+                            >Algoritmo Predictivo de Rendimiento Estudiantil</span
+                          >
+                          <p class="font-body-sm text-[10px] text-on-surface-variant">
+                            Modelo en Python con scikit-learn con un 89% de precisión en alerta
+                            temprana de deserción.
+                          </p>
+                        </div>
+                      </div>
+                    </section>
+                    <!-- Idiomas -->
+                    <section>
+                      <h3
+                        class="font-headline-sm text-[15px] font-bold text-primary pb-1 flex items-center gap-1"
+                      >
+                        <span class="material-symbols-outlined text-[16px]">translate</span> Idiomas
+                      </h3>
+                      <div
+                        class="flex gap-space-md font-body-sm text-[11px] text-on-surface-variant"
+                      >
+                        <span>Español (Nativo)</span>
+                        <span>Inglés C1 (Certificado TOEFL)</span>
+                      </div>
+                    </section>
+                  </div>
+                </div>
+                <!-- Floating Badges Overlay -->
+                <div
+                  class="absolute -bottom-4 -left-4 bg-surface-container-lowest px-space-md py-space-xs rounded-xl shadow-lg flex items-center gap-space-sm"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="material-symbols-outlined text-primary text-[24px]"
+                    >check_circle</span
+                  >
+                  <div>
+                    <p class="font-body-sm text-body-sm font-bold text-on-surface">
+                      Validado por HR Tech
+                    </p>
+                    <p class="font-label-badge text-label-badge text-on-surface-variant">
+                      Lectura sin trabas en Workday y Greenhouse
+                    </p>
+                  </div>
+                </div>
+                <div
+                  class="absolute -top-3 -right-3 bg-secondary-container text-on-secondary-container px-space-sm py-1 rounded-lg shadow-sm font-label-badge text-label-badge font-bold flex items-center gap-1"
+                >
+                  <span class="material-symbols-outlined text-[16px]">print</span>
+                  100% Imprimible A4
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- University & Corporate Partner Badges Row -->
+          <div class="max-w-7xl mx-auto mt-space-xl pt-space-lg">
+            <p
+              class="text-center font-label-badge text-label-badge uppercase tracking-widest text-on-surface-variant font-semibold mb-space-md"
+            >
+              Nuestros usuarios ingresan a pasantías y programas de trainee en
+            </p>
+            <div
+              class="flex flex-wrap items-center justify-center gap-8 sm:gap-14 opacity-75 grayscale hover:grayscale-0 transition-all duration-300"
+            >
+              <span
+                class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface-variant"
+                >MERCADOLIBRE</span
+              >
+              <span
+                class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface-variant"
+                >RAPPI</span
+              >
+              <span
+                class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface-variant"
+                >GLOBANT</span
+              >
+              <span
+                class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface-variant"
+                >ACCENTURE</span
+              >
+              <span
+                class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface-variant"
+                >BCG</span
+              >
+              <span
+                class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface-variant"
+                >AMAZON</span
+              >
+            </div>
+          </div>
+        </section>
+        <!-- Editorial Section: Core Features Grid -->
+        <section class="w-full py-space-xl px-margin bg-surface-container-low/30">
+          <div class="max-w-7xl mx-auto space-y-space-xl">
+            <!-- Section Header -->
+            <div class="text-center max-w-2xl mx-auto space-y-space-xs">
+              <span
+                class="font-label-badge text-label-badge uppercase tracking-wider text-primary font-bold"
+                >Rigor Académico y Agilidad</span
+              >
+              <h2
+                class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight"
+              >
+                Todo lo que necesitas para tu primer gran salto
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Construido desde cero pensando en personas sin 10 años de experiencia, destacando
+                proyectos académicos, voluntariados y habilidades comprobables.
+              </p>
+            </div>
+            <!-- 4 Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+              <!-- Feature Card 1 -->
+              <div
+                class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group"
+              >
+                <div class="space-y-space-md">
+                  <div
+                    class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors"
+                  >
+                    <span class="material-symbols-outlined text-[26px]">filter_alt</span>
+                  </div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+                    Plantillas Optimizadas para ATS
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    Los sistemas automáticos de RRHH leen texto puro sin atascarse. Evitamos tablas
+                    complejas y gráficos incompatibles que descartan candidaturas.
+                  </p>
+                </div>
+                <div
+                  class="pt-space-md flex items-center gap-1 font-body-sm font-semibold text-primary"
+                >
+                  <span>Ver estándares ATS</span>
+                  <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                </div>
+              </div>
+              <!-- Feature Card 2 -->
+              <div
+                class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group"
+              >
+                <div class="space-y-space-md">
+                  <div
+                    class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors"
+                  >
+                    <span class="material-symbols-outlined text-[26px]">view_column</span>
+                  </div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+                    Editor en Vivo Dividido
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    Trabaja con el formulario guiado a la izquierda mientras contemplas el resultado
+                    A4 exacto a la derecha en milisegundos sin refrescar la página.
+                  </p>
+                </div>
+                <div
+                  class="pt-space-md flex items-center gap-1 font-body-sm font-semibold text-primary"
+                >
+                  <span>Probar editor interactivo</span>
+                  <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                </div>
+              </div>
+              <!-- Feature Card 3 -->
+              <div
+                class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group"
+              >
+                <div class="space-y-space-md">
+                  <div
+                    class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors"
+                  >
+                    <span class="material-symbols-outlined text-[26px]">picture_as_pdf</span>
+                  </div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+                    Exportación A4 &amp; PDF Real
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    Descarga directa mediante renderizado vectorial. Márgenes estandarizados de 2cm,
+                    sin saltos de página accidentales y sin marcas de agua.
+                  </p>
+                </div>
+                <div
+                  class="pt-space-md flex items-center gap-1 font-body-sm font-semibold text-primary"
+                >
+                  <span>Soporte A4 / US Letter</span>
+                  <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                </div>
+              </div>
+              <!-- Feature Card 4 -->
+              <div
+                class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between group"
+              >
+                <div class="space-y-space-md">
+                  <div
+                    class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors"
+                  >
+                    <span class="material-symbols-outlined text-[26px]">lock</span>
+                  </div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">
+                    100% Privado y Seguro
+                  </h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    Tus calificaciones, teléfonos y datos personales se guardan de forma encriptada.
+                    Jamás vendemos tu información a agencias de marketing.
+                  </p>
+                </div>
+                <div
+                  class="pt-space-md flex items-center gap-1 font-body-sm font-semibold text-primary"
+                >
+                  <span>Conoce nuestra política</span>
+                  <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Showcase Section: 3 Templates Comparison -->
+        <section class="w-full py-space-xl px-margin bg-surface" id="plantillas-destacadas">
+          <div class="max-w-7xl mx-auto space-y-space-xl">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+              <div class="space-y-space-xs max-w-xl">
+                <span
+                  class="font-label-badge text-label-badge uppercase tracking-wider text-primary font-bold"
+                  >Catálogo Universitario</span
+                >
+                <h2
+                  class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight"
+                >
+                  Plantillas recomendadas según tu carrera
+                </h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">
+                  Selecciona un modelo base y personaliza sus tipografías, orden de bloques y paleta
+                  con un solo clic.
+                </p>
+              </div>
+              <a
+                class="inline-flex items-center gap-space-xs font-body-md-medium text-body-md-medium text-primary hover:text-primary-container focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+                data-path="plantillas"
+                href="#"
+              >
+                <span>Explorar todas las 12 plantillas</span>
+                <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+              </a>
+            </div>
+            <!-- 3 Featured Template Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+              <!-- Template 1: Académica & Moderna -->
+              <div
+                class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col group hover:-translate-y-1 transition-all duration-200"
+              >
+                <!-- Preview Mini Canvas -->
+                <div
+                  class="h-64 bg-surface-container-high p-space-md flex items-center justify-center relative overflow-hidden"
+                >
+                  <div
+                    class="w-48 h-60 bg-surface-container-lowest rounded shadow-lg flex overflow-hidden scale-95 group-hover:scale-100 transition-transform"
+                  >
+                    <!-- Left Sidebar -->
+                    <div class="w-1/3 bg-primary p-2 flex flex-col gap-2">
+                      <div class="w-7 h-7 rounded-full bg-on-primary/20"></div>
+                      <div class="w-10 h-1.5 bg-on-primary/60 rounded"></div>
+                      <div class="w-8 h-1 bg-on-primary/40 rounded"></div>
+                      <div class="mt-auto space-y-1">
+                        <div class="w-full h-1 bg-on-primary/30 rounded"></div>
+                        <div class="w-full h-1 bg-on-primary/30 rounded"></div>
+                      </div>
+                    </div>
+                    <!-- Right Main Content -->
+                    <div class="w-2/3 p-2 space-y-2">
+                      <div class="w-20 h-2 bg-on-surface rounded"></div>
+                      <div class="w-full h-1 bg-surface-variant rounded"></div>
+                      <div class="w-full h-1 bg-surface-variant rounded"></div>
+                      <div class="pt-2 w-14 h-1.5 bg-primary rounded"></div>
+                      <div class="w-full h-1 bg-surface-variant rounded"></div>
+                      <div class="w-full h-1 bg-surface-variant rounded"></div>
+                      <div class="w-3/4 h-1 bg-surface-variant rounded"></div>
+                    </div>
+                  </div>
+                  <span
+                    class="absolute top-space-sm right-space-sm bg-primary text-on-primary font-label-badge text-label-badge px-2 py-0.5 rounded-full font-bold"
+                  >
+                    Más Popular
+                  </span>
+                </div>
+                <!-- Details & Action -->
+                <div class="p-space-lg flex-1 flex flex-col justify-between space-y-space-md">
+                  <div>
+                    <div class="flex items-center justify-between mb-space-xs">
+                      <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">
+                        Académica &amp; Moderna
+                      </h3>
+                      <span class="font-label-code text-label-code text-primary font-semibold"
+                        >Sidebar Teal</span
+                      >
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Ideal para ingenierías, ciencias exactas y administración. Separa claramente
+                      el perfil y habilidades en su franja lateral color esmeralda.
+                    </p>
+                  </div>
+                  <a
+                    class="w-full min-h-[44px] rounded-lg bg-surface-container hover:bg-primary hover:text-on-primary text-on-surface font-body-md-medium text-body-md-medium flex items-center justify-center gap-space-xs transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    data-path="editor"
+                    href="#"
+                  >
+                    <span>Usar esta plantilla</span>
+                    <span class="material-symbols-outlined text-[18px]">edit_document</span>
+                  </a>
+                </div>
+              </div>
+              <!-- Template 2: Minimalista Elegante -->
+              <div
+                class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col group hover:-translate-y-1 transition-all duration-200"
+              >
+                <!-- Preview Mini Canvas -->
+                <div
+                  class="h-64 bg-surface-container-low p-space-md flex items-center justify-center relative overflow-hidden"
+                >
+                  <div
+                    class="w-48 h-60 bg-surface-container-lowest rounded shadow-lg p-3 space-y-2.5 scale-95 group-hover:scale-100 transition-transform"
+                  >
+                    <div class="text-center space-y-1 pb-1">
+                      <div class="w-24 h-2.5 bg-on-surface mx-auto rounded"></div>
+                      <div class="w-16 h-1 bg-outline mx-auto rounded"></div>
+                    </div>
+                    <div class="w-full h-px bg-surface-variant"></div>
+                    <div class="space-y-1">
+                      <div class="w-12 h-1.5 bg-primary font-bold rounded"></div>
+                      <div class="w-full h-1 bg-surface-variant rounded"></div>
+                      <div class="w-5/6 h-1 bg-surface-variant rounded"></div>
+                    </div>
+                    <div class="space-y-1 pt-1">
+                      <div class="w-14 h-1.5 bg-primary font-bold rounded"></div>
+                      <div class="w-full h-1 bg-surface-variant rounded"></div>
+                      <div class="w-4/5 h-1 bg-surface-variant rounded"></div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Details & Action -->
+                <div class="p-space-lg flex-1 flex flex-col justify-between space-y-space-md">
+                  <div>
+                    <div class="flex items-center justify-between mb-space-xs">
+                      <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">
+                        Minimalista Elegante
+                      </h3>
+                      <span
+                        class="font-label-code text-label-code text-on-surface-variant font-semibold"
+                        >1 Columna</span
+                      >
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Enfoque tradicional monocromático preferido por despachos jurídicos, finanzas,
+                      banca de inversión y consultoras estratégicas.
+                    </p>
+                  </div>
+                  <a
+                    class="w-full min-h-[44px] rounded-lg bg-surface-container hover:bg-primary hover:text-on-primary text-on-surface font-body-md-medium text-body-md-medium flex items-center justify-center gap-space-xs transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    data-path="editor"
+                    href="#"
+                  >
+                    <span>Usar esta plantilla</span>
+                    <span class="material-symbols-outlined text-[18px]">edit_document</span>
+                  </a>
+                </div>
+              </div>
+              <!-- Template 3: Creativa Tech -->
+              <div
+                class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden flex flex-col group hover:-translate-y-1 transition-all duration-200"
+              >
+                <!-- Preview Mini Canvas -->
+                <div
+                  class="h-64 bg-surface-container-high p-space-md flex items-center justify-center relative overflow-hidden"
+                >
+                  <div
+                    class="w-48 h-60 bg-surface-container-lowest rounded shadow-lg p-2.5 flex flex-col justify-between scale-95 group-hover:scale-100 transition-transform"
+                  >
+                    <div class="space-y-2">
+                      <div class="flex items-center gap-2">
+                        <div class="w-6 h-6 rounded bg-secondary-fixed-dim"></div>
+                        <div class="space-y-0.5">
+                          <div class="w-16 h-2 bg-on-surface rounded"></div>
+                          <div class="w-10 h-1 bg-outline rounded"></div>
+                        </div>
+                      </div>
+                      <div class="grid grid-cols-2 gap-1.5 pt-1">
+                        <div class="p-1 bg-surface-container-low rounded space-y-1">
+                          <div class="w-6 h-1 bg-primary rounded"></div>
+                          <div class="w-full h-0.5 bg-outline rounded"></div>
+                        </div>
+                        <div class="p-1 bg-surface-container-low rounded space-y-1">
+                          <div class="w-6 h-1 bg-primary rounded"></div>
+                          <div class="w-full h-0.5 bg-outline rounded"></div>
+                        </div>
+                      </div>
+                      <div class="space-y-1 pt-1">
+                        <div class="w-16 h-1.5 bg-on-surface rounded"></div>
+                        <div class="w-full h-1 bg-surface-variant rounded"></div>
+                        <div class="w-3/4 h-1 bg-surface-variant rounded"></div>
+                      </div>
+                    </div>
+                    <div class="flex gap-1">
+                      <span class="w-4 h-1.5 bg-primary/20 rounded"></span>
+                      <span class="w-6 h-1.5 bg-primary/20 rounded"></span>
+                      <span class="w-5 h-1.5 bg-primary/20 rounded"></span>
+                    </div>
+                  </div>
+                  <span
+                    class="absolute top-space-sm right-space-sm bg-tertiary-container text-on-tertiary-container font-label-badge text-label-badge px-2 py-0.5 rounded-full font-bold"
+                  >
+                    Tech &amp; Startups
+                  </span>
+                </div>
+                <!-- Details & Action -->
+                <div class="p-space-lg flex-1 flex flex-col justify-between space-y-space-md">
+                  <div>
+                    <div class="flex items-center justify-between mb-space-xs">
+                      <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">
+                        Creativa Tech
+                      </h3>
+                      <span class="font-label-code text-label-code text-secondary font-semibold"
+                        >Proyectos &amp; Git</span
+                      >
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Diseñada con módulos en rejilla para desarrolladores, diseñadores UI/UX y
+                      creadores digitales que priorizan su portafolio activo.
+                    </p>
+                  </div>
+                  <a
+                    class="w-full min-h-[44px] rounded-lg bg-surface-container hover:bg-primary hover:text-on-primary text-on-surface font-body-md-medium text-body-md-medium flex items-center justify-center gap-space-xs transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    data-path="editor"
+                    href="#"
+                  >
+                    <span>Usar esta plantilla</span>
+                    <span class="material-symbols-outlined text-[18px]">edit_document</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Interactive University Student Stories & Testimonials -->
+        <section class="w-full py-space-xl px-margin bg-surface-container-low/20">
+          <div class="max-w-7xl mx-auto">
+            <div
+              class="bg-surface-container-lowest rounded-2xl p-space-lg sm:p-space-xl shadow-md grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center"
+            >
+              <div class="lg:col-span-5 space-y-space-md">
+                <span
+                  class="font-label-badge text-label-badge uppercase tracking-wider text-primary font-bold"
+                  >Casos de Éxito Reales</span
+                >
+                <h2
+                  class="font-headline-xl text-headline-xl font-bold text-on-surface tracking-tight"
+                >
+                  "Sin experiencia previa conseguí 4 entrevistas en 2 semanas"
+                </h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">
+                  Muchos estudiantes cometen el error de dejar su CV casi vacío. GeneradorCV te guía
+                  paso a paso para documentar tus asignaturas clave, proyectos de fin de curso y
+                  logros universitarios con impacto tangible.
+                </p>
+                <div class="pt-space-xs flex items-center gap-space-md">
+                  <div
+                    class="w-12 h-12 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-headline-sm"
+                  >
+                    CM
+                  </div>
+                  <div>
+                    <p class="font-body-md-medium text-body-md-medium font-bold text-on-surface">
+                      Camilo Mendoza
+                    </p>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Practicante de Operaciones en MercadoLibre
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                <div class="p-space-md bg-surface-container-low/50 rounded-xl space-y-space-xs">
+                  <span class="font-headline-xl text-headline-xl font-bold text-primary">100%</span>
+                  <p class="font-body-md-medium text-body-md-medium font-semibold text-on-surface">
+                    Sin Tarjetas ni Trampas
+                  </p>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Crea, edita y descarga en PDF sin ingresar tarjeta de crédito ni sorpresas de
+                    cobro tras 7 días.
+                  </p>
+                </div>
+                <div class="p-space-md bg-surface-container-low/50 rounded-xl space-y-space-xs">
+                  <span class="font-headline-xl text-headline-xl font-bold text-primary"
+                    >&lt; 10 min</span
+                  >
+                  <p class="font-body-md-medium text-body-md-medium font-semibold text-on-surface">
+                    Tiempo Promedio
+                  </p>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Completa el cuestionario guiado con sugerencias automáticas de verbos de acción
+                    y logros medibles.
+                  </p>
+                </div>
+                <div class="p-space-md bg-surface-container-low/50 rounded-xl space-y-space-xs">
+                  <span class="font-headline-xl text-headline-xl font-bold text-primary"
+                    >A4 &amp; Carta</span
+                  >
+                  <p class="font-body-md-medium text-body-md-medium font-semibold text-on-surface">
+                    Formatos Internacionales
+                  </p>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Ajuste milimétrico según apliques a convocatorias locales o multinacionales en
+                    el exterior.
+                  </p>
+                </div>
+                <div class="p-space-md bg-surface-container-low/50 rounded-xl space-y-space-xs">
+                  <span class="font-headline-xl text-headline-xl font-bold text-primary">AA</span>
+                  <p class="font-body-md-medium text-body-md-medium font-semibold text-on-surface">
+                    Accesibilidad WCAG 2.2
+                  </p>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Navegación completa por teclado, contrastes garantizados y compatibilidad total
+                    con lectores de pantalla.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Final High-Conversion CTA Banner -->
+        <section class="w-full px-margin py-space-xl mb-space-xl">
+          <div
+            class="max-w-7xl mx-auto rounded-2xl bg-gradient-to-r from-primary via-[#0f766e] to-[#115e59] p-space-xl sm:p-16 text-on-primary shadow-xl relative overflow-hidden text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-space-xl"
+          >
+            <!-- Ambient Circle Behind CTA -->
+            <div
+              aria-hidden="true"
+              class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-secondary-fixed/10 blur-2xl pointer-events-none"
+            ></div>
+            <div class="max-w-2xl space-y-space-sm relative z-10">
+              <span
+                class="font-label-badge text-label-badge uppercase tracking-wider text-secondary-fixed font-bold"
+                >Comienza hoy mismo</span
+              >
+              <h2
+                class="font-headline-xl text-headline-xl sm:text-[36px] sm:leading-[44px] font-bold text-on-primary tracking-tight"
+              >
+                Tu próximo empleo o práctica profesional empieza con el currículum correcto
+              </h2>
+              <p class="font-body-lg text-body-lg text-on-primary-container max-w-xl">
+                Únete a decenas de miles de estudiantes que ya dejaron atrás los formatos
+                desordenados de Word.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-space-md relative z-10 shrink-0">
+              <a
+                class="min-h-[50px] px-space-xl rounded-lg bg-surface-container-lowest text-primary font-body-md-medium text-body-md-medium flex items-center justify-center gap-space-sm hover:bg-surface-container-low shadow-lg hover:shadow-xl transition-all active:scale-[0.99] focus-visible:outline focus-visible:outline-3 focus-visible:outline-surface-container-lowest focus-visible:outline-offset-2 font-bold"
+                data-path="registro"
+                href="#"
+              >
+                <span>Empezar ahora — Es 100% gratuito</span>
+                <span aria-hidden="true" class="material-symbols-outlined text-[20px]"
+                  >rocket_launch</span
+                >
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+      <script>
+        // Accessible Keyboard Focus helper and interactive micro-interactions
+        document.addEventListener("DOMContentLoaded", () => {
+          // Smooth scroll for internal preview anchor
+          const templateLink = document.querySelector('a[href="#plantillas-destacadas"]');
+          if (templateLink) {
+            templateLink.addEventListener("click", (e) => {
+              e.preventDefault();
+              const target = document.getElementById("plantillas-destacadas");
+              if (target) {
+                target.scrollIntoView({ behavior: "smooth", block: "start" });
+              }
+            });
+          }
+        });
+      </script>
+    </main>
+    <footer class="w-full bg-surface-container-low mt-space-xl py-space-xl text-on-surface-variant">
+      <div class="max-w-7xl mx-auto px-margin">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-space-lg pb-space-lg">
+          <div class="space-y-space-sm">
+            <div class="flex items-center gap-space-sm">
+              <span class="font-headline-sm text-headline-sm text-primary">GeneradorCV</span>
+            </div>
+            <p class="font-body-sm text-body-sm text-on-surface-variant">
+              Plataforma estructurada para estudiantes universitarios y primeros empleos. Cumple con
+              estándares de accesibilidad WCAG 2.2 Nivel AA.
+            </p>
+          </div>
+          <div>
+            <h3 class="font-body-md-medium text-body-md-medium text-on-surface mb-space-sm">
+              Navegación
+            </h3>
+            <ul class="space-y-space-xs font-body-sm text-body-sm">
+              <li>
+                <a
+                  class="hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+                  data-path="plantillas"
+                  href="#"
+                  >Plantillas ATS-Friendly</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+                  data-path="guias-y-consejos"
+                  href="#"
+                  >Consejos de CV</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+                  data-path="caracteristicas"
+                  href="#"
+                  >Formatos A4 y Carta</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-body-md-medium text-body-md-medium text-on-surface mb-space-sm">
+              Accesibilidad &amp; Legal
+            </h3>
+            <ul class="space-y-space-xs font-body-sm text-body-sm">
+              <li>
+                <a
+                  class="hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+                  data-path="privacidad"
+                  href="#"
+                  >Política de Privacidad</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+                  data-path="terminos"
+                  href="#"
+                  >Términos del Servicio</a
+                >
+              </li>
+              <li>
+                <a
+                  class="hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+                  data-path="atajos-teclado"
+                  href="#"
+                  >Atajos de Teclado</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-body-md-medium text-body-md-medium text-on-surface mb-space-sm">
+              Configuración Regional
+            </h3>
+            <div class="flex items-center gap-space-sm">
+              <label class="sr-only" for="lang-select">Seleccionar idioma</label
+              ><select
+                class="h-11 bg-surface-container-lowest text-on-surface font-body-sm text-body-sm px-space-sm rounded-lg focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                id="lang-select"
+              >
+                <option selected="" value="es">Español (América Latina)</option>
+                <option value="en">English (US)</option>
+                <option value="pt">Português</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div
+          class="pt-space-md flex flex-col md:flex-row items-center justify-between gap-space-sm font-body-sm text-body-sm"
+        >
+          <p>
+            © 2025 GeneradorCV. Diseñado con rigor académico y herramientas modernas para
+            estudiantes.
+          </p>
+          <div class="flex items-center gap-space-md">
+            <span class="inline-flex items-center gap-space-xs"
+              ><span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+              Conforme WCAG 2.2 AA</span
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

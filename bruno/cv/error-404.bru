@@ -1,0 +1,21 @@
+meta {
+  name: Error 403/404 - CV Ajeno
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/cv/cv-de-otro-usuario
+  body: none
+  auth: none
+}
+
+headers {
+  Cookie: sesion={{sessionId}}
+}
+
+tests {
+  test("Status code is 404", function() {
+    expect(res.status).to.equal(404);
+  });
+}

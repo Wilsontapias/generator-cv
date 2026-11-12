@@ -1,0 +1,284 @@
+/* Print styles for CV */
+
+@media print {
+  /* Ocultar elementos de UI */
+  .noprint,
+  .app-header,
+  .app-footer,
+  .skip-to-content,
+  .print-controls {
+    display: none !important;
+  }
+
+  /* Reset de estilos para impresión */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: white;
+    font-size: 10pt;
+  }
+
+  main {
+    max-width: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Formato A4 */
+  @page {
+    size: A4;
+    margin: 15mm;
+  }
+
+  /* CV container */
+  .cv-print,
+  .cv-public,
+  .cv-template {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    background: white;
+  }
+
+  /* Evitar cortes de puesto de trabajo */
+  .cv-entry,
+  .cv-section,
+  article {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Evitar cortes de encabezados */
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+
+  /* Evitar viudas y huérfanas */
+  p,
+  li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  /* Asegurar que las secciones no se corten */
+  .cv-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Imágenes */
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+
+  /* Links */
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Ocultar URLs en links */
+  a[href]:after {
+    content: none;
+  }
+}
+
+/* Estilos para la vista de impresión en pantalla */
+.print-page {
+  padding: var(--spacing-xl) 0;
+}
+
+.print-controls {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+}
+
+.print-controls h2 {
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.print-options {
+  display: flex;
+  gap: var(--spacing-lg);
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.print-options label {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+/* CV print container */
+.cv-print {
+  background-color: white;
+  padding: var(--spacing-2xl);
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+/* Public CV container */
+.cv-public {
+  background-color: white;
+  padding: var(--spacing-2xl);
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+/* CV header */
+.cv-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  padding-bottom: var(--spacing-lg);
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.cv-header h1 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.cv-title {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.cv-contact {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* CV sections */
+.cv-section {
+  margin-bottom: var(--spacing-lg);
+}
+
+.cv-section h2 {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* CV entries */
+.cv-entry {
+  margin-bottom: var(--spacing-md);
+}
+
+.cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.cv-entry-header h3 {
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.cv-entry-date {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+.cv-entry-company {
+  font-style: italic;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.cv-entry ul {
+  padding-left: var(--spacing-lg);
+}
+
+.cv-entry li {
+  margin-bottom: var(--spacing-xs);
+}
+
+/* CV skills */
+.cv-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.cv-skills span {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+}
+
+/* Public banner */
+.public-banner {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  font-size: 0.875rem;
+}
+
+.banner-link {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.banner-link:hover {
+  text-decoration: underline;
+}
+
+/* Asegurar que el CV quepa en una página cuando el contenido es corto */
+@media print {
+  .cv-print,
+  .cv-public,
+  .cv-template {
+    min-height: auto;
+  }
+
+  /* Reducir espaciado si el contenido es corto */
+  .cv-section {
+    margin-bottom: 1rem;
+  }
+
+  .cv-entry {
+    margin-bottom: 0.75rem;
+  }
+
+  /* Asegurar que el contenido no desborde */
+  .cv-print,
+  .cv-public {
+    overflow: visible;
+  }
+}

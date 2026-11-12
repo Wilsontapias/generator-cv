@@ -1,0 +1,25 @@
+meta {
+  name: Listar CVs
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/cv
+  body: none
+  auth: none
+}
+
+headers {
+  Cookie: sesion={{sessionId}}
+}
+
+tests {
+  test("Status code is 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  
+  test("Response has items", function() {
+    expect(res.body).to.have.property("items");
+  });
+}

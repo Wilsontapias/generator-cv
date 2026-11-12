@@ -1,0 +1,17 @@
+meta {
+  name: Error 401 - Sin Sesión
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/cv
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status code is 401", function() {
+    expect(res.status).to.equal(401);
+  });
+}

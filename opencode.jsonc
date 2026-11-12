@@ -1,0 +1,126 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "anthropic/claude-sonnet-4.5",
+
+  "permissions": [
+    // Denegar lectura de archivos sensibles
+    {
+      "action": "read",
+      "resource": ".env*",
+      "effect": "deny",
+    },
+    {
+      "action": "read",
+      "resource": "*.pem",
+      "effect": "deny",
+    },
+    {
+      "action": "read",
+      "resource": "*.key",
+      "effect": "deny",
+    },
+    {
+      "action": "read",
+      "resource": "*firebase-adminsdk*.json",
+      "effect": "deny",
+    },
+
+    // Permitir lectura de archivos del proyecto
+    {
+      "action": "read",
+      "resource": "*",
+      "effect": "allow",
+    },
+
+    // Denegar comandos peligrosos
+    {
+      "action": "shell",
+      "resource": "sudo *",
+      "effect": "deny",
+    },
+    {
+      "action": "shell",
+      "resource": "rm -rf *",
+      "effect": "deny",
+    },
+    {
+      "action": "shell",
+      "resource": "git push --force *",
+      "effect": "deny",
+    },
+    {
+      "action": "shell",
+      "resource": "git reset --hard *",
+      "effect": "deny",
+    },
+    {
+      "action": "shell",
+      "resource": "vercel *",
+      "effect": "ask",
+    },
+    {
+      "action": "shell",
+      "resource": "git push *",
+      "effect": "ask",
+    },
+
+    // Permitir comandos seguros
+    {
+      "action": "shell",
+      "resource": "npm *",
+      "effect": "allow",
+    },
+    {
+      "action": "shell",
+      "resource": "git status *",
+      "effect": "allow",
+    },
+    {
+      "action": "shell",
+      "resource": "git diff *",
+      "effect": "allow",
+    },
+    {
+      "action": "shell",
+      "resource": "git add *",
+      "effect": "allow",
+    },
+    {
+      "action": "shell",
+      "resource": "git commit *",
+      "effect": "allow",
+    },
+  ],
+
+  "mcp": {
+    "servers": {
+      "context7": {
+        "type": "remote",
+        "url": "https://mcp.context7.com/mcp",
+      },
+    },
+  },
+
+  "policies": [
+    {
+      "action": "tool.use",
+      "resource": "read:.env*",
+      "effect": "deny",
+    },
+    {
+      "action": "tool.use",
+      "resource": "edit:.env*",
+      "effect": "deny",
+    },
+    {
+      "action": "tool.use",
+      "resource": "shell:sudo *",
+      "effect": "deny",
+    },
+    {
+      "action": "tool.use",
+      "resource": "shell:rm -rf *",
+      "effect": "deny",
+    },
+  ],
+}

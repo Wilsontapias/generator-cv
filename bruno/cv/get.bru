@@ -1,0 +1,21 @@
+meta {
+  name: Obtener CV por ID
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/cv/{{cvId}}
+  body: none
+  auth: none
+}
+
+headers {
+  Cookie: sesion={{sessionId}}
+}
+
+tests {
+  test("Status code is 200", function() {
+    expect(res.status).to.equal(200);
+  });
+}

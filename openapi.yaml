@@ -1,0 +1,461 @@
+openapi: 3.0.3
+info:
+  title: Generador de Hoja de Vida API
+  description: API REST para el generador de hojas de vida
+  version: 1.0.0
+  contact:
+    name: Wilson Tapias Posada
+    email: wilson.tapias@ejemplo.com
+
+servers:
+  - url: http://localhost:3000/api
+    description: Servidor de desarrollo
+  - url: https://tu-dominio.vercel.app/api
+    description: Servidor de producción
+
+paths:
+  /auth/sesion:
+    post:
+      summary: Crear sesión
+      description: Crea una cookie de sesión a partir de un ID token de Firebase
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - idToken
+              properties:
+                idToken:
+                  type: string
+                  description: ID token obtenido de Firebase Auth
+      responses:
+        "204":
+          description: Sesión creada exitosamente
+        "400":
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: Token inválido
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      summary: Eliminar sesión
+      description: Elimina la cookie de sesión y revoca refresh tokens
+      responses:
+        "204":
+          description: Sesión eliminada exitosamente
+        "401":
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /auth/yo:
+    get:
+      summary: Obtener usuario actual
+      description: Retorna la información del usuario autenticado
+      responses:
+        "200":
+          description: Usuario autenticado
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  usuario:
+                    $ref: "#/components/schemas/Usuario"
+        "401":
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /cv:
+    get:
+      summary: Listar CVs del usuario
+      description: Retorna la lista de CVs del usuario autenticado
+      responses:
+        "200":
+          description: Lista de CVs
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/CV"
+                  siguienteCursor:
+                    type: string
+                    nullable: true
+        "401":
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    post:
+      summary: Crear CV
+      description: Crea un nuevo CV para el usuario autenticado
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CrearCV"
+      responses:
+        "201":
+          description: CV creado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CV"
+        "400":
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /cv/{id}:
+    get:
+      summary: Obtener CV por ID
+      description: Retorna un CV específico del usuario autenticado
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: CV encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CV"
+        "401":
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: CV no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    put:
+      summary: Actualizar CV
+      description: Actualiza un CV existente del usuario autenticado
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ActualizarCV"
+      responses:
+        "200":
+          description: CV actualizado exitosamente
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CV"
+        "400":
+          description: Error de validación
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "401":
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: CV no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+    delete:
+      summary: Eliminar CV
+      description: Elimina un CV del usuario autenticado
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "204":
+          description: CV eliminado exitosamente
+        "401":
+          description: No autenticado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+        "404":
+          description: CV no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /p/{codigo}:
+    get:
+      summary: Obtener CV público
+      description: Retorna un CV público por su código
+      parameters:
+        - name: codigo
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: CV público encontrado
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CV"
+        "404":
+          description: CV no encontrado o no público
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+  /upload:
+    post:
+      summary: Subir foto de perfil
+      description: Genera token para subida directa a Vercel Blob
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                pathname:
+                  type: string
+      responses:
+        "200":
+          description: Token generado exitosamente
+        "400":
+          description: Error de validación
+        "401":
+          description: No autenticado
+
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        detalles:
+          type: array
+          items:
+            type: object
+            properties:
+              campo:
+                type: string
+              mensaje:
+                type: string
+
+    Usuario:
+      type: object
+      properties:
+        uid:
+          type: string
+        correo:
+          type: string
+          nullable: true
+        rol:
+          type: string
+          enum: [usuario, admin, moderador]
+
+    CV:
+      type: object
+      properties:
+        id:
+          type: string
+        uid:
+          type: string
+        titulo:
+          type: string
+        plantilla:
+          type: string
+          enum: [moderna, clasica, minimalista]
+        publica:
+          type: boolean
+        codigo:
+          type: string
+          nullable: true
+        datos:
+          $ref: "#/components/schemas/DatosCV"
+        fotoUrl:
+          type: string
+          nullable: true
+        actualizadoEn:
+          type: string
+          format: date-time
+
+    DatosCV:
+      type: object
+      properties:
+        datos:
+          $ref: "#/components/schemas/DatosPersonales"
+        perfil:
+          type: string
+        experiencia:
+          type: array
+          items:
+            $ref: "#/components/schemas/Experiencia"
+        estudios:
+          type: array
+          items:
+            $ref: "#/components/schemas/Estudio"
+        habilidades:
+          type: array
+          items:
+            $ref: "#/components/schemas/Habilidad"
+        idiomas:
+          type: array
+          items:
+            $ref: "#/components/schemas/Idioma"
+
+    DatosPersonales:
+      type: object
+      properties:
+        nombre:
+          type: string
+        cargo:
+          type: string
+        email:
+          type: string
+        telefono:
+          type: string
+        ciudad:
+          type: string
+        linkedin:
+          type: string
+        portfolio:
+          type: string
+        fotoUrl:
+          type: string
+          nullable: true
+
+    Experiencia:
+      type: object
+      properties:
+        id:
+          type: string
+        cargo:
+          type: string
+        empresa:
+          type: string
+        fechaInicio:
+          type: string
+        fechaFin:
+          type: string
+        descripcion:
+          type: string
+
+    Estudio:
+      type: object
+      properties:
+        id:
+          type: string
+        titulo:
+          type: string
+        institucion:
+          type: string
+        fechaInicio:
+          type: string
+        fechaFin:
+          type: string
+        descripcion:
+          type: string
+
+    Habilidad:
+      type: object
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+        nivel:
+          type: string
+          enum: [basico, intermedio, avanzado, experto]
+
+    Idioma:
+      type: object
+      properties:
+        id:
+          type: string
+        nombre:
+          type: string
+        nivel:
+          type: string
+          enum: [basico, intermedio, avanzado, nativo]
+
+    CrearCV:
+      type: object
+      required:
+        - titulo
+        - datos
+      properties:
+        titulo:
+          type: string
+        plantilla:
+          type: string
+          enum: [moderna, clasica, minimalista]
+        datos:
+          $ref: "#/components/schemas/DatosCV"
+
+    ActualizarCV:
+      type: object
+      properties:
+        titulo:
+          type: string
+        plantilla:
+          type: string
+          enum: [moderna, clasica, minimalista]
+        datos:
+          $ref: "#/components/schemas/DatosCV"
+        publica:
+          type: boolean
+        codigo:
+          type: string
+          nullable: true

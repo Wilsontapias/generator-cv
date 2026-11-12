@@ -1,0 +1,1214 @@
+<!doctype html>
+
+<html class="light" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_dashboard" name="shell-type" />
+    <title>GeneradorCV App</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#ffffff",
+              "on-primary-container": "#a3faef",
+              "on-secondary": "#ffffff",
+              "primary-container": "#0f766e",
+              "secondary-fixed-dim": "#4fdbc8",
+              "surface-variant": "#d9e3f6",
+              "on-primary-fixed": "#00201d",
+              "surface-container-high": "#dee9fc",
+              "tertiary-container": "#007a33",
+              "on-tertiary-fixed": "#002109",
+              outline: "#6e7977",
+              "secondary-fixed": "#71f8e4",
+              error: "#ba1a1a",
+              tertiary: "#005f26",
+              "on-primary-fixed-variant": "#00504a",
+              "surface-container-highest": "#d9e3f6",
+              "on-surface": "#121c2a",
+              "inverse-primary": "#80d5cb",
+              "primary-fixed-dim": "#80d5cb",
+              "secondary-container": "#6df5e1",
+              "on-primary": "#ffffff",
+              "on-secondary-container": "#006f64",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#eff4ff",
+              "surface-bright": "#f8f9ff",
+              "on-tertiary": "#ffffff",
+              "surface-tint": "#006a63",
+              background: "#f8f9ff",
+              primary: "#005c55",
+              "surface-dim": "#d0dbed",
+              "on-secondary-fixed-variant": "#005048",
+              "on-tertiary-container": "#a1ffad",
+              "surface-container-lowest": "#ffffff",
+              "outline-variant": "#bdc9c6",
+              "tertiary-fixed": "#7ffc97",
+              "on-surface-variant": "#3e4947",
+              secondary: "#006b5f",
+              "surface-container": "#e6eeff",
+              "tertiary-fixed-dim": "#62df7d",
+              "inverse-on-surface": "#eaf1ff",
+              "on-secondary-fixed": "#00201c",
+              "inverse-surface": "#27313f",
+              "on-tertiary-fixed-variant": "#005320",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#9cf2e8",
+              surface: "#f8f9ff",
+              "on-background": "#121c2a",
+            },
+            borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+            spacing: {
+              gutter: "1.5rem",
+              "margin-sm": "1rem",
+              "space-md": "1rem",
+              "space-xs": "0.25rem",
+              margin: "2rem",
+              "space-lg": "1.5rem",
+              "gutter-sm": "1rem",
+              "space-sm": "0.5rem",
+              "space-xl": "2rem",
+            },
+            fontFamily: {
+              "body-lg": ["Inter"],
+              "headline-sm": ["Inter"],
+              "label-badge": ["Inter"],
+              "body-sm": ["Inter"],
+              "headline-xl": ["Inter"],
+              "body-md-medium": ["Inter"],
+              "headline-lg": ["Inter"],
+              "body-md": ["Inter"],
+              "label-code": ["JetBrains Mono"],
+              "headline-md": ["Inter"],
+              "headline-xl-mobile": ["Inter"],
+            },
+            fontSize: {
+              "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "headline-sm": [
+                "18px",
+                { lineHeight: "26px", letterSpacing: "-0.005em", fontWeight: "600" },
+              ],
+              "label-badge": [
+                "11px",
+                { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "600" },
+              ],
+              "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }],
+              "headline-xl": [
+                "32px",
+                { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" },
+              ],
+              "body-md-medium": ["14px", { lineHeight: "20px", fontWeight: "500" }],
+              "headline-lg": [
+                "24px",
+                { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" },
+              ],
+              "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+              "label-code": [
+                "12px",
+                { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" },
+              ],
+              "headline-md": [
+                "20px",
+                { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" },
+              ],
+              "headline-xl-mobile": [
+                "26px",
+                { lineHeight: "34px", letterSpacing: "-0.015em", fontWeight: "700" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-surface font-body-md text-on-surface antialiased">
+    <a
+      class="sr-only focus:not-sr-only focus:fixed focus:top-space-sm focus:left-space-sm focus:z-50 focus:px-space-md focus:py-space-sm focus:bg-primary-container focus:text-on-primary-container focus:rounded-lg focus:outline focus:outline-3 focus:outline-primary focus:outline-offset-2 font-body-md-medium text-body-md-medium transition-all"
+      href="#main-content"
+      >Saltar al contenido principal</a
+    >
+    <aside
+      aria-label="Panel de navegación de la aplicación"
+      class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-40 flex flex-col justify-between py-space-md"
+    >
+      <div class="flex flex-col gap-space-lg">
+        <div class="h-16 px-space-md flex items-center gap-space-sm">
+          <img
+            alt="GeneradorCV Brand Logo"
+            class="h-8 w-auto object-contain"
+            src="https://lh3.googleusercontent.com/aida/ALJJyrBTC5_bMzzNownUImDrfF9n8J9m6NypKkFTaI1c7EI3I-Vg8iUtiRiH6icxDusKNT6joJe9g1Bj404l8aV-_kcABugpi0UYX8ucYBGSZd0kpd2owLos1dMJiWtrQcwIVd-AB8cQ9eXUgZa2ZSx8-nINKiDr2HGUvBnUq3WQQSX8MVdYWe1gimrnwad4_LHIB7TbEL3vPmvHGeynQC_-GhPY74pYu1NloRK43v9zI8SYLQ"
+          />
+          <div class="flex flex-col">
+            <span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none"
+              >GeneradorCV</span
+            ><span
+              class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider"
+              >Workspace Estudiantil</span
+            >
+          </div>
+        </div>
+        <nav
+          aria-label="Módulos de trabajo"
+          class="flex flex-col gap-space-xs px-space-sm"
+          data-active-classes="bg-primary-container text-on-primary-container font-body-md-medium"
+        >
+          <a
+            aria-current="page"
+            class="h-11 px-space-md flex items-center rounded-lg transition-all bg-primary-container text-on-primary-container font-body-md-medium"
+            data-path="mis-cvs"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]">folder_shared</span>Mis
+            CVs</a
+          ><a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="editor-cv"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]">edit_document</span
+            >Editor en Vivo</a
+          ><a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="plantillas"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]"
+              >dashboard_customize</span
+            >Plantillas</a
+          ><a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="guias-y-consejos"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]">school</span>Guías
+            &amp; Consejos</a
+          ><a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="ajustes-cuenta"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]">tune</span>Ajustes y
+            Exportación</a
+          >
+        </nav>
+      </div>
+      <div class="px-space-md pt-space-md bg-surface-container-low">
+        <div
+          class="p-space-sm rounded-xl bg-surface-container-lowest flex items-center gap-space-sm"
+        >
+          <span class="material-symbols-outlined text-primary text-[20px]">cloud_done</span>
+          <div class="flex flex-col">
+            <span class="font-label-badge text-label-badge text-tertiary uppercase"
+              >Sincronizado</span
+            ><span class="font-body-sm text-body-sm text-on-surface-variant"
+              >Guardado local &amp; nube</span
+            >
+          </div>
+        </div>
+      </div>
+    </aside>
+    <div class="pl-64">
+      <header
+        class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-30 px-space-lg flex items-center justify-between gap-space-md"
+      >
+        <div class="flex items-center gap-space-md">
+          <nav
+            aria-label="Ruta de navegación"
+            class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"
+          >
+            <a
+              class="hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+              data-path="mis-cvs"
+              href="#"
+              >Mis CVs</a
+            ><span class="material-symbols-outlined text-[14px]">chevron_right</span
+            ><span class="text-on-surface font-body-md-medium text-body-md-medium"
+              >CV Primer Empleo - Tecnología</span
+            >
+          </nav>
+          <span
+            class="hidden lg:inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-badge text-label-badge"
+            ><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Autoguardado activo</span
+          >
+        </div>
+        <div class="flex items-center gap-space-md">
+          <button
+            aria-label="Cambiar modo de tema"
+            class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+            title="Alternar tema claro u oscuro"
+            type="button"
+          >
+            <span class="material-symbols-outlined text-[20px]">dark_mode</span>
+          </button>
+          <div class="h-6 w-px bg-surface-container-highest"></div>
+          <div class="relative flex items-center gap-space-sm pl-space-xs">
+            <div class="flex items-center gap-space-sm">
+              <img
+                alt="Profile"
+                class="w-8 h-8 rounded-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuApV5JW_WJEsJ732xX45SnIJPSA1f6Xb6CBsJJ5jS0PkV9DTDZwRNZcf-CY9MK_YwplK_H0Vng1LDCyT4LCNSdR5CzthUBcWn4RahY5URBSFzHPxSFKhNInF39DVT0ycrW1cHvK0d8NVN03fXM35jk89MlMCcmsa27rrCP9gf-udbyerDGfXT3Rrg-1EbMzEisAuI4FEYPYtmInvfuzA6_7oGsHV9qOFUmTw5p1Rs80"
+              />
+              <div class="hidden sm:flex flex-col text-left">
+                <span class="font-body-md-medium text-body-md-medium text-on-surface leading-tight"
+                  >Camila Morales</span
+                ><span class="font-body-sm text-body-sm text-on-surface-variant"
+                  >Estudiante - U. Nacional</span
+                >
+              </div>
+            </div>
+            <button
+              aria-expanded="false"
+              aria-label="Abrir menú de usuario de Camila Morales"
+              class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+              type="button"
+            >
+              <span class="material-symbols-outlined text-[20px]">keyboard_arrow_down</span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <main class="relative w-full pt-16 bg-surface min-h-screen" id="main-content">
+        <div class="flex flex-col w-full">
+          <div
+            class="w-full max-w-7xl mx-auto px-space-md sm:px-space-lg lg:px-margin py-space-lg flex flex-col gap-space-xl"
+          >
+            <!-- Toast / Notification bar when syncing or error simulation -->
+            <div
+              aria-live="assertive"
+              class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-sm p-space-md rounded-xl bg-error-container text-on-error-container shadow-sm transition-all duration-300"
+              id="status-error-banner"
+              role="alert"
+            >
+              <div class="flex items-center gap-space-sm">
+                <span class="material-symbols-outlined text-[24px] text-error shrink-0"
+                  >cloud_off</span
+                >
+                <div class="flex flex-col">
+                  <span class="font-body-md-medium text-body-md-medium"
+                    >Error de sincronización con la nube</span
+                  >
+                  <span class="font-body-sm text-body-sm opacity-90"
+                    >No pudimos conectar con tu espacio de almacenamiento. Tus cambios recientes
+                    permanecen a salvo en el almacenamiento local.</span
+                  >
+                </div>
+              </div>
+              <div class="flex items-center gap-space-xs self-end sm:self-center shrink-0">
+                <button
+                  class="h-11 px-space-md flex items-center justify-center gap-space-xs rounded-lg bg-surface-container-lowest text-error font-body-md-medium text-body-md-medium hover:bg-surface-container transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-error focus-visible:outline-offset-2"
+                  id="retry-sync-btn"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[18px]">refresh</span>
+                  <span>Reintentar conexión</span>
+                </button>
+                <button
+                  aria-label="Cerrar notificación"
+                  class="w-11 h-11 flex items-center justify-center rounded-lg text-on-error-container hover:bg-error/10 transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-error focus-visible:outline-offset-2"
+                  id="dismiss-error-btn"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[20px]">close</span>
+                </button>
+              </div>
+            </div>
+            <!-- Header Panel -->
+            <div class="flex flex-col gap-space-md">
+              <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-lg">
+                <div class="flex flex-col gap-space-xs">
+                  <div class="flex items-center gap-space-xs">
+                    <span
+                      class="px-space-sm py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-badge text-label-badge uppercase tracking-wider"
+                      >Gestión Activa</span
+                    >
+                    <span class="font-body-sm text-body-sm text-outline">• Plan Universitario</span>
+                  </div>
+                  <h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight">
+                    Mis Hojas de Vida
+                  </h1>
+                  <p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">
+                    Crea, duplica, organiza y exporta tus versiones adaptadas para cada postulación
+                    laboral o académica.
+                  </p>
+                </div>
+                <!-- Quick actions right -->
+                <div class="flex flex-wrap items-center gap-space-sm">
+                  <button
+                    class="h-11 px-space-md flex items-center gap-space-xs rounded-lg bg-surface-container-low text-on-surface hover:bg-surface-container hover:text-primary transition-all font-body-md-medium text-body-md-medium focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 shadow-sm"
+                    id="open-import-modal-btn"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[20px] text-primary"
+                      >upload_file</span
+                    >
+                    <span>Importar Datos</span>
+                  </button>
+                  <button
+                    class="h-11 px-space-lg flex items-center gap-space-xs rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-all font-body-md-medium text-body-md-medium focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 shadow-sm active:scale-[0.99]"
+                    id="create-cv-primary-btn"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[20px]">add_circle</span>
+                    <span>+ Crear nuevo CV</span>
+                  </button>
+                </div>
+              </div>
+              <!-- Toolbar / Filters & Search -->
+              <div
+                class="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-space-md pt-space-sm"
+              >
+                <!-- Accessible Filter Tabs -->
+                <div
+                  aria-label="Filtrar hojas de vida por estado"
+                  class="flex items-center gap-space-xs p-1 bg-surface-container-low rounded-xl"
+                  role="tablist"
+                >
+                  <button
+                    aria-controls="panel-all-cvs"
+                    aria-selected="true"
+                    class="filter-tab h-9 px-space-md flex items-center gap-space-xs rounded-lg bg-surface-container-lowest text-primary font-body-md-medium text-body-md-medium shadow-sm transition-all focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    data-filter="all"
+                    id="tab-all"
+                    role="tab"
+                  >
+                    <span>Todos</span>
+                    <span
+                      class="px-1.5 py-0.2 rounded-full bg-primary/10 text-primary font-label-badge text-label-badge"
+                      >3</span
+                    >
+                  </button>
+                  <button
+                    aria-controls="panel-all-cvs"
+                    aria-selected="false"
+                    class="filter-tab h-9 px-space-md flex items-center gap-space-xs rounded-lg text-on-surface-variant hover:text-on-surface font-body-md-medium text-body-md-medium transition-all focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    data-filter="active"
+                    id="tab-active"
+                    role="tab"
+                  >
+                    <span>Activos</span>
+                    <span
+                      class="px-1.5 py-0.2 rounded-full bg-surface-container text-on-surface-variant font-label-badge text-label-badge"
+                      >2</span
+                    >
+                  </button>
+                  <button
+                    aria-controls="panel-all-cvs"
+                    aria-selected="false"
+                    class="filter-tab h-9 px-space-md flex items-center gap-space-xs rounded-lg text-on-surface-variant hover:text-on-surface font-body-md-medium text-body-md-medium transition-all focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    data-filter="drafts"
+                    id="tab-drafts"
+                    role="tab"
+                  >
+                    <span>Borradores</span>
+                    <span
+                      class="px-1.5 py-0.2 rounded-full bg-surface-container text-on-surface-variant font-label-badge text-label-badge"
+                      >1</span
+                    >
+                  </button>
+                </div>
+                <!-- Search Bar with label -->
+                <div class="relative flex-1 max-w-md">
+                  <label class="sr-only" for="search-cv-input"
+                    >Buscar entre tus hojas de vida</label
+                  >
+                  <span
+                    class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[20px] text-outline pointer-events-none"
+                    >search</span
+                  >
+                  <input
+                    class="w-full h-11 pl-10 pr-space-md bg-surface-container-lowest text-on-surface placeholder:text-outline font-body-md text-body-md rounded-lg shadow-sm focus:bg-surface-container-lowest focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all"
+                    id="search-cv-input"
+                    placeholder="Buscar por título, rol o palabra clave..."
+                    type="search"
+                  />
+                  <button
+                    aria-label="Limpiar búsqueda"
+                    class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full flex items-center justify-center text-outline hover:text-on-surface"
+                    id="clear-search"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[16px]">close</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- MAIN GRID OF CVS -->
+            <div
+              aria-labelledby="tab-all"
+              class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-space-lg"
+              id="panel-all-cvs"
+              role="tabpanel"
+            >
+              <!-- Action Card: Crear Nuevo CV (First slot highlight) -->
+              <button
+                class="group relative flex flex-col items-center justify-center text-center p-space-lg rounded-xl bg-surface-container-low hover:bg-surface-container-high transition-all duration-300 min-h-[380px] focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 shadow-sm text-left"
+                type="button"
+              >
+                <div
+                  class="w-16 h-16 rounded-full bg-surface-container-lowest text-primary flex items-center justify-center shadow-sm group-hover:scale-110 group-hover:bg-primary group-hover:text-on-primary transition-all duration-300 mb-space-md"
+                >
+                  <span class="material-symbols-outlined text-[32px]">add</span>
+                </div>
+                <span class="font-headline-sm text-headline-sm text-on-surface mb-space-xs"
+                  >Crear nuevo CV</span
+                >
+                <p class="font-body-sm text-body-sm text-on-surface-variant max-w-xs mb-space-md">
+                  Empieza en blanco o aprovecha una de nuestras plantillas ATS optimizadas para
+                  carreras universitarias.
+                </p>
+                <span
+                  class="inline-flex items-center gap-1 font-body-md-medium text-body-md-medium text-primary group-hover:translate-x-1 transition-transform"
+                >
+                  <span>Configurar nuevo</span>
+                  <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </span>
+              </button>
+              <!-- CV CARD 1: Práctica Profesional - Desarrollo Frontend -->
+              <article
+                class="cv-card flex flex-col justify-between rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden"
+                data-cv-status="active"
+              >
+                <!-- Visual Paper Preview Header -->
+                <div
+                  class="relative bg-surface-container-low p-space-md pb-0 flex justify-center items-end h-48 overflow-hidden"
+                >
+                  <!-- Miniature paper preview representation -->
+                  <div
+                    class="w-40 h-44 bg-surface-container-lowest rounded-t-md shadow-md p-2.5 flex flex-col gap-1.5 transition-transform duration-300 group-hover:scale-105"
+                  >
+                    <div
+                      class="h-5 w-full bg-primary-container rounded-sm flex items-center px-1.5 justify-between"
+                    >
+                      <div class="h-1.5 w-12 bg-on-primary-container rounded-full"></div>
+                      <div class="h-2 w-2 rounded-full bg-secondary-fixed"></div>
+                    </div>
+                    <div class="flex gap-1.5 mt-1">
+                      <div
+                        class="w-7 h-7 rounded-full bg-surface-container-high shrink-0 overflow-hidden"
+                      >
+                        <img
+                          class="w-full h-full object-cover"
+                          data-alt="Fotografía profesional de perfil de una estudiante joven de ingeniería sonriendo en fondo neutral de oficina moderna con iluminación suave"
+                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2KN7RUw3XW-0cBbZ4V-IlE3ROLmLjX1Y0HGjVN1-HVeaZib1KIswyorGKoYALTke9toSRhBwWG3rlYNk1Eh5-G0-UL_jId061qe38vVmZ8bKt6Rlq15FJ6MIIpbn7p8hYtrdes0KhpfWeM4v0I7UVB5TgpGmdpUIg3hqgyVTK9L9CtgT1kMZm3CkJ2XSp3Rp2viipEUEVFjiE1I_o1QyCdgpajKpJg5wna_mBCmz3"
+                        />
+                      </div>
+                      <div class="flex flex-col gap-1 flex-1">
+                        <div class="h-1.5 w-full bg-on-surface-variant/30 rounded-full"></div>
+                        <div class="h-1 w-3/4 bg-on-surface-variant/20 rounded-full"></div>
+                      </div>
+                    </div>
+                    <div class="space-y-1 mt-1">
+                      <div class="h-1 w-full bg-surface-variant rounded"></div>
+                      <div class="h-1 w-5/6 bg-surface-variant rounded"></div>
+                      <div class="h-1 w-4/6 bg-surface-variant rounded"></div>
+                    </div>
+                    <div class="flex gap-1 mt-auto pt-1">
+                      <div class="h-2 w-7 bg-tertiary-fixed rounded-sm"></div>
+                      <div class="h-2 w-6 bg-secondary-fixed rounded-sm"></div>
+                    </div>
+                  </div>
+                  <!-- Top badge on thumbnail -->
+                  <div class="absolute top-space-sm left-space-sm">
+                    <span
+                      class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary/10 text-tertiary font-label-badge text-label-badge"
+                    >
+                      <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                      Completado 100%
+                    </span>
+                  </div>
+                  <!-- Quick preview floating overlay button -->
+                  <button
+                    aria-label="Vista previa de Práctica Profesional - Desarrollo Frontend"
+                    class="absolute right-space-sm top-space-sm w-9 h-9 rounded-lg bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface-variant hover:text-primary flex items-center justify-center shadow-sm transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">visibility</span>
+                  </button>
+                </div>
+                <!-- Body Details -->
+                <div class="p-space-md flex flex-col gap-space-sm flex-1 justify-between">
+                  <div class="flex flex-col gap-space-xs">
+                    <div class="flex items-start justify-between gap-space-xs">
+                      <h2
+                        class="font-headline-sm text-headline-sm text-on-surface tracking-tight hover:text-primary transition-colors cursor-pointer"
+                      >
+                        Práctica Profesional - Frontend
+                      </h2>
+                      <!-- Dropdown actions menu trigger -->
+                      <div class="relative">
+                        <button
+                          aria-expanded="false"
+                          aria-haspopup="true"
+                          aria-label="Menú de acciones para CV Frontend"
+                          class="card-menu-btn w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary"
+                          type="button"
+                        >
+                          <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                        </button>
+                        <!-- Popover Menu -->
+                        <div
+                          class="card-menu hidden absolute right-0 top-10 w-48 bg-surface-container-lowest rounded-xl shadow-lg py-1.5 z-20 flex flex-col text-on-surface"
+                        >
+                          <button
+                            class="px-space-md py-2 flex items-center gap-space-xs hover:bg-surface-container-low text-left font-body-md text-body-md"
+                            type="button"
+                          >
+                            <span class="material-symbols-outlined text-[18px] text-primary"
+                              >content_copy</span
+                            >
+                            <span>Duplicar CV</span>
+                          </button>
+                          <button
+                            class="px-space-md py-2 flex items-center gap-space-xs hover:bg-surface-container-low text-left font-body-md text-body-md"
+                            type="button"
+                          >
+                            <span
+                              class="material-symbols-outlined text-[18px] text-on-surface-variant"
+                              >picture_as_pdf</span
+                            >
+                            <span>Descargar PDF</span>
+                          </button>
+                          <button
+                            class="px-space-md py-2 flex items-center gap-space-xs hover:bg-surface-container-low text-left font-body-md text-body-md"
+                            type="button"
+                          >
+                            <span
+                              class="material-symbols-outlined text-[18px] text-on-surface-variant"
+                              >share</span
+                            >
+                            <span>Compartir link</span>
+                          </button>
+                          <div class="h-px bg-surface-container-highest my-1"></div>
+                          <button
+                            class="px-space-md py-2 flex items-center gap-space-xs hover:bg-error-container text-error text-left font-body-md text-body-md"
+                            type="button"
+                          >
+                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                            <span>Eliminar</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"
+                    >
+                      <span class="material-symbols-outlined text-[16px]">palette</span>
+                      <span>Plantilla: Académica Teal</span>
+                    </div>
+                  </div>
+                  <!-- Metadata & Primary Edit CTA -->
+                  <div class="pt-space-sm flex items-center justify-between gap-space-sm">
+                    <span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">schedule</span>
+                      <span>Hace 2 horas</span>
+                    </span>
+                    <a
+                      class="h-10 px-space-md rounded-lg bg-primary-container text-on-primary-container hover:bg-primary hover:text-on-primary transition-all font-body-md-medium text-body-md-medium inline-flex items-center gap-1 focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                      href="#"
+                    >
+                      <span class="material-symbols-outlined text-[18px]">edit</span>
+                      <span>Editar</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <!-- CV CARD 2: Pasantía Data Science & Analytics -->
+              <article
+                class="cv-card flex flex-col justify-between rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden"
+                data-cv-status="active"
+              >
+                <div
+                  class="relative bg-surface-container-low p-space-md pb-0 flex justify-center items-end h-48 overflow-hidden"
+                >
+                  <div
+                    class="w-40 h-44 bg-surface-container-lowest rounded-t-md shadow-md p-2.5 flex flex-col gap-1.5"
+                  >
+                    <!-- Header layout minimal -->
+                    <div class="flex justify-between items-center pb-1">
+                      <div class="space-y-1">
+                        <div class="h-2 w-16 bg-on-surface rounded-full"></div>
+                        <div class="h-1 w-10 bg-outline rounded-full"></div>
+                      </div>
+                      <div class="w-6 h-6 rounded bg-surface-container-highest"></div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-1 my-1">
+                      <div class="h-6 bg-surface-container-high rounded col-span-1"></div>
+                      <div class="h-6 bg-surface-container-low rounded col-span-2"></div>
+                    </div>
+                    <div class="space-y-1.5">
+                      <div class="h-1 w-full bg-surface-variant rounded"></div>
+                      <div class="h-1 w-full bg-surface-variant rounded"></div>
+                      <div class="h-1 w-3/4 bg-surface-variant rounded"></div>
+                    </div>
+                  </div>
+                  <div class="absolute top-space-sm left-space-sm">
+                    <span
+                      class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-fixed/50 text-on-secondary-container font-label-badge text-label-badge"
+                    >
+                      <span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                      Revisión pendiente
+                    </span>
+                  </div>
+                  <button
+                    aria-label="Vista previa de Pasantía Data Science"
+                    class="absolute right-space-sm top-space-sm w-9 h-9 rounded-lg bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface-variant hover:text-primary flex items-center justify-center shadow-sm transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">visibility</span>
+                  </button>
+                </div>
+                <div class="p-space-md flex flex-col gap-space-sm flex-1 justify-between">
+                  <div class="flex flex-col gap-space-xs">
+                    <div class="flex items-start justify-between gap-space-xs">
+                      <h2
+                        class="font-headline-sm text-headline-sm text-on-surface tracking-tight hover:text-primary transition-colors cursor-pointer"
+                      >
+                        Pasantía Data Science
+                      </h2>
+                      <div class="relative">
+                        <button
+                          aria-label="Menú de acciones para CV Data Science"
+                          class="card-menu-btn w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary"
+                          type="button"
+                        >
+                          <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                        </button>
+                        <div
+                          class="card-menu hidden absolute right-0 top-10 w-48 bg-surface-container-lowest rounded-xl shadow-lg py-1.5 z-20 flex flex-col text-on-surface"
+                        >
+                          <button
+                            class="px-space-md py-2 flex items-center gap-space-xs hover:bg-surface-container-low text-left font-body-md text-body-md"
+                            type="button"
+                          >
+                            <span class="material-symbols-outlined text-[18px] text-primary"
+                              >content_copy</span
+                            >
+                            <span>Duplicar CV</span>
+                          </button>
+                          <button
+                            class="px-space-md py-2 flex items-center gap-space-xs hover:bg-surface-container-low text-left font-body-md text-body-md"
+                            type="button"
+                          >
+                            <span
+                              class="material-symbols-outlined text-[18px] text-on-surface-variant"
+                              >picture_as_pdf</span
+                            >
+                            <span>Descargar PDF</span>
+                          </button>
+                          <button
+                            class="px-space-md py-2 flex items-center gap-space-xs hover:bg-surface-container-low text-left font-body-md text-body-md"
+                            type="button"
+                          >
+                            <span
+                              class="material-symbols-outlined text-[18px] text-on-surface-variant"
+                              >share</span
+                            >
+                            <span>Compartir link</span>
+                          </button>
+                          <div class="h-px bg-surface-container-highest my-1"></div>
+                          <button
+                            class="px-space-md py-2 flex items-center gap-space-xs hover:bg-error-container text-error text-left font-body-md text-body-md"
+                            type="button"
+                          >
+                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                            <span>Eliminar</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"
+                    >
+                      <span class="material-symbols-outlined text-[16px]">palette</span>
+                      <span>Plantilla: Minimalista Clean</span>
+                    </div>
+                  </div>
+                  <div class="pt-space-sm flex items-center justify-between gap-space-sm">
+                    <span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">schedule</span>
+                      <span>Ayer, 18:30</span>
+                    </span>
+                    <a
+                      class="h-10 px-space-md rounded-lg bg-surface-container text-on-surface hover:bg-primary hover:text-on-primary transition-all font-body-md-medium text-body-md-medium inline-flex items-center gap-1 focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                      href="#"
+                    >
+                      <span class="material-symbols-outlined text-[18px]">edit</span>
+                      <span>Editar</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+              <!-- CV CARD 3: CV General - Primer Empleo Universitario -->
+              <article
+                class="cv-card flex flex-col justify-between rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden"
+                data-cv-status="drafts"
+              >
+                <div
+                  class="relative bg-surface-container-low p-space-md pb-0 flex justify-center items-end h-48 overflow-hidden"
+                >
+                  <div
+                    class="w-40 h-44 bg-surface-container-lowest rounded-t-md shadow-md p-2.5 flex flex-col gap-1.5"
+                  >
+                    <!-- Modern Tech Layout preview -->
+                    <div class="h-3 w-full bg-surface-container-highest rounded-sm"></div>
+                    <div class="space-y-1">
+                      <div class="h-1.5 w-20 bg-primary/40 rounded-full"></div>
+                      <div class="h-1 w-full bg-outline-variant rounded"></div>
+                      <div class="h-1 w-4/5 bg-outline-variant rounded"></div>
+                    </div>
+                    <div class="h-8 bg-surface-container-low rounded p-1 flex items-center gap-1">
+                      <div class="w-3 h-3 rounded-full bg-primary/20"></div>
+                      <div class="h-1.5 w-14 bg-on-surface-variant/20 rounded"></div>
+                    </div>
+                    <div class="space-y-1 mt-auto">
+                      <div class="h-1 w-full bg-surface-variant rounded"></div>
+                      <div class="h-1 w-2/3 bg-surface-variant rounded"></div>
+                    </div>
+                  </div>
+                  <div class="absolute top-space-sm left-space-sm">
+                    <span
+                      class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-badge text-label-badge"
+                    >
+                      <span class="w-1.5 h-1.5 rounded-full bg-outline"></span>
+                      Borrador 80%
+                    </span>
+                  </div>
+                  <button
+                    aria-label="Vista previa de CV General Universitario"
+                    class="absolute right-space-sm top-space-sm w-9 h-9 rounded-lg bg-surface-container-lowest/90 backdrop-blur-sm text-on-surface-variant hover:text-primary flex items-center justify-center shadow-sm transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">visibility</span>
+                  </button>
+                </div>
+                <div class="p-space-md flex flex-col gap-space-sm flex-1 justify-between">
+                  <div class="flex flex-col gap-space-xs">
+                    <div class="flex items-start justify-between gap-space-xs">
+                      <h2
+                        class="font-headline-sm text-headline-sm text-on-surface tracking-tight hover:text-primary transition-colors cursor-pointer"
+                      >
+                        CV Primer Empleo Universitario
+                      </h2>
+                      <div class="relative">
+                        <button
+                          aria-label="Menú de acciones para CV General"
+                          class="card-menu-btn w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary"
+                          type="button"
+                        >
+                          <span class="material-symbols-outlined text-[20px]">more_vert</span>
+                        </button>
+                        <div
+                          class="card-menu hidden absolute right-0 top-10 w-48 bg-surface-container-lowest rounded-xl shadow-lg py-1.5 z-20 flex flex-col text-on-surface"
+                        >
+                          <button
+                            class="px-space-md py-2 flex items-center gap-space-xs hover:bg-surface-container-low text-left font-body-md text-body-md"
+                            type="button"
+                          >
+                            <span class="material-symbols-outlined text-[18px] text-primary"
+                              >content_copy</span
+                            >
+                            <span>Duplicar CV</span>
+                          </button>
+                          <button
+                            class="px-space-md py-2 flex items-center gap-space-xs hover:bg-surface-container-low text-left font-body-md text-body-md"
+                            type="button"
+                          >
+                            <span
+                              class="material-symbols-outlined text-[18px] text-on-surface-variant"
+                              >picture_as_pdf</span
+                            >
+                            <span>Descargar PDF</span>
+                          </button>
+                          <button
+                            class="px-space-md py-2 flex items-center gap-space-xs hover:bg-surface-container-low text-left font-body-md text-body-md"
+                            type="button"
+                          >
+                            <span
+                              class="material-symbols-outlined text-[18px] text-on-surface-variant"
+                              >share</span
+                            >
+                            <span>Compartir link</span>
+                          </button>
+                          <div class="h-px bg-surface-container-highest my-1"></div>
+                          <button
+                            class="px-space-md py-2 flex items-center gap-space-xs hover:bg-error-container text-error text-left font-body-md text-body-md"
+                            type="button"
+                          >
+                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                            <span>Eliminar</span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"
+                    >
+                      <span class="material-symbols-outlined text-[16px]">palette</span>
+                      <span>Plantilla: Tech Moderna</span>
+                    </div>
+                  </div>
+                  <div class="pt-space-sm flex items-center justify-between gap-space-sm">
+                    <span class="font-body-sm text-body-sm text-outline flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">schedule</span>
+                      <span>Hace 5 días</span>
+                    </span>
+                    <a
+                      class="h-10 px-space-md rounded-lg bg-surface-container text-on-surface hover:bg-primary hover:text-on-primary transition-all font-body-md-medium text-body-md-medium inline-flex items-center gap-1 focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                      href="#"
+                    >
+                      <span class="material-symbols-outlined text-[18px]">edit</span>
+                      <span>Continuar</span>
+                    </a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <!-- ATS Metrics & Quick Recommendations Banner -->
+            <div
+              class="rounded-2xl bg-surface-container-lowest p-space-lg flex flex-col md:flex-row items-center justify-between gap-space-lg shadow-sm"
+            >
+              <div class="flex items-center gap-space-md">
+                <!-- Circular Progress SVG indicator -->
+                <div class="relative w-16 h-16 shrink-0 flex items-center justify-center">
+                  <svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+                    <path
+                      class="text-surface-container-high"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="3.5"
+                    ></path>
+                    <path
+                      class="text-primary"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-dasharray="88, 100"
+                      stroke-linecap="round"
+                      stroke-width="3.5"
+                    ></path>
+                  </svg>
+                  <span class="absolute font-headline-sm text-headline-sm text-primary">88%</span>
+                </div>
+                <div class="flex flex-col">
+                  <span class="font-headline-sm text-headline-sm text-on-surface"
+                    >Puntaje ATS de Perfil Promedio</span
+                  >
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Tus versiones cumplen con los estándares de lectura automática de los portales
+                    de empleo universitarios.
+                  </p>
+                </div>
+              </div>
+              <div class="flex items-center gap-space-sm shrink-0">
+                <a
+                  class="h-11 px-space-md rounded-lg bg-surface-container-low text-primary hover:bg-surface-container font-body-md-medium text-body-md-medium flex items-center gap-1 transition-colors"
+                  href="#"
+                >
+                  <span class="material-symbols-outlined text-[18px]">verified</span>
+                  <span>Ver sugerencias ATS</span>
+                </a>
+              </div>
+            </div>
+            <!-- DEMONSTRATION OF SYSTEM STATES SECTION (Inspection Sandbox) -->
+            <section class="mt-space-lg pt-space-lg flex flex-col gap-space-lg">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+                <div>
+                  <span
+                    class="font-label-badge text-label-badge text-primary uppercase tracking-wider"
+                    >Modo Inspector UI</span
+                  >
+                  <h2 class="font-headline-md text-headline-md text-on-surface">
+                    Inspección de Estados del Sistema
+                  </h2>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">
+                    Revisa los componentes de carga, estados vacíos y manejo de errores
+                    implementados según la especificación.
+                  </p>
+                </div>
+                <div class="inline-flex rounded-xl bg-surface-container-low p-1 gap-1">
+                  <button
+                    class="px-space-md py-1.5 rounded-lg text-on-surface font-body-md-medium text-body-md transition-colors hover:bg-surface-container-lowest"
+                    id="show-empty-state-btn"
+                    type="button"
+                  >
+                    Estado Vacío
+                  </button>
+                  <button
+                    class="px-space-md py-1.5 rounded-lg text-on-surface font-body-md-medium text-body-md transition-colors hover:bg-surface-container-lowest"
+                    id="show-skeleton-state-btn"
+                    type="button"
+                  >
+                    Skeleton Loader
+                  </button>
+                  <button
+                    class="px-space-md py-1.5 rounded-lg text-on-surface font-body-md-medium text-body-md transition-colors hover:bg-surface-container-lowest"
+                    id="toggle-error-state-btn"
+                    type="button"
+                  >
+                    Alerta de Error
+                  </button>
+                </div>
+              </div>
+              <!-- SKELETON LOADER PREVIEW CARD -->
+              <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-space-lg"
+                id="skeleton-preview-container"
+              >
+                <!-- Skeleton Card 1 -->
+                <div
+                  class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-md"
+                >
+                  <div
+                    class="h-44 w-full rounded-lg bg-surface-container-high animate-pulse flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined text-outline-variant text-[36px]"
+                      >image</span
+                    >
+                  </div>
+                  <div class="space-y-space-xs">
+                    <div class="h-5 w-3/4 bg-surface-container-high rounded animate-pulse"></div>
+                    <div class="h-4 w-1/2 bg-surface-container-low rounded animate-pulse"></div>
+                  </div>
+                  <div class="flex items-center justify-between pt-space-sm">
+                    <div class="h-4 w-24 bg-surface-container-low rounded animate-pulse"></div>
+                    <div class="h-10 w-24 bg-surface-container-high rounded-lg animate-pulse"></div>
+                  </div>
+                </div>
+                <!-- Skeleton Card 2 -->
+                <div
+                  class="rounded-xl bg-surface-container-lowest p-space-md shadow-sm flex flex-col gap-space-md"
+                >
+                  <div
+                    class="h-44 w-full rounded-lg bg-surface-container-high animate-pulse flex items-center justify-center"
+                  >
+                    <span class="material-symbols-outlined text-outline-variant text-[36px]"
+                      >image</span
+                    >
+                  </div>
+                  <div class="space-y-space-xs">
+                    <div class="h-5 w-2/3 bg-surface-container-high rounded animate-pulse"></div>
+                    <div class="h-4 w-1/3 bg-surface-container-low rounded animate-pulse"></div>
+                  </div>
+                  <div class="flex items-center justify-between pt-space-sm">
+                    <div class="h-4 w-28 bg-surface-container-low rounded animate-pulse"></div>
+                    <div class="h-10 w-24 bg-surface-container-high rounded-lg animate-pulse"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- EMPTY STATE PREVIEW -->
+              <div
+                class="rounded-2xl bg-surface-container-lowest p-space-xl flex flex-col items-center justify-center text-center shadow-sm"
+                id="empty-state-container"
+              >
+                <div
+                  class="w-24 h-24 rounded-full bg-surface-container-low flex items-center justify-center mb-space-md text-primary"
+                >
+                  <!-- Illustration vector: Empty document folder -->
+                  <svg
+                    class="w-12 h-12 text-primary"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                    viewbox="0 0 24 24"
+                  >
+                    <path
+                      d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m6.75 12-3-3m0 0-3 3m3-3v6m-1.5-15H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface mb-space-xs">
+                  Aún no has creado ningún CV
+                </h3>
+                <p class="font-body-md text-body-md text-on-surface-variant max-w-md mb-space-lg">
+                  Tu espacio está listo. Comienza creando tu primera hoja de vida adaptada para
+                  pasantías, becas o tu primer empleo profesional.
+                </p>
+                <button
+                  class="h-12 px-space-xl rounded-lg bg-primary text-on-primary hover:bg-primary-container transition-all font-body-md-medium text-body-md-medium inline-flex items-center gap-space-xs shadow-md focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[20px]">add</span>
+                  <span>Crear mi primer CV</span>
+                </button>
+              </div>
+            </section>
+          </div>
+        </div>
+        <script>
+          (function initDashboard() {
+            // Dropdown toggle logic
+            const menuButtons = document.querySelectorAll(".card-menu-btn");
+            menuButtons.forEach((btn) => {
+              btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                const popover = btn.nextElementSibling;
+                const isExpanded = btn.getAttribute("aria-expanded") === "true";
+
+                // Close others
+                document.querySelectorAll(".card-menu").forEach((m) => m.classList.add("hidden"));
+                document
+                  .querySelectorAll(".card-menu-btn")
+                  .forEach((b) => b.setAttribute("aria-expanded", "false"));
+
+                if (!isExpanded) {
+                  popover.classList.remove("hidden");
+                  btn.setAttribute("aria-expanded", "true");
+                }
+              });
+            });
+
+            // Close on outside click
+            document.addEventListener("click", () => {
+              document.querySelectorAll(".card-menu").forEach((m) => m.classList.add("hidden"));
+              document
+                .querySelectorAll(".card-menu-btn")
+                .forEach((b) => b.setAttribute("aria-expanded", "false"));
+            });
+
+            // Search filter interaction
+            const searchInput = document.getElementById("search-cv-input");
+            const clearBtn = document.getElementById("clear-search");
+            const cvCards = document.querySelectorAll(".cv-card");
+
+            if (searchInput) {
+              searchInput.addEventListener("input", (e) => {
+                const val = e.target.value.toLowerCase().trim();
+                if (val.length > 0) {
+                  clearBtn.classList.remove("hidden");
+                } else {
+                  clearBtn.classList.add("hidden");
+                }
+
+                cvCards.forEach((card) => {
+                  const text = card.textContent.toLowerCase();
+                  if (text.includes(val)) {
+                    card.classList.remove("hidden");
+                  } else {
+                    card.classList.add("hidden");
+                  }
+                });
+              });
+
+              clearBtn.addEventListener("click", () => {
+                searchInput.value = "";
+                clearBtn.classList.add("hidden");
+                cvCards.forEach((card) => card.classList.remove("hidden"));
+                searchInput.focus();
+              });
+            }
+
+            // Filter Tabs
+            const filterTabs = document.querySelectorAll(".filter-tab");
+            filterTabs.forEach((tab) => {
+              tab.addEventListener("click", () => {
+                filterTabs.forEach((t) => {
+                  t.setAttribute("aria-selected", "false");
+                  t.classList.remove("bg-surface-container-lowest", "text-primary", "shadow-sm");
+                  t.classList.add("text-on-surface-variant");
+                });
+
+                tab.setAttribute("aria-selected", "true");
+                tab.classList.add("bg-surface-container-lowest", "text-primary", "shadow-sm");
+                tab.classList.remove("text-on-surface-variant");
+
+                const filter = tab.getAttribute("data-filter");
+                cvCards.forEach((card) => {
+                  const status = card.getAttribute("data-cv-status");
+                  if (filter === "all" || filter === status) {
+                    card.classList.remove("hidden");
+                  } else {
+                    card.classList.add("hidden");
+                  }
+                });
+              });
+            });
+
+            // Error alert banner controls
+            const errorBanner = document.getElementById("status-error-banner");
+            const dismissBtn = document.getElementById("dismiss-error-btn");
+            const retryBtn = document.getElementById("retry-sync-btn");
+            const toggleErrorBtn = document.getElementById("toggle-error-state-btn");
+
+            if (dismissBtn && errorBanner) {
+              dismissBtn.addEventListener("click", () => {
+                errorBanner.classList.add("hidden");
+              });
+            }
+
+            if (retryBtn) {
+              retryBtn.addEventListener("click", () => {
+                const icon = retryBtn.querySelector(".material-symbols-outlined");
+                if (icon) icon.classList.add("animate-spin");
+                setTimeout(() => {
+                  if (icon) icon.classList.remove("animate-spin");
+                  errorBanner.classList.add("hidden");
+                }, 800);
+              });
+            }
+
+            if (toggleErrorBtn && errorBanner) {
+              toggleErrorBtn.addEventListener("click", () => {
+                errorBanner.classList.toggle("hidden");
+              });
+            }
+
+            // Inspection Scroll shortcuts
+            const showEmptyBtn = document.getElementById("show-empty-state-btn");
+            const showSkeletonBtn = document.getElementById("show-skeleton-state-btn");
+            const emptyContainer = document.getElementById("empty-state-container");
+            const skeletonContainer = document.getElementById("skeleton-preview-container");
+
+            if (showEmptyBtn && emptyContainer) {
+              showEmptyBtn.addEventListener("click", () => {
+                emptyContainer.scrollIntoView({ behavior: "smooth", block: "center" });
+              });
+            }
+
+            if (showSkeletonBtn && skeletonContainer) {
+              showSkeletonBtn.addEventListener("click", () => {
+                skeletonContainer.scrollIntoView({ behavior: "smooth", block: "center" });
+              });
+            }
+          })();
+        </script>
+      </main>
+    </div>
+  </body>
+</html>

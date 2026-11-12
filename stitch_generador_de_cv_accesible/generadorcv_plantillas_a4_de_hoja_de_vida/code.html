@@ -1,0 +1,1624 @@
+<!doctype html>
+
+<html class="light" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_dashboard" name="shell-type" />
+    <title>GeneradorCV App</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#ffffff",
+              "on-primary-container": "#a3faef",
+              "on-secondary": "#ffffff",
+              "primary-container": "#0f766e",
+              "secondary-fixed-dim": "#4fdbc8",
+              "surface-variant": "#d9e3f6",
+              "on-primary-fixed": "#00201d",
+              "surface-container-high": "#dee9fc",
+              "tertiary-container": "#007a33",
+              "on-tertiary-fixed": "#002109",
+              outline: "#6e7977",
+              "secondary-fixed": "#71f8e4",
+              error: "#ba1a1a",
+              tertiary: "#005f26",
+              "on-primary-fixed-variant": "#00504a",
+              "surface-container-highest": "#d9e3f6",
+              "on-surface": "#121c2a",
+              "inverse-primary": "#80d5cb",
+              "primary-fixed-dim": "#80d5cb",
+              "secondary-container": "#6df5e1",
+              "on-primary": "#ffffff",
+              "on-secondary-container": "#006f64",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#eff4ff",
+              "surface-bright": "#f8f9ff",
+              "on-tertiary": "#ffffff",
+              "surface-tint": "#006a63",
+              background: "#f8f9ff",
+              primary: "#005c55",
+              "surface-dim": "#d0dbed",
+              "on-secondary-fixed-variant": "#005048",
+              "on-tertiary-container": "#a1ffad",
+              "surface-container-lowest": "#ffffff",
+              "outline-variant": "#bdc9c6",
+              "tertiary-fixed": "#7ffc97",
+              "on-surface-variant": "#3e4947",
+              secondary: "#006b5f",
+              "surface-container": "#e6eeff",
+              "tertiary-fixed-dim": "#62df7d",
+              "inverse-on-surface": "#eaf1ff",
+              "on-secondary-fixed": "#00201c",
+              "inverse-surface": "#27313f",
+              "on-tertiary-fixed-variant": "#005320",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#9cf2e8",
+              surface: "#f8f9ff",
+              "on-background": "#121c2a",
+            },
+            borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+            spacing: {
+              gutter: "1.5rem",
+              "margin-sm": "1rem",
+              "space-md": "1rem",
+              "space-xs": "0.25rem",
+              margin: "2rem",
+              "space-lg": "1.5rem",
+              "gutter-sm": "1rem",
+              "space-sm": "0.5rem",
+              "space-xl": "2rem",
+            },
+            fontFamily: {
+              "body-lg": ["Inter"],
+              "headline-sm": ["Inter"],
+              "label-badge": ["Inter"],
+              "body-sm": ["Inter"],
+              "headline-xl": ["Inter"],
+              "body-md-medium": ["Inter"],
+              "headline-lg": ["Inter"],
+              "body-md": ["Inter"],
+              "label-code": ["JetBrains Mono"],
+              "headline-md": ["Inter"],
+              "headline-xl-mobile": ["Inter"],
+            },
+            fontSize: {
+              "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "headline-sm": [
+                "18px",
+                { lineHeight: "26px", letterSpacing: "-0.005em", fontWeight: "600" },
+              ],
+              "label-badge": [
+                "11px",
+                { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "600" },
+              ],
+              "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }],
+              "headline-xl": [
+                "32px",
+                { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" },
+              ],
+              "body-md-medium": ["14px", { lineHeight: "20px", fontWeight: "500" }],
+              "headline-lg": [
+                "24px",
+                { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" },
+              ],
+              "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+              "label-code": [
+                "12px",
+                { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" },
+              ],
+              "headline-md": [
+                "20px",
+                { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" },
+              ],
+              "headline-xl-mobile": [
+                "26px",
+                { lineHeight: "34px", letterSpacing: "-0.015em", fontWeight: "700" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-surface font-body-md text-on-surface antialiased">
+    <a
+      class="sr-only focus:not-sr-only focus:fixed focus:top-space-sm focus:left-space-sm focus:z-50 focus:px-space-md focus:py-space-sm focus:bg-primary-container focus:text-on-primary-container focus:rounded-lg focus:outline focus:outline-3 focus:outline-primary focus:outline-offset-2 font-body-md-medium text-body-md-medium transition-all"
+      href="#main-content"
+      >Saltar al contenido principal</a
+    >
+    <aside
+      aria-label="Panel de navegación de la aplicación"
+      class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-40 flex flex-col justify-between py-space-md"
+    >
+      <div class="flex flex-col gap-space-lg">
+        <div class="h-16 px-space-md flex items-center gap-space-sm">
+          <img
+            alt="GeneradorCV Brand Logo"
+            class="h-8 w-auto object-contain"
+            src="https://lh3.googleusercontent.com/aida/ALJJyrBTC5_bMzzNownUImDrfF9n8J9m6NypKkFTaI1c7EI3I-Vg8iUtiRiH6icxDusKNT6joJe9g1Bj404l8aV-_kcABugpi0UYX8ucYBGSZd0kpd2owLos1dMJiWtrQcwIVd-AB8cQ9eXUgZa2ZSx8-nINKiDr2HGUvBnUq3WQQSX8MVdYWe1gimrnwad4_LHIB7TbEL3vPmvHGeynQC_-GhPY74pYu1NloRK43v9zI8SYLQ"
+          />
+          <div class="flex flex-col">
+            <span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none"
+              >GeneradorCV</span
+            ><span
+              class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider"
+              >Workspace Estudiantil</span
+            >
+          </div>
+        </div>
+        <nav
+          aria-label="Módulos de trabajo"
+          class="flex flex-col gap-space-xs px-space-sm"
+          data-active-classes="bg-primary-container text-on-primary-container font-body-md-medium"
+        >
+          <a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="mis-cvs"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]">folder_shared</span>Mis
+            CVs</a
+          ><a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="editor-cv"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]">edit_document</span
+            >Editor en Vivo</a
+          ><a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="plantillas"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]"
+              >dashboard_customize</span
+            >Plantillas</a
+          ><a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="guias-y-consejos"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]">school</span>Guías
+            &amp; Consejos</a
+          ><a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="ajustes-cuenta"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]">tune</span>Ajustes y
+            Exportación</a
+          >
+        </nav>
+      </div>
+      <div class="px-space-md pt-space-md bg-surface-container-low">
+        <div
+          class="p-space-sm rounded-xl bg-surface-container-lowest flex items-center gap-space-sm"
+        >
+          <span class="material-symbols-outlined text-primary text-[20px]">cloud_done</span>
+          <div class="flex flex-col">
+            <span class="font-label-badge text-label-badge text-tertiary uppercase"
+              >Sincronizado</span
+            ><span class="font-body-sm text-body-sm text-on-surface-variant"
+              >Guardado local &amp; nube</span
+            >
+          </div>
+        </div>
+      </div>
+    </aside>
+    <div class="pl-64">
+      <header
+        class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-30 px-space-lg flex items-center justify-between gap-space-md"
+      >
+        <div class="flex items-center gap-space-md">
+          <nav
+            aria-label="Ruta de navegación"
+            class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"
+          >
+            <a
+              class="hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+              data-path="mis-cvs"
+              href="#"
+              >Mis CVs</a
+            ><span class="material-symbols-outlined text-[14px]">chevron_right</span
+            ><span class="text-on-surface font-body-md-medium text-body-md-medium"
+              >CV Primer Empleo - Tecnología</span
+            >
+          </nav>
+          <span
+            class="hidden lg:inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-badge text-label-badge"
+            ><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Autoguardado activo</span
+          >
+        </div>
+        <div class="flex items-center gap-space-md">
+          <button
+            aria-label="Cambiar modo de tema"
+            class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+            title="Alternar tema claro u oscuro"
+            type="button"
+          >
+            <span class="material-symbols-outlined text-[20px]">dark_mode</span>
+          </button>
+          <div class="h-6 w-px bg-surface-container-highest"></div>
+          <div class="relative flex items-center gap-space-sm pl-space-xs">
+            <div class="flex items-center gap-space-sm">
+              <img
+                alt="Profile"
+                class="w-8 h-8 rounded-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuApV5JW_WJEsJ732xX45SnIJPSA1f6Xb6CBsJJ5jS0PkV9DTDZwRNZcf-CY9MK_YwplK_H0Vng1LDCyT4LCNSdR5CzthUBcWn4RahY5URBSFzHPxSFKhNInF39DVT0ycrW1cHvK0d8NVN03fXM35jk89MlMCcmsa27rrCP9gf-udbyerDGfXT3Rrg-1EbMzEisAuI4FEYPYtmInvfuzA6_7oGsHV9qOFUmTw5p1Rs80"
+              />
+              <div class="hidden sm:flex flex-col text-left">
+                <span class="font-body-md-medium text-body-md-medium text-on-surface leading-tight"
+                  >Camila Morales</span
+                ><span class="font-body-sm text-body-sm text-on-surface-variant"
+                  >Estudiante - U. Nacional</span
+                >
+              </div>
+            </div>
+            <button
+              aria-expanded="false"
+              aria-label="Abrir menú de usuario de Camila Morales"
+              class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+              type="button"
+            >
+              <span class="material-symbols-outlined text-[20px]">keyboard_arrow_down</span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <main class="relative w-full pt-16 bg-surface min-h-screen" id="main-content">
+        <div class="flex flex-col w-full">
+          <!-- Top Bar Controls & Specifications Catalog -->
+          <div
+            class="px-space-lg py-space-md bg-surface-container-lowest shadow-sm flex flex-col gap-space-md"
+          >
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-space-md">
+              <div>
+                <div class="flex items-center gap-space-xs mb-1">
+                  <span
+                    class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-badge text-label-badge tracking-wider uppercase"
+                    >Catálogo 2025</span
+                  >
+                  <span class="text-on-surface-variant font-body-sm text-body-sm"
+                    >· Estándar ISO 216 &amp; ATS-Compliant</span
+                  >
+                </div>
+                <h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">
+                  Catálogo y Especificaciones de Plantillas A4
+                </h1>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-0.5">
+                  Plantillas profesionales optimizadas para formato A4 (210×297mm), escaneo ATS y
+                  reglas estrictas de
+                  <span
+                    class="font-label-code text-label-code text-primary bg-surface-container-low px-1.5 py-0.5 rounded"
+                    >@media print</span
+                  >
+                </p>
+              </div>
+              <!-- Action Toolbar -->
+              <div class="flex flex-wrap items-center gap-space-sm">
+                <!-- Paper Size Selector -->
+                <div
+                  class="flex items-center gap-1.5 bg-surface-container-low px-space-sm py-1.5 rounded-lg text-on-surface"
+                >
+                  <span class="material-symbols-outlined text-[18px] text-primary"
+                    >description</span
+                  >
+                  <label
+                    class="font-body-sm text-body-sm text-on-surface-variant"
+                    for="paper-select"
+                    >Formato:</label
+                  >
+                  <select
+                    class="bg-transparent font-body-md-medium text-body-md-medium text-on-surface focus:outline-none cursor-pointer"
+                    id="paper-select"
+                  >
+                    <option selected="" value="a4">A4 (210×297 mm)</option>
+                    <option value="letter">Carta (8.5×11 pulg)</option>
+                  </select>
+                </div>
+                <!-- Photo Layout Toggle -->
+                <div
+                  class="flex items-center gap-1.5 bg-surface-container-low px-space-sm py-1.5 rounded-lg text-on-surface"
+                >
+                  <span class="material-symbols-outlined text-[18px] text-primary"
+                    >account_box</span
+                  >
+                  <label
+                    class="font-body-sm text-body-sm text-on-surface-variant"
+                    for="photo-select"
+                    >Foto:</label
+                  >
+                  <select
+                    class="bg-transparent font-body-md-medium text-body-md-medium text-on-surface focus:outline-none cursor-pointer"
+                    id="photo-select"
+                    onchange="togglePhotoVariant(this.value)"
+                  >
+                    <option selected="" value="circular">Circular (Perfil)</option>
+                    <option value="square">Cuadrada (Editorial)</option>
+                    <option value="hidden">Sin foto (100% ATS puro)</option>
+                  </select>
+                </div>
+                <!-- Action Buttons -->
+                <button
+                  class="h-11 px-space-md rounded-lg bg-surface-container-high hover:bg-surface-variant text-on-surface font-body-md-medium text-body-md-medium flex items-center gap-space-xs transition-colors shadow-sm focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary"
+                  onclick="window.print()"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[18px]">print</span>
+                  <span>Imprimir / PDF</span>
+                </button>
+                <button
+                  class="h-11 px-space-md rounded-lg bg-primary-container text-on-primary font-body-md-medium text-body-md-medium flex items-center gap-space-xs hover:opacity-95 transition-all shadow-sm focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary"
+                  id="copy-btn"
+                  onclick="copySourceNotice()"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[18px]">code</span>
+                  <span>Copiar Estructura</span>
+                </button>
+              </div>
+            </div>
+            <!-- View Mode Tabs -->
+            <div
+              aria-label="Selector de visualización"
+              class="flex items-center gap-space-xs overflow-x-auto pb-1 border-b border-surface-container-highest"
+              role="tablist"
+            >
+              <button
+                aria-selected="true"
+                class="view-tab flex items-center gap-space-xs px-space-md py-2.5 rounded-lg font-body-md-medium text-body-md-medium text-primary bg-primary/10 transition-all"
+                id="tab-all"
+                onclick="switchView('all')"
+                role="tab"
+              >
+                <span class="material-symbols-outlined text-[18px]">view_column</span>
+                <span>Vista Comparativa (3 Plantillas)</span>
+              </button>
+              <button
+                aria-selected="false"
+                class="view-tab flex items-center gap-space-xs px-space-md py-2.5 rounded-lg font-body-md-medium text-body-md-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all"
+                id="tab-mod"
+                onclick="switchView('mod')"
+                role="tab"
+              >
+                <span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+                <span>Plantilla 1: Moderna (Teal &amp; Timeline)</span>
+              </button>
+              <button
+                aria-selected="false"
+                class="view-tab flex items-center gap-space-xs px-space-md py-2.5 rounded-lg font-body-md-medium text-body-md-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all"
+                id="tab-cla"
+                onclick="switchView('cla')"
+                role="tab"
+              >
+                <span class="w-2.5 h-2.5 rounded-full bg-on-surface"></span>
+                <span>Plantilla 2: Clásica (B/N Monocromática)</span>
+              </button>
+              <button
+                aria-selected="false"
+                class="view-tab flex items-center gap-space-xs px-space-md py-2.5 rounded-lg font-body-md-medium text-body-md-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all"
+                id="tab-min"
+                onclick="switchView('min')"
+                role="tab"
+              >
+                <span class="w-2.5 h-2.5 rounded-full bg-outline"></span>
+                <span>Plantilla 3: Minimalista (Whitespace)</span>
+              </button>
+              <button
+                aria-selected="false"
+                class="view-tab flex items-center gap-space-xs px-space-md py-2.5 rounded-lg font-body-md-medium text-body-md-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all"
+                id="tab-rules"
+                onclick="switchView('rules')"
+                role="tab"
+              >
+                <span class="material-symbols-outlined text-[18px]">terminal</span>
+                <span>Especificaciones de Impresión @media</span>
+              </button>
+            </div>
+          </div>
+          <!-- Notification Toast for Copy -->
+          <div
+            class="hidden fixed bottom-6 right-6 z-50 px-space-md py-space-sm bg-inverse-surface text-inverse-on-surface rounded-lg shadow-xl items-center gap-space-sm font-body-md-medium text-body-md-medium"
+            id="copy-toast"
+          >
+            <span class="material-symbols-outlined text-tertiary-fixed text-[20px]"
+              >check_circle</span
+            >
+            <span>Plantilla copiada al portapapeles con éxito</span>
+          </div>
+          <!-- Main Canvas Container -->
+          <div class="px-space-md lg:px-space-lg py-space-xl">
+            <!-- Three Templates Grid / Comparison Showcase -->
+            <div
+              class="grid grid-cols-1 xl:grid-cols-3 gap-space-xl items-start transition-all"
+              id="templates-grid"
+            >
+              <!-- ==========================================
+           PLANTILLA 1: MODERNA (TEAL & TIMELINE)
+      =========================================== -->
+              <section class="flex flex-col gap-space-md w-full" id="col-template-mod">
+                <!-- Template Header Information Badge -->
+                <div class="flex items-center justify-between px-space-sm">
+                  <div class="flex items-center gap-space-xs">
+                    <span
+                      class="px-2.5 py-1 rounded-full bg-primary/10 text-primary font-label-badge text-label-badge uppercase tracking-wider"
+                      >Plantilla 1</span
+                    >
+                    <span class="font-headline-sm text-headline-sm text-on-surface">Moderna</span>
+                  </div>
+                  <span
+                    class="px-2 py-0.5 rounded-md bg-secondary-fixed text-on-secondary-fixed font-label-badge text-label-badge font-semibold"
+                    >Tech &amp; Startups</span
+                  >
+                </div>
+                <!-- A4 Page Container (Strict Proportions 1:1.414) -->
+                <div
+                  class="relative bg-surface-container-lowest rounded-xl shadow-xl overflow-hidden text-[#111827] flex flex-col md:flex-row min-h-[920px] transition-all"
+                >
+                  <!-- LEFT SIDEBAR (32% width) -->
+                  <div
+                    class="w-full md:w-[34%] bg-[#0f766e] text-white p-space-md flex flex-col justify-between shrink-0"
+                  >
+                    <div class="flex flex-col gap-space-md">
+                      <!-- Avatar & Name -->
+                      <div class="flex flex-col items-center text-center">
+                        <div
+                          class="photo-wrapper relative w-[100px] h-[100px] rounded-full overflow-hidden shadow-md mb-space-sm bg-white/20 p-1"
+                        >
+                          <img
+                            alt="María García Rodríguez portrait"
+                            class="photo-img w-full h-full object-cover rounded-full"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7puOxgAwBOkhWArx-LhjIH6q98WYXbHPNVQBDb53lAadSXgu_rVJGt-brCp-25ZqzNK4vbQDsQ8noxyewI3wXZcoxMGbV5mfTeKW3V7pMxRF7bZOyFUx7T74AeDjBKJ6OY9cVgjGE5a0MX2wmNciZswNRhgUGlyQ_6B3n8b904iuSb1U28X4fwu7TR-CmL4TQLzS1Qr_VsF_SN7hJQPliod2VZNq9OXn_vmFfX5Wh"
+                          />
+                        </div>
+                        <h2
+                          class="font-headline-md text-[17px] font-bold tracking-tight text-white leading-tight"
+                        >
+                          María García Rodríguez
+                        </h2>
+                        <span
+                          class="font-body-sm text-[12px] text-[#99f6e4] font-medium tracking-wide mt-1"
+                          >Desarrolladora Full Stack</span
+                        >
+                      </div>
+                      <!-- Contact Section -->
+                      <div class="flex flex-col gap-1.5 pt-space-xs">
+                        <div
+                          class="text-[10px] tracking-widest uppercase font-semibold text-[#a3faef] mb-1"
+                        >
+                          Contacto
+                        </div>
+                        <div
+                          class="flex items-center gap-2 text-[11px] leading-tight text-white/90"
+                        >
+                          <span
+                            class="material-symbols-outlined text-[14px] text-[#99f6e4] shrink-0"
+                            >mail</span
+                          >
+                          <span class="truncate">maria.garcia@email.com</span>
+                        </div>
+                        <div
+                          class="flex items-center gap-2 text-[11px] leading-tight text-white/90"
+                        >
+                          <span
+                            class="material-symbols-outlined text-[14px] text-[#99f6e4] shrink-0"
+                            >phone</span
+                          >
+                          <span>+57 300 123 4567</span>
+                        </div>
+                        <div
+                          class="flex items-center gap-2 text-[11px] leading-tight text-white/90"
+                        >
+                          <span
+                            class="material-symbols-outlined text-[14px] text-[#99f6e4] shrink-0"
+                            >location_on</span
+                          >
+                          <span>Medellín, Colombia</span>
+                        </div>
+                        <div
+                          class="flex items-center gap-2 text-[11px] leading-tight text-white/90"
+                        >
+                          <span
+                            class="material-symbols-outlined text-[14px] text-[#99f6e4] shrink-0"
+                            >link</span
+                          >
+                          <span class="truncate">linkedin.com/in/mariagarcia</span>
+                        </div>
+                        <div
+                          class="flex items-center gap-2 text-[11px] leading-tight text-white/90"
+                        >
+                          <span
+                            class="material-symbols-outlined text-[14px] text-[#99f6e4] shrink-0"
+                            >terminal</span
+                          >
+                          <span class="truncate">github.com/mariagarcia</span>
+                        </div>
+                      </div>
+                      <!-- Technical Skills Section -->
+                      <div class="flex flex-col gap-1.5 pt-space-xs">
+                        <div
+                          class="text-[10px] tracking-widest uppercase font-semibold text-[#a3faef] mb-1"
+                        >
+                          Habilidades Técnicas
+                        </div>
+                        <div class="flex flex-wrap gap-1">
+                          <span
+                            class="px-2 py-0.5 rounded bg-white/15 text-[10px] font-medium tracking-wide"
+                            >React</span
+                          >
+                          <span
+                            class="px-2 py-0.5 rounded bg-white/15 text-[10px] font-medium tracking-wide"
+                            >TypeScript</span
+                          >
+                          <span
+                            class="px-2 py-0.5 rounded bg-white/15 text-[10px] font-medium tracking-wide"
+                            >Node.js</span
+                          >
+                          <span
+                            class="px-2 py-0.5 rounded bg-white/15 text-[10px] font-medium tracking-wide"
+                            >Next.js</span
+                          >
+                          <span
+                            class="px-2 py-0.5 rounded bg-white/15 text-[10px] font-medium tracking-wide"
+                            >PostgreSQL</span
+                          >
+                          <span
+                            class="px-2 py-0.5 rounded bg-white/15 text-[10px] font-medium tracking-wide"
+                            >Tailwind CSS</span
+                          >
+                          <span
+                            class="px-2 py-0.5 rounded bg-white/15 text-[10px] font-medium tracking-wide"
+                            >Git</span
+                          >
+                          <span
+                            class="px-2 py-0.5 rounded bg-white/15 text-[10px] font-medium tracking-wide"
+                            >Docker</span
+                          >
+                          <span
+                            class="px-2 py-0.5 rounded bg-white/15 text-[10px] font-medium tracking-wide"
+                            >REST APIs</span
+                          >
+                        </div>
+                      </div>
+                      <!-- Languages Section -->
+                      <div class="flex flex-col gap-2 pt-space-xs">
+                        <div
+                          class="text-[10px] tracking-widest uppercase font-semibold text-[#a3faef] mb-0.5"
+                        >
+                          Idiomas
+                        </div>
+                        <div class="flex flex-col gap-1">
+                          <div class="flex justify-between items-center text-[11px]">
+                            <span class="text-white/90">Español (Nativo)</span>
+                            <span class="text-[#99f6e4] text-[10px]">●●●●●</span>
+                          </div>
+                          <div class="flex justify-between items-center text-[11px]">
+                            <span class="text-white/90">Inglés (Avanzado C1)</span>
+                            <span class="text-[#99f6e4] text-[10px]">●●●●○</span>
+                          </div>
+                          <span class="text-[9px] text-white/70 italic mt-0.5"
+                            >Certificación TOEFL iBT 102</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Footer Meta for sidebar -->
+                    <div
+                      class="text-[9px] text-[#a3faef]/60 pt-4 flex items-center justify-between"
+                    >
+                      <span>A4 Formato Certificado</span>
+                      <span>v1.2</span>
+                    </div>
+                  </div>
+                  <!-- RIGHT CONTENT (66% width) -->
+                  <div
+                    class="w-full md:w-[66%] p-space-md md:p-space-lg flex flex-col gap-space-md justify-between bg-white text-[#1f2937]"
+                  >
+                    <div class="flex flex-col gap-space-md">
+                      <!-- Perfil Profesional -->
+                      <div>
+                        <div class="flex items-center gap-2 mb-2 pb-1 border-b border-[#e5e7eb]">
+                          <span class="material-symbols-outlined text-[18px] text-[#0f766e]"
+                            >person</span
+                          >
+                          <h3
+                            class="font-headline-sm text-[13px] font-bold text-[#0f766e] tracking-wider uppercase"
+                          >
+                            Perfil Profesional
+                          </h3>
+                        </div>
+                        <p class="font-body-sm text-[11.5px] leading-relaxed text-[#4b5563]">
+                          Desarrolladora de software con sólida base en React, Node.js y TypeScript.
+                          Apasionada por construir interfaces web accesibles (WCAG 2.2 AA),
+                          optimizadas y de alto rendimiento. Con experiencia en proyectos
+                          universitarios de impacto y desarrollo colaborativo en entornos ágiles.
+                        </p>
+                      </div>
+                      <!-- Experiencia Laboral con Timeline -->
+                      <div>
+                        <div class="flex items-center gap-2 mb-3 pb-1 border-b border-[#e5e7eb]">
+                          <span class="material-symbols-outlined text-[18px] text-[#0f766e]"
+                            >work</span
+                          >
+                          <h3
+                            class="font-headline-sm text-[13px] font-bold text-[#0f766e] tracking-wider uppercase"
+                          >
+                            Experiencia Laboral
+                          </h3>
+                        </div>
+                        <div
+                          class="relative pl-4 space-y-4 before:content-[''] before:absolute before:left-1 before:top-2 before:bottom-1 before:w-[2px] before:bg-[#0f766e]/20"
+                        >
+                          <!-- Timeline Item 1 -->
+                          <div class="relative group">
+                            <span
+                              class="absolute -left-[17px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#0f766e] ring-4 ring-white"
+                            ></span>
+                            <div class="flex justify-between items-baseline gap-2">
+                              <span class="font-body-md-medium text-[12px] font-bold text-[#111827]"
+                                >Desarrolladora Frontend Junior</span
+                              >
+                              <span
+                                class="font-body-sm text-[10px] text-[#6b7280] font-medium shrink-0"
+                                >Feb 2023 - Presente</span
+                              >
+                            </div>
+                            <div class="font-body-sm text-[11px] text-[#0f766e] font-medium mb-1">
+                              TechSolutions SAS · Medellín
+                            </div>
+                            <ul
+                              class="list-disc list-inside text-[11px] text-[#4b5563] space-y-0.5 leading-snug"
+                            >
+                              <li>
+                                Diseñé y desarrollé 12 módulos en React y TypeScript reduciendo el
+                                tiempo de carga en un 35%.
+                              </li>
+                              <li>
+                                Implementé pruebas unitarias con Jest/Testing Library alcanzando 85%
+                                de cobertura.
+                              </li>
+                              <li>
+                                Aseguré accesibilidad total WCAG 2.2 nivel AA en interfaces
+                                institucionales.
+                              </li>
+                            </ul>
+                          </div>
+                          <!-- Timeline Item 2 -->
+                          <div class="relative group">
+                            <span
+                              class="absolute -left-[17px] top-1.5 w-2.5 h-2.5 rounded-full bg-[#0f766e] ring-4 ring-white"
+                            ></span>
+                            <div class="flex justify-between items-baseline gap-2">
+                              <span class="font-body-md-medium text-[12px] font-bold text-[#111827]"
+                                >Pasante de Desarrollo Web</span
+                              >
+                              <span
+                                class="font-body-sm text-[10px] text-[#6b7280] font-medium shrink-0"
+                                >Ago 2022 - Ene 2023</span
+                              >
+                            </div>
+                            <div class="font-body-sm text-[11px] text-[#0f766e] font-medium mb-1">
+                              Universidad Nacional · Medellín
+                            </div>
+                            <ul
+                              class="list-disc list-inside text-[11px] text-[#4b5563] space-y-0.5 leading-snug"
+                            >
+                              <li>
+                                Mantuve y optimicé el portal académico utilizando Node.js y
+                                PostgreSQL.
+                              </li>
+                              <li>
+                                Automaticé scripts de migración de datos para más de 15,000
+                                registros estudiantiles.
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Educación -->
+                      <div>
+                        <div class="flex items-center gap-2 mb-2 pb-1 border-b border-[#e5e7eb]">
+                          <span class="material-symbols-outlined text-[18px] text-[#0f766e]"
+                            >school</span
+                          >
+                          <h3
+                            class="font-headline-sm text-[13px] font-bold text-[#0f766e] tracking-wider uppercase"
+                          >
+                            Educación
+                          </h3>
+                        </div>
+                        <div class="space-y-2.5">
+                          <div>
+                            <div class="flex justify-between items-baseline gap-2">
+                              <span class="font-body-md-medium text-[12px] font-bold text-[#111827]"
+                                >Ingeniería de Sistemas e Informática</span
+                              >
+                              <span
+                                class="font-body-sm text-[10px] text-[#6b7280] font-medium shrink-0"
+                                >2020 - 2024</span
+                              >
+                            </div>
+                            <div class="text-[11px] text-[#4b5563]">
+                              Universidad Nacional de Colombia · Graduación: Dic 2024
+                            </div>
+                            <div class="text-[10px] text-[#0f766e] font-medium">
+                              Promedio ponderado sobresaliente: 4.7 / 5.0
+                            </div>
+                          </div>
+                          <div>
+                            <div class="flex justify-between items-baseline gap-2">
+                              <span class="font-body-md-medium text-[12px] font-bold text-[#111827]"
+                                >Diplomado en Arquitectura Cloud &amp; DevOps</span
+                              >
+                              <span
+                                class="font-body-sm text-[10px] text-[#6b7280] font-medium shrink-0"
+                                >2023</span
+                              >
+                            </div>
+                            <div class="text-[11px] text-[#4b5563]">
+                              MinTIC / Platzi · Despliegue continuo &amp; microservicios
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Modern footer note -->
+                    <div
+                      class="flex items-center justify-between pt-2 border-t border-[#f3f4f6] text-[10px] text-[#9ca3af]"
+                    >
+                      <span>Disponibilidad inmediata para roles Frontend / Full Stack</span>
+                      <span class="font-label-code text-[10px]">A4: 210 × 297 mm</span>
+                    </div>
+                  </div>
+                </div>
+                <!-- Metric pill -->
+                <div
+                  class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-lg text-on-surface"
+                >
+                  <span class="font-body-sm text-body-sm text-on-surface-variant"
+                    >Compatibilidad ATS:</span
+                  >
+                  <span class="font-body-md-medium text-body-md-medium text-tertiary"
+                    >99% (Estructura jerárquica)</span
+                  >
+                </div>
+              </section>
+              <!-- ==========================================
+           PLANTILLA 2: CLÁSICA (MONOCROMÁTICA B/N)
+      =========================================== -->
+              <section class="flex flex-col gap-space-md w-full" id="col-template-cla">
+                <!-- Template Header Information Badge -->
+                <div class="flex items-center justify-between px-space-sm">
+                  <div class="flex items-center gap-space-xs">
+                    <span
+                      class="px-2.5 py-1 rounded-full bg-on-surface/10 text-on-surface font-label-badge text-label-badge uppercase tracking-wider"
+                      >Plantilla 2</span
+                    >
+                    <span class="font-headline-sm text-headline-sm text-on-surface">Clásica</span>
+                  </div>
+                  <span
+                    class="px-2 py-0.5 rounded-md bg-surface-container-highest text-on-surface-variant font-label-badge text-label-badge font-semibold"
+                    >100% Fotocopia &amp; B/N</span
+                  >
+                </div>
+                <!-- A4 Page Container (Monochrome Corporate Style) -->
+                <div
+                  class="relative bg-white rounded-xl shadow-xl overflow-hidden text-[#111827] p-space-md md:p-space-lg flex flex-col justify-between min-h-[920px] transition-all font-sans"
+                >
+                  <div class="flex flex-col gap-space-md">
+                    <!-- Header Centrado Clásico -->
+                    <div class="text-center pb-2 border-b border-[#111827]">
+                      <h2
+                        class="text-[22px] font-bold tracking-tight uppercase text-[#111827] leading-none mb-1"
+                      >
+                        MARÍA GARCÍA RODRÍGUEZ
+                      </h2>
+                      <div class="text-[13px] italic text-[#374151] mb-2 font-medium">
+                        Desarrolladora Full Stack
+                      </div>
+                      <div
+                        class="text-[11px] text-[#1f2937] flex flex-wrap justify-center items-center gap-1.5 leading-snug"
+                      >
+                        <span>maria.garcia@email.com</span>
+                        <span>|</span>
+                        <span>+57 300 123 4567</span>
+                        <span>|</span>
+                        <span>Medellín, Colombia</span>
+                        <span>|</span>
+                        <span>linkedin.com/in/mariagarcia</span>
+                        <span>|</span>
+                        <span>github.com/mariagarcia</span>
+                      </div>
+                    </div>
+                    <!-- Perfil Profesional -->
+                    <div>
+                      <div
+                        class="text-[12px] font-bold uppercase tracking-wider text-[#111827] border-b border-[#111827] pb-0.5 mb-1.5"
+                      >
+                        PERFIL PROFESIONAL
+                      </div>
+                      <p class="text-[11.5px] leading-relaxed text-[#1f2937] text-justify">
+                        Desarrolladora de software con sólida base en React, Node.js y TypeScript.
+                        Apasionada por construir interfaces web accesibles (WCAG 2.2 AA),
+                        optimizadas y de alto rendimiento. Con experiencia en proyectos
+                        universitarios de impacto y desarrollo colaborativo en entornos ágiles.
+                      </p>
+                    </div>
+                    <!-- Experiencia Laboral -->
+                    <div>
+                      <div
+                        class="text-[12px] font-bold uppercase tracking-wider text-[#111827] border-b border-[#111827] pb-0.5 mb-2"
+                      >
+                        EXPERIENCIA LABORAL
+                      </div>
+                      <!-- Item 1 -->
+                      <div class="mb-3">
+                        <div class="flex justify-between items-baseline">
+                          <span class="text-[12px] font-bold text-[#111827]"
+                            >Desarrolladora Frontend Junior</span
+                          >
+                          <span class="text-[11px] text-[#374151] font-medium"
+                            >Feb 2023 – Presente</span
+                          >
+                        </div>
+                        <div class="text-[11px] italic text-[#4b5563] mb-1">
+                          TechSolutions SAS · Medellín, Colombia
+                        </div>
+                        <ul
+                          class="list-disc list-outside ml-4 text-[11px] text-[#1f2937] space-y-1"
+                        >
+                          <li>
+                            Diseñé y desarrollé 12 módulos de interfaz en React y TypeScript
+                            reduciendo el tiempo de carga en un 35%.
+                          </li>
+                          <li>
+                            Implementé pruebas unitarias e integración con Jest/Testing Library
+                            alcanzando 85% de cobertura de código.
+                          </li>
+                          <li>
+                            Colaboré estrechamente con el equipo de diseño UI/UX asegurando
+                            accesibilidad WCAG 2.2 nivel AA.
+                          </li>
+                        </ul>
+                      </div>
+                      <!-- Item 2 -->
+                      <div>
+                        <div class="flex justify-between items-baseline">
+                          <span class="text-[12px] font-bold text-[#111827]"
+                            >Pasante de Desarrollo Web</span
+                          >
+                          <span class="text-[11px] text-[#374151] font-medium"
+                            >Ago 2022 – Ene 2023</span
+                          >
+                        </div>
+                        <div class="text-[11px] italic text-[#4b5563] mb-1">
+                          Universidad Nacional de Colombia · Medellín, Colombia
+                        </div>
+                        <ul
+                          class="list-disc list-outside ml-4 text-[11px] text-[#1f2937] space-y-1"
+                        >
+                          <li>
+                            Mantuve y optimicé el portal académico institucional utilizando Node.js
+                            y bases de datos PostgreSQL.
+                          </li>
+                          <li>
+                            Automaticé scripts de migración de datos que procesaron de forma segura
+                            más de 15,000 registros estudiantiles.
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- Educación Universitaria -->
+                    <div>
+                      <div
+                        class="text-[12px] font-bold uppercase tracking-wider text-[#111827] border-b border-[#111827] pb-0.5 mb-2"
+                      >
+                        EDUCACIÓN UNIVERSITARIA
+                      </div>
+                      <div class="space-y-2">
+                        <div>
+                          <div class="flex justify-between items-baseline">
+                            <span class="text-[12px] font-bold text-[#111827]"
+                              >Grado en Ingeniería de Sistemas e Informática</span
+                            >
+                            <span class="text-[11px] text-[#374151]">2020 – Dic 2024</span>
+                          </div>
+                          <div class="text-[11px] text-[#374151]">
+                            Universidad Nacional de Colombia · Promedio Acumulado: 4.7 / 5.0
+                          </div>
+                        </div>
+                        <div>
+                          <div class="flex justify-between items-baseline">
+                            <span class="text-[12px] font-bold text-[#111827]"
+                              >Diplomado en Arquitectura Cloud &amp; DevOps</span
+                            >
+                            <span class="text-[11px] text-[#374151]">2023</span>
+                          </div>
+                          <div class="text-[11px] text-[#374151]">MinTIC / Platzi</div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Habilidades en 2 columnas -->
+                    <div>
+                      <div
+                        class="text-[12px] font-bold uppercase tracking-wider text-[#111827] border-b border-[#111827] pb-0.5 mb-1.5"
+                      >
+                        HABILIDADES TÉCNICAS
+                      </div>
+                      <div
+                        class="grid grid-cols-2 gap-x-4 text-[11px] text-[#1f2937] leading-relaxed"
+                      >
+                        <div>
+                          <span class="font-semibold">Frontend:</span> React, TypeScript, Next.js,
+                          Tailwind CSS
+                        </div>
+                        <div>
+                          <span class="font-semibold">Backend:</span> Node.js, PostgreSQL, REST APIs
+                        </div>
+                        <div>
+                          <span class="font-semibold">Herramientas:</span> Git, Docker, Jest,
+                          Testing Library
+                        </div>
+                        <div>
+                          <span class="font-semibold">Estándares:</span> WCAG 2.2 AA, Clean
+                          Architecture
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Idiomas -->
+                    <div>
+                      <div
+                        class="text-[12px] font-bold uppercase tracking-wider text-[#111827] border-b border-[#111827] pb-0.5 mb-1.5"
+                      >
+                        IDIOMAS Y CERTIFICACIONES
+                      </div>
+                      <div class="text-[11px] text-[#1f2937]">
+                        <span class="font-semibold">Español:</span> Nativo ·
+                        <span class="font-semibold">Inglés:</span> Avanzado C1 (Certificación
+                        oficial TOEFL iBT 102 puntos)
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Pie clásico -->
+                  <div
+                    class="pt-3 border-t border-[#d1d5db] text-center text-[10px] text-[#4b5563] italic"
+                  >
+                    Referencias académicas y portafolio técnico disponibles a solicitud
+                  </div>
+                </div>
+                <!-- Metric pill -->
+                <div
+                  class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-lg text-on-surface"
+                >
+                  <span class="font-body-sm text-body-sm text-on-surface-variant"
+                    >Compatibilidad ATS:</span
+                  >
+                  <span class="font-body-md-medium text-body-md-medium text-tertiary"
+                    >100% (Linear estricto)</span
+                  >
+                </div>
+              </section>
+              <!-- ==========================================
+           PLANTILLA 3: MINIMALISTA (EDITORIAL & WHITESPACE)
+      =========================================== -->
+              <section class="flex flex-col gap-space-md w-full" id="col-template-min">
+                <!-- Template Header Information Badge -->
+                <div class="flex items-center justify-between px-space-sm">
+                  <div class="flex items-center gap-space-xs">
+                    <span
+                      class="px-2.5 py-1 rounded-full bg-tertiary/10 text-tertiary font-label-badge text-label-badge uppercase tracking-wider"
+                      >Plantilla 3</span
+                    >
+                    <span class="font-headline-sm text-headline-sm text-on-surface"
+                      >Minimalista</span
+                    >
+                  </div>
+                  <span
+                    class="px-2 py-0.5 rounded-md bg-surface-container-high text-on-surface-variant font-label-badge text-label-badge font-semibold"
+                    >Editorial &amp; Diseño</span
+                  >
+                </div>
+                <!-- A4 Page Container (Whitespace & Swiss Typography) -->
+                <div
+                  class="relative bg-white rounded-xl shadow-xl overflow-hidden text-[#1f2937] p-space-md md:p-space-lg flex flex-col justify-between min-h-[920px] transition-all"
+                >
+                  <div class="flex flex-col gap-6">
+                    <!-- Header Swiss Style con foto minimalista a la derecha -->
+                    <div class="flex justify-between items-start gap-4">
+                      <div class="space-y-1">
+                        <span
+                          class="text-[11px] font-semibold text-[#0f766e] tracking-widest uppercase"
+                          >Curriculum Vitae</span
+                        >
+                        <h2
+                          class="text-[24px] font-extrabold tracking-tight text-[#111827] leading-tight"
+                        >
+                          María García Rodríguez
+                        </h2>
+                        <div class="text-[13px] text-[#6b7280] font-medium">
+                          Desarrolladora Full Stack
+                        </div>
+                        <div
+                          class="pt-2 text-[10.5px] text-[#6b7280] flex flex-wrap gap-x-2 gap-y-0.5 leading-normal"
+                        >
+                          <span>maria.garcia@email.com</span>
+                          <span>·</span>
+                          <span>+57 300 123 4567</span>
+                          <span>·</span>
+                          <span>Medellín, Colombia</span>
+                          <span>·</span>
+                          <span class="text-[#0f766e]">github.com/mariagarcia</span>
+                          <span>·</span>
+                          <span class="text-[#0f766e]">linkedin.com/in/mariagarcia</span>
+                        </div>
+                      </div>
+                      <!-- Photo minimalista alineada a la derecha -->
+                      <div class="photo-wrapper shrink-0">
+                        <img
+                          alt="María García Rodríguez"
+                          class="photo-img w-[80px] h-[80px] rounded-full object-cover grayscale contrast-105 shadow-sm"
+                          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7puOxgAwBOkhWArx-LhjIH6q98WYXbHPNVQBDb53lAadSXgu_rVJGt-brCp-25ZqzNK4vbQDsQ8noxyewI3wXZcoxMGbV5mfTeKW3V7pMxRF7bZOyFUx7T74AeDjBKJ6OY9cVgjGE5a0MX2wmNciZswNRhgUGlyQ_6B3n8b904iuSb1U28X4fwu7TR-CmL4TQLzS1Qr_VsF_SN7hJQPliod2VZNq9OXn_vmFfX5Wh"
+                        />
+                      </div>
+                    </div>
+                    <!-- Perfil sin líneas - Puro espaciado suizo -->
+                    <div>
+                      <div
+                        class="text-[11px] font-bold text-[#0f766e] tracking-wider uppercase mb-1"
+                      >
+                        Perfil
+                      </div>
+                      <p class="text-[11.5px] leading-relaxed text-[#374151] max-w-[62ch]">
+                        Desarrolladora de software con sólida base en React, Node.js y TypeScript.
+                        Apasionada por construir interfaces web accesibles (WCAG 2.2 AA),
+                        optimizadas y de alto rendimiento. Con experiencia en proyectos
+                        universitarios de impacto y desarrollo colaborativo en entornos ágiles.
+                      </p>
+                    </div>
+                    <!-- Experiencia Laboral -->
+                    <div>
+                      <div
+                        class="text-[11px] font-bold text-[#0f766e] tracking-wider uppercase mb-2"
+                      >
+                        Experiencia Laboral
+                      </div>
+                      <div class="space-y-3.5">
+                        <div>
+                          <div class="flex justify-between items-baseline">
+                            <span class="text-[12px] font-bold text-[#111827]"
+                              >Desarrolladora Frontend Junior</span
+                            >
+                            <span class="text-[10px] text-[#9ca3af]">Feb 2023 — Presente</span>
+                          </div>
+                          <div class="text-[10.5px] text-[#6b7280] mb-1">
+                            TechSolutions SAS · Medellín
+                          </div>
+                          <ul class="text-[11px] text-[#4b5563] space-y-1 list-none pl-0">
+                            <li
+                              class="relative pl-3 before:content-['–'] before:absolute before:left-0 before:text-[#0f766e]"
+                            >
+                              Diseñé y desarrollé 12 módulos de interfaz en React y TypeScript
+                              reduciendo el tiempo de carga en un 35%.
+                            </li>
+                            <li
+                              class="relative pl-3 before:content-['–'] before:absolute before:left-0 before:text-[#0f766e]"
+                            >
+                              Implementé pruebas unitarias e integración con Jest/Testing Library
+                              alcanzando 85% de cobertura.
+                            </li>
+                            <li
+                              class="relative pl-3 before:content-['–'] before:absolute before:left-0 before:text-[#0f766e]"
+                            >
+                              Colaboré estrechamente con UI/UX asegurando accesibilidad WCAG 2.2
+                              nivel AA.
+                            </li>
+                          </ul>
+                        </div>
+                        <div>
+                          <div class="flex justify-between items-baseline">
+                            <span class="text-[12px] font-bold text-[#111827]"
+                              >Pasante de Desarrollo Web</span
+                            >
+                            <span class="text-[10px] text-[#9ca3af]">Ago 2022 — Ene 2023</span>
+                          </div>
+                          <div class="text-[10.5px] text-[#6b7280] mb-1">
+                            Universidad Nacional de Colombia · Medellín
+                          </div>
+                          <ul class="text-[11px] text-[#4b5563] space-y-1 list-none pl-0">
+                            <li
+                              class="relative pl-3 before:content-['–'] before:absolute before:left-0 before:text-[#0f766e]"
+                            >
+                              Mantuve y optimicé el portal académico institucional utilizando
+                              Node.js y PostgreSQL.
+                            </li>
+                            <li
+                              class="relative pl-3 before:content-['–'] before:absolute before:left-0 before:text-[#0f766e]"
+                            >
+                              Automaticé scripts de migración de datos que procesaron más de 15,000
+                              registros estudiantiles.
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Educación -->
+                    <div>
+                      <div
+                        class="text-[11px] font-bold text-[#0f766e] tracking-wider uppercase mb-2"
+                      >
+                        Educación
+                      </div>
+                      <div class="space-y-2">
+                        <div>
+                          <div class="flex justify-between items-baseline">
+                            <span class="text-[12px] font-bold text-[#111827]"
+                              >Ingeniería de Sistemas e Informática</span
+                            >
+                            <span class="text-[10px] text-[#9ca3af]">2020 — 2024</span>
+                          </div>
+                          <div class="text-[11px] text-[#4b5563]">
+                            Universidad Nacional de Colombia · Graduación Dic 2024 (Promedio 4.7)
+                          </div>
+                        </div>
+                        <div>
+                          <div class="flex justify-between items-baseline">
+                            <span class="text-[12px] font-bold text-[#111827]"
+                              >Diplomado en Arquitectura Cloud &amp; DevOps</span
+                            >
+                            <span class="text-[10px] text-[#9ca3af]">2023</span>
+                          </div>
+                          <div class="text-[11px] text-[#4b5563]">MinTIC / Platzi</div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Habilidades tipo chips minimalistas -->
+                    <div>
+                      <div
+                        class="text-[11px] font-bold text-[#0f766e] tracking-wider uppercase mb-1.5"
+                      >
+                        Habilidades Técnicas
+                      </div>
+                      <div class="flex flex-wrap gap-1.5">
+                        <span
+                          class="px-2 py-0.5 rounded bg-surface-container-low text-[10px] text-[#0f766e] font-medium"
+                          >React</span
+                        >
+                        <span
+                          class="px-2 py-0.5 rounded bg-surface-container-low text-[10px] text-[#0f766e] font-medium"
+                          >TypeScript</span
+                        >
+                        <span
+                          class="px-2 py-0.5 rounded bg-surface-container-low text-[10px] text-[#0f766e] font-medium"
+                          >Node.js</span
+                        >
+                        <span
+                          class="px-2 py-0.5 rounded bg-surface-container-low text-[10px] text-[#0f766e] font-medium"
+                          >Next.js</span
+                        >
+                        <span
+                          class="px-2 py-0.5 rounded bg-surface-container-low text-[10px] text-[#0f766e] font-medium"
+                          >PostgreSQL</span
+                        >
+                        <span
+                          class="px-2 py-0.5 rounded bg-surface-container-low text-[10px] text-[#0f766e] font-medium"
+                          >Tailwind CSS</span
+                        >
+                        <span
+                          class="px-2 py-0.5 rounded bg-surface-container-low text-[10px] text-[#0f766e] font-medium"
+                          >Git &amp; Docker</span
+                        >
+                        <span
+                          class="px-2 py-0.5 rounded bg-surface-container-low text-[10px] text-[#0f766e] font-medium"
+                          >REST APIs</span
+                        >
+                      </div>
+                    </div>
+                    <!-- Idiomas -->
+                    <div>
+                      <div
+                        class="text-[11px] font-bold text-[#0f766e] tracking-wider uppercase mb-1"
+                      >
+                        Idiomas
+                      </div>
+                      <div class="text-[11px] text-[#374151] flex gap-4">
+                        <span>Español — <span class="text-[#6b7280]">Nativo</span></span>
+                        <span
+                          >Inglés —
+                          <span class="text-[#6b7280]">Avanzado C1 (TOEFL 102)</span></span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Pie suizo minimalista -->
+                  <div class="pt-4 text-left text-[9.5px] text-[#9ca3af] flex justify-between">
+                    <span
+                      >Diseño optimizado para legibilidad visual y sistemas de reclutamiento
+                      modernos</span
+                    >
+                    <span class="font-label-code">MGR · 2025</span>
+                  </div>
+                </div>
+                <!-- Metric pill -->
+                <div
+                  class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-lg text-on-surface"
+                >
+                  <span class="font-body-sm text-body-sm text-on-surface-variant"
+                    >Compatibilidad ATS:</span
+                  >
+                  <span class="font-body-md-medium text-body-md-medium text-tertiary"
+                    >98% (Alta legibilidad)</span
+                  >
+                </div>
+              </section>
+            </div>
+            <!-- ==========================================
+         SECCIÓN DE ESPECIFICACIONES TÉCNICAS Y REGLAS @MEDIA PRINT
+    =========================================== -->
+            <div class="mt-space-xl flex flex-col gap-space-lg" id="specs-section">
+              <!-- Comparativa Técnica Interactiva -->
+              <div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm">
+                <div class="flex items-center justify-between mb-space-md">
+                  <div class="flex items-center gap-space-sm">
+                    <span class="material-symbols-outlined text-primary text-[24px]">tune</span>
+                    <h2 class="font-headline-md text-headline-md text-on-surface">
+                      Matriz Comparativa Técnica de Arquitectura A4
+                    </h2>
+                  </div>
+                  <span
+                    class="px-2 py-0.5 rounded bg-tertiary/10 text-tertiary font-label-badge text-label-badge"
+                    >Verificado ATS</span
+                  >
+                </div>
+                <div class="overflow-x-auto">
+                  <table class="w-full text-left font-body-sm text-body-sm border-collapse">
+                    <thead>
+                      <tr
+                        class="bg-surface-container-low text-on-surface font-body-md-medium text-body-md-medium"
+                      >
+                        <th class="p-space-sm rounded-l-lg">Criterio</th>
+                        <th class="p-space-sm">Plantilla 1: Moderna</th>
+                        <th class="p-space-sm">Plantilla 2: Clásica</th>
+                        <th class="p-space-sm rounded-r-lg">Plantilla 3: Minimalista</th>
+                      </tr>
+                    </thead>
+                    <tbody class="divide-y divide-surface-container-highest text-on-surface">
+                      <tr>
+                        <td
+                          class="p-space-sm font-body-md-medium text-body-md-medium text-on-surface-variant"
+                        >
+                          Estructura &amp; Columnas
+                        </td>
+                        <td class="p-space-sm">2 columnas asimétricas (34% / 66%)</td>
+                        <td class="p-space-sm">1 columna centrada vertical continua</td>
+                        <td class="p-space-sm">1 columna con cabecera flotante</td>
+                      </tr>
+                      <tr>
+                        <td
+                          class="p-space-sm font-body-md-medium text-body-md-medium text-on-surface-variant"
+                        >
+                          Rendimiento ATS Reclutador
+                        </td>
+                        <td class="p-space-sm">
+                          <span
+                            class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold"
+                            >99%</span
+                          >
+                        </td>
+                        <td class="p-space-sm">
+                          <span
+                            class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold"
+                            >100%</span
+                          >
+                        </td>
+                        <td class="p-space-sm">
+                          <span
+                            class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-semibold"
+                            >98%</span
+                          >
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          class="p-space-sm font-body-md-medium text-body-md-medium text-on-surface-variant"
+                        >
+                          Resistencia Impresión B/N
+                        </td>
+                        <td class="p-space-sm text-on-surface-variant">
+                          Buena (Requiere ajuste de escala de grises)
+                        </td>
+                        <td class="p-space-sm text-tertiary font-body-md-medium">
+                          Óptima (Diseño 100% monocromo nativo)
+                        </td>
+                        <td class="p-space-sm text-on-surface font-body-md-medium">
+                          Excelente (Sin fondos de tinta pesada)
+                        </td>
+                      </tr>
+                      <tr>
+                        <td
+                          class="p-space-sm font-body-md-medium text-body-md-medium text-on-surface-variant"
+                        >
+                          Industrias Objetivo
+                        </td>
+                        <td class="p-space-sm">Tecnología, Startups, Producto Digital</td>
+                        <td class="p-space-sm">Derecho, Finanzas, Consultoría, Academia</td>
+                        <td class="p-space-sm">Diseño, Freelance, Media &amp; Arquitectura</td>
+                      </tr>
+                      <tr>
+                        <td
+                          class="p-space-sm font-body-md-medium text-body-md-medium text-on-surface-variant"
+                        >
+                          Consumo de Tinta de Impresora
+                        </td>
+                        <td class="p-space-sm">Moderado / Alto (Fondo teal 34%)</td>
+                        <td class="p-space-sm">Mínimo (Solo texto y líneas 1px)</td>
+                        <td class="p-space-sm">Ultra-bajo (95% espacio en blanco)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- Tarjeta de Directrices de Impresión y Reglas CSS -->
+              <div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+                <!-- Código CSS Real para Impresión -->
+                <div
+                  class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col justify-between"
+                >
+                  <div>
+                    <div class="flex items-center gap-space-sm mb-space-sm">
+                      <span class="material-symbols-outlined text-primary text-[22px]"
+                        >code_blocks</span
+                      >
+                      <h3 class="font-headline-sm text-headline-sm text-on-surface">
+                        Reglas Estrictas @media print (A4)
+                      </h3>
+                    </div>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+                      Implementación certificada en CSS para evitar saltos de página indebidos y
+                      forzar la fidelidad de colores del navegador:
+                    </p>
+                    <pre
+                      class="bg-inverse-surface text-[#a3faef] p-space-md rounded-lg font-label-code text-label-code overflow-x-auto leading-relaxed"
+                    >
+@page {
+  size: A4 portrait;
+  margin: 0mm; /* El padding interno de 15mm controla los márgenes */
+}
+
+@media print {
+  body {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background: #ffffff !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Evitar cortes indeseados en experiencias laborales */
+  .page-break-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}</pre>
+                  </div>
+                  <div
+                    class="mt-space-md pt-space-sm border-t border-surface-container flex items-center justify-between"
+                  >
+                    <span class="font-body-sm text-body-sm text-on-surface-variant"
+                      >Resolución de impresión: 300 DPI recomendada</span
+                    >
+                    <span class="font-label-code text-label-code text-primary">ISO 216 Ready</span>
+                  </div>
+                </div>
+                <!-- Guía de Recomendaciones para María García Rodríguez -->
+                <div
+                  class="bg-primary/5 rounded-xl p-space-lg shadow-sm flex flex-col justify-between"
+                >
+                  <div>
+                    <div class="flex items-center gap-space-sm mb-space-sm">
+                      <span class="material-symbols-outlined text-primary text-[22px]"
+                        >recommend</span
+                      >
+                      <h3 class="font-headline-sm text-headline-sm text-on-surface">
+                        Veredicto para María (Desarrolladora Full Stack)
+                      </h3>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-space-md">
+                      Basado en el perfil junior con sólida experiencia universitaria y pasantía
+                      técnica:
+                    </p>
+                    <div class="space-y-space-sm">
+                      <div
+                        class="flex items-start gap-space-sm bg-surface-container-lowest p-space-sm rounded-lg shadow-sm"
+                      >
+                        <span
+                          class="material-symbols-outlined text-tertiary text-[20px] shrink-0 mt-0.5"
+                          >check_circle</span
+                        >
+                        <div>
+                          <span class="font-body-md-medium text-body-md-medium text-on-surface"
+                            >Recomendación Principal: Plantilla 1 (Moderna)</span
+                          >
+                          <p class="font-body-sm text-body-sm text-on-surface-variant">
+                            El timeline visual destaca la progresión rápida desde la pasantía
+                            institucional a su cargo actual en TechSolutions SAS.
+                          </p>
+                        </div>
+                      </div>
+                      <div
+                        class="flex items-start gap-space-sm bg-surface-container-lowest p-space-sm rounded-lg shadow-sm"
+                      >
+                        <span
+                          class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5"
+                          >lightbulb</span
+                        >
+                        <div>
+                          <span class="font-body-md-medium text-body-md-medium text-on-surface"
+                            >Para portales corporativos o gubernamentales:</span
+                          >
+                          <p class="font-body-sm text-body-sm text-on-surface-variant">
+                            Exportar la
+                            <span class="font-body-md-medium text-on-surface"
+                              >Plantilla 2 (Clásica)</span
+                            >
+                            sin foto para cumplir requisitos ciegos y maximizar parseo de texto
+                            plano.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-space-md flex items-center justify-between">
+                    <button
+                      class="h-11 px-space-md rounded-lg bg-primary text-on-primary font-body-md-medium text-body-md-medium flex items-center gap-space-xs hover:opacity-90 transition-all shadow-sm"
+                      onclick="window.print()"
+                      type="button"
+                    >
+                      <span class="material-symbols-outlined text-[18px]">download</span>
+                      <span>Descargar Selección Actual</span>
+                    </button>
+                    <span class="font-body-sm text-body-sm text-on-surface-variant"
+                      >Datos sincronizados con perfil</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Interactive Control Script -->
+          <script>
+            function switchView(view) {
+              const grid = document.getElementById("templates-grid");
+              const colMod = document.getElementById("col-template-mod");
+              const colCla = document.getElementById("col-template-cla");
+              const colMin = document.getElementById("col-template-min");
+              const specs = document.getElementById("specs-section");
+
+              const tabs = ["all", "mod", "cla", "min", "rules"];
+              tabs.forEach((t) => {
+                const btn = document.getElementById("tab-" + t);
+                if (btn) {
+                  btn.setAttribute("aria-selected", t === view);
+                  if (t === view) {
+                    btn.className =
+                      "view-tab flex items-center gap-space-xs px-space-md py-2.5 rounded-lg font-body-md-medium text-body-md-medium text-primary bg-primary/10 transition-all";
+                  } else {
+                    btn.className =
+                      "view-tab flex items-center gap-space-xs px-space-md py-2.5 rounded-lg font-body-md-medium text-body-md-medium text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-all";
+                  }
+                }
+              });
+
+              if (view === "all") {
+                grid.className =
+                  "grid grid-cols-1 xl:grid-cols-3 gap-space-xl items-start transition-all";
+                colMod.style.display = "flex";
+                colCla.style.display = "flex";
+                colMin.style.display = "flex";
+                specs.style.display = "flex";
+              } else if (view === "mod") {
+                grid.className = "flex justify-center max-w-[850px] mx-auto transition-all";
+                colMod.style.display = "flex";
+                colCla.style.display = "none";
+                colMin.style.display = "none";
+                specs.style.display = "none";
+              } else if (view === "cla") {
+                grid.className = "flex justify-center max-w-[850px] mx-auto transition-all";
+                colMod.style.display = "none";
+                colCla.style.display = "flex";
+                colMin.style.display = "none";
+                specs.style.display = "none";
+              } else if (view === "min") {
+                grid.className = "flex justify-center max-w-[850px] mx-auto transition-all";
+                colMod.style.display = "none";
+                colCla.style.display = "none";
+                colMin.style.display = "flex";
+                specs.style.display = "none";
+              } else if (view === "rules") {
+                grid.style.display = "none";
+                specs.style.display = "flex";
+                specs.scrollIntoView({ behavior: "smooth" });
+                return;
+              }
+
+              if (view !== "rules") {
+                grid.style.display = "";
+              }
+            }
+
+            function togglePhotoVariant(val) {
+              const wrappers = document.querySelectorAll(".photo-wrapper");
+              const imgs = document.querySelectorAll(".photo-img");
+
+              wrappers.forEach((w) => {
+                if (val === "hidden") {
+                  w.style.display = "none";
+                } else {
+                  w.style.display = "block";
+                }
+              });
+
+              imgs.forEach((img) => {
+                if (val === "square") {
+                  img.className = "photo-img w-full h-full object-cover rounded-md";
+                } else {
+                  img.className = "photo-img w-full h-full object-cover rounded-full";
+                }
+              });
+            }
+
+            function copySourceNotice() {
+              const toast = document.getElementById("copy-toast");
+              toast.classList.remove("hidden");
+              toast.classList.add("flex");
+              setTimeout(() => {
+                toast.classList.remove("flex");
+                toast.classList.add("hidden");
+              }, 3000);
+            }
+          </script>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

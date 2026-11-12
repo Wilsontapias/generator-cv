@@ -1,0 +1,25 @@
+meta {
+  name: Obtener Usuario Actual
+  type: http
+  seq: 3
+}
+
+get {
+  url: {{baseUrl}}/auth/yo
+  body: none
+  auth: none
+}
+
+headers {
+  Cookie: sesion={{sessionId}}
+}
+
+tests {
+  test("Status code is 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  
+  test("Response has usuario", function() {
+    expect(res.body.usuario).to.have.property("uid");
+  });
+}

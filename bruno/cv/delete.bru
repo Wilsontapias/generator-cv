@@ -1,0 +1,21 @@
+meta {
+  name: Eliminar CV
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/cv/{{cvId}}
+  body: none
+  auth: none
+}
+
+headers {
+  Cookie: sesion={{sessionId}}
+}
+
+tests {
+  test("Status code is 204", function() {
+    expect(res.status).to.equal(204);
+  });
+}

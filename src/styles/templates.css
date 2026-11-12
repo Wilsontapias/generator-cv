@@ -1,0 +1,374 @@
+/* CV Templates styles */
+
+.cv-template {
+  font-family: var(--font-sans);
+  color: #1f2937;
+  line-height: 1.5;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: white;
+}
+
+/* Plantilla Moderna */
+.cv-moderna {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 2rem;
+}
+
+.cv-moderna .cv-sidebar {
+  background-color: #0f766e;
+  color: white;
+  padding: 2rem;
+  border-radius: 8px;
+}
+
+.cv-moderna .cv-photo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.cv-moderna .cv-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cv-moderna .cv-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+}
+
+.cv-moderna .cv-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: white;
+}
+
+.cv-moderna .cv-title {
+  font-size: 1rem;
+  color: #a3faef;
+  margin-bottom: 1.5rem;
+}
+
+.cv-moderna .cv-contact {
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
+}
+
+.cv-moderna .cv-contact p {
+  margin-bottom: 0.25rem;
+  opacity: 0.9;
+}
+
+.cv-moderna .cv-section h2 {
+  font-size: 1.125rem;
+  color: white;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cv-moderna .cv-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cv-moderna .cv-skill-tag {
+  padding: 0.25rem 0.5rem;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  font-size: 0.75rem;
+}
+
+.cv-moderna .cv-languages {
+  list-style: none;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+.cv-moderna .cv-languages li {
+  margin-bottom: 0.25rem;
+  opacity: 0.9;
+}
+
+.cv-moderna .cv-main .cv-section h2 {
+  font-size: 1.25rem;
+  color: #0f766e;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid #0f766e;
+}
+
+.cv-moderna .cv-entry {
+  margin-bottom: 1.5rem;
+}
+
+.cv-moderna .cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cv-moderna .cv-entry-header h3 {
+  font-size: 1.125rem;
+  margin: 0;
+  color: #1f2937;
+}
+
+.cv-moderna .cv-entry-date {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.cv-moderna .cv-entry-company {
+  font-style: italic;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+/* Plantilla Clásica */
+.cv-clasica {
+  max-width: 700px;
+}
+
+.cv-clasica .cv-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.cv-clasica .cv-photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 0 auto 1rem;
+}
+
+.cv-clasica .cv-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cv-clasica .cv-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #1f2937;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.cv-clasica .cv-title {
+  font-size: 1.125rem;
+  color: #6b7280;
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+
+.cv-clasica .cv-contact {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.cv-clasica .cv-section {
+  margin-bottom: 1.5rem;
+}
+
+.cv-clasica .cv-section h2 {
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 1px solid #1f2937;
+}
+
+.cv-clasica .cv-entry {
+  margin-bottom: 1rem;
+}
+
+.cv-clasica .cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cv-clasica .cv-entry-header h3 {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.cv-clasica .cv-entry-date {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.cv-clasica .cv-entry-company {
+  font-style: italic;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.cv-clasica .cv-skills-list,
+.cv-clasica .cv-languages-list {
+  color: #1f2937;
+}
+
+/* Plantilla Minimalista */
+.cv-minimalista {
+  max-width: 650px;
+}
+
+.cv-minimalista .cv-header {
+  margin-bottom: 2.5rem;
+}
+
+.cv-minimalista .cv-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.cv-minimalista .cv-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1f2937;
+  letter-spacing: -0.02em;
+}
+
+.cv-minimalista .cv-title {
+  font-size: 1rem;
+  color: #6b7280;
+  margin: 0.25rem 0 0;
+}
+
+.cv-minimalista .cv-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.cv-minimalista .cv-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cv-minimalista .cv-contact {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.cv-minimalista .cv-section {
+  margin-bottom: 2rem;
+}
+
+.cv-minimalista .cv-section h2 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #0f766e;
+  margin-bottom: 1rem;
+}
+
+.cv-minimalista .cv-entry {
+  margin-bottom: 1.25rem;
+}
+
+.cv-minimalista .cv-entry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cv-minimalista .cv-entry-header h3 {
+  font-size: 1rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+.cv-minimalista .cv-entry-date {
+  font-size: 0.8125rem;
+  color: #9ca3af;
+}
+
+.cv-minimalista .cv-entry-company {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.cv-minimalista .cv-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.cv-minimalista .cv-skill-tag {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid #0f766e;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  color: #0f766e;
+}
+
+.cv-minimalista .cv-languages {
+  list-style: none;
+  padding: 0;
+  font-size: 0.875rem;
+  color: #1f2937;
+}
+
+.cv-minimalista .cv-languages li {
+  margin-bottom: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cv-moderna {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-moderna .cv-sidebar {
+    border-radius: 8px 8px 0 0;
+  }
+}

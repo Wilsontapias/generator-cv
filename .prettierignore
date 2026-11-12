@@ -1,0 +1,11 @@
+node_modules/
+.next/
+coverage/
+calidad/
+stitch_generador_de_cv_accesible/
+*.lock
+package-lock.json
+.env*
+.env.local
+tsconfig.tsbuildinfo
+next-env.d.ts

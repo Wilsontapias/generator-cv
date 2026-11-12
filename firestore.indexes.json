@@ -1,0 +1,21 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "cvs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "uid", "order": "ASCENDING" },
+        { "fieldPath": "actualizadoEn", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "cvs",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "codigo", "order": "ASCENDING" },
+        { "fieldPath": "publica", "order": "ASCENDING" }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

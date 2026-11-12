@@ -1,0 +1,45 @@
+meta {
+  name: Crear CV
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/cv
+  body: json
+  auth: none
+}
+
+headers {
+  Cookie: sesion={{sessionId}}
+}
+
+body:json {
+  {
+    "titulo": "Mi CV de Prueba",
+    "plantilla": "moderna",
+    "datos": {
+      "datos": {
+        "nombre": "Wilson Tapias",
+        "cargo": "Desarrollador",
+        "email": "wilson@example.com",
+        "telefono": "+57 300 123 4567",
+        "ciudad": "Medellín",
+        "linkedin": "",
+        "portfolio": "",
+        "fotoUrl": null
+      },
+      "perfil": "Desarrollador con experiencia en React",
+      "experiencia": [],
+      "estudios": [],
+      "habilidades": [],
+      "idiomas": []
+    }
+  }
+}
+
+tests {
+  test("Status code is 201", function() {
+    expect(res.status).to.equal(201);
+  });
+}

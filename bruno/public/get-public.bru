@@ -1,0 +1,22 @@
+meta {
+  name: Obtener CV Público
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/p/{{codigo}}
+  body: none
+  auth: none
+}
+
+tests {
+  test("Status code is 200", function() {
+    expect(res.status).to.equal(200);
+  });
+  
+  test("Status code is 404 for disabled link", function() {
+    // Este test se ejecuta con un código desactivado
+    // expect(res.status).to.equal(404);
+  });
+}

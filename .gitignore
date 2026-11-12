@@ -31,6 +31,9 @@ yarn-error.log*
 # vercel
 .vercel
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# firebase
+.firebaserc
+firebase-debug.log
+
+# agents (AI skill definitions, not part of project)
+.agents/

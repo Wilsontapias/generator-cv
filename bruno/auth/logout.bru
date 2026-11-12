@@ -1,0 +1,21 @@
+meta {
+  name: Logout (Eliminar Sesión)
+  type: http
+  seq: 2
+}
+
+delete {
+  url: {{baseUrl}}/auth/sesion
+  body: none
+  auth: none
+}
+
+headers {
+  Cookie: sesion={{sessionId}}
+}
+
+tests {
+  test("Status code is 204", function() {
+    expect(res.status).to.equal(204);
+  });
+}

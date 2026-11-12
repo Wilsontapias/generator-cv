@@ -1,0 +1,1635 @@
+<!doctype html>
+
+<html class="light" lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="web_dashboard" name="shell-type" />
+    <title>GeneradorCV App</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @layer base {
+        html,
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        body {
+          overscroll-behavior: none;
+        }
+        main > :first-child {
+          margin-top: 0 !important;
+        }
+        main > :last-child {
+          margin-bottom: 0 !important;
+        }
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-error": "#ffffff",
+              "on-primary-container": "#a3faef",
+              "on-secondary": "#ffffff",
+              "primary-container": "#0f766e",
+              "secondary-fixed-dim": "#4fdbc8",
+              "surface-variant": "#d9e3f6",
+              "on-primary-fixed": "#00201d",
+              "surface-container-high": "#dee9fc",
+              "tertiary-container": "#007a33",
+              "on-tertiary-fixed": "#002109",
+              outline: "#6e7977",
+              "secondary-fixed": "#71f8e4",
+              error: "#ba1a1a",
+              tertiary: "#005f26",
+              "on-primary-fixed-variant": "#00504a",
+              "surface-container-highest": "#d9e3f6",
+              "on-surface": "#121c2a",
+              "inverse-primary": "#80d5cb",
+              "primary-fixed-dim": "#80d5cb",
+              "secondary-container": "#6df5e1",
+              "on-primary": "#ffffff",
+              "on-secondary-container": "#006f64",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#eff4ff",
+              "surface-bright": "#f8f9ff",
+              "on-tertiary": "#ffffff",
+              "surface-tint": "#006a63",
+              background: "#f8f9ff",
+              primary: "#005c55",
+              "surface-dim": "#d0dbed",
+              "on-secondary-fixed-variant": "#005048",
+              "on-tertiary-container": "#a1ffad",
+              "surface-container-lowest": "#ffffff",
+              "outline-variant": "#bdc9c6",
+              "tertiary-fixed": "#7ffc97",
+              "on-surface-variant": "#3e4947",
+              secondary: "#006b5f",
+              "surface-container": "#e6eeff",
+              "tertiary-fixed-dim": "#62df7d",
+              "inverse-on-surface": "#eaf1ff",
+              "on-secondary-fixed": "#00201c",
+              "inverse-surface": "#27313f",
+              "on-tertiary-fixed-variant": "#005320",
+              "error-container": "#ffdad6",
+              "primary-fixed": "#9cf2e8",
+              surface: "#f8f9ff",
+              "on-background": "#121c2a",
+            },
+            borderRadius: { DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px" },
+            spacing: {
+              gutter: "1.5rem",
+              "margin-sm": "1rem",
+              "space-md": "1rem",
+              "space-xs": "0.25rem",
+              margin: "2rem",
+              "space-lg": "1.5rem",
+              "gutter-sm": "1rem",
+              "space-sm": "0.5rem",
+              "space-xl": "2rem",
+            },
+            fontFamily: {
+              "body-lg": ["Inter"],
+              "headline-sm": ["Inter"],
+              "label-badge": ["Inter"],
+              "body-sm": ["Inter"],
+              "headline-xl": ["Inter"],
+              "body-md-medium": ["Inter"],
+              "headline-lg": ["Inter"],
+              "body-md": ["Inter"],
+              "label-code": ["JetBrains Mono"],
+              "headline-md": ["Inter"],
+              "headline-xl-mobile": ["Inter"],
+            },
+            fontSize: {
+              "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+              "headline-sm": [
+                "18px",
+                { lineHeight: "26px", letterSpacing: "-0.005em", fontWeight: "600" },
+              ],
+              "label-badge": [
+                "11px",
+                { lineHeight: "14px", letterSpacing: "0.04em", fontWeight: "600" },
+              ],
+              "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }],
+              "headline-xl": [
+                "32px",
+                { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" },
+              ],
+              "body-md-medium": ["14px", { lineHeight: "20px", fontWeight: "500" }],
+              "headline-lg": [
+                "24px",
+                { lineHeight: "32px", letterSpacing: "-0.015em", fontWeight: "600" },
+              ],
+              "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+              "label-code": [
+                "12px",
+                { lineHeight: "16px", letterSpacing: "0.02em", fontWeight: "500" },
+              ],
+              "headline-md": [
+                "20px",
+                { lineHeight: "28px", letterSpacing: "-0.01em", fontWeight: "600" },
+              ],
+              "headline-xl-mobile": [
+                "26px",
+                { lineHeight: "34px", letterSpacing: "-0.015em", fontWeight: "700" },
+              ],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-surface font-body-md text-on-surface antialiased">
+    <a
+      class="sr-only focus:not-sr-only focus:fixed focus:top-space-sm focus:left-space-sm focus:z-50 focus:px-space-md focus:py-space-sm focus:bg-primary-container focus:text-on-primary-container focus:rounded-lg focus:outline focus:outline-3 focus:outline-primary focus:outline-offset-2 font-body-md-medium text-body-md-medium transition-all"
+      href="#main-content"
+      >Saltar al contenido principal</a
+    >
+    <aside
+      aria-label="Panel de navegación de la aplicación"
+      class="fixed left-0 top-0 h-full w-64 bg-surface-container-low z-40 flex flex-col justify-between py-space-md"
+    >
+      <div class="flex flex-col gap-space-lg">
+        <div class="h-16 px-space-md flex items-center gap-space-sm">
+          <img
+            alt="GeneradorCV Brand Logo"
+            class="h-8 w-auto object-contain"
+            src="https://lh3.googleusercontent.com/aida/ALJJyrBTC5_bMzzNownUImDrfF9n8J9m6NypKkFTaI1c7EI3I-Vg8iUtiRiH6icxDusKNT6joJe9g1Bj404l8aV-_kcABugpi0UYX8ucYBGSZd0kpd2owLos1dMJiWtrQcwIVd-AB8cQ9eXUgZa2ZSx8-nINKiDr2HGUvBnUq3WQQSX8MVdYWe1gimrnwad4_LHIB7TbEL3vPmvHGeynQC_-GhPY74pYu1NloRK43v9zI8SYLQ"
+          />
+          <div class="flex flex-col">
+            <span class="font-headline-sm text-headline-sm text-primary tracking-tight leading-none"
+              >GeneradorCV</span
+            ><span
+              class="font-label-badge text-label-badge text-on-surface-variant uppercase tracking-wider"
+              >Workspace Estudiantil</span
+            >
+          </div>
+        </div>
+        <nav
+          aria-label="Módulos de trabajo"
+          class="flex flex-col gap-space-xs px-space-sm"
+          data-active-classes="bg-primary-container text-on-primary-container font-body-md-medium"
+        >
+          <a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="mis-cvs"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]">folder_shared</span>Mis
+            CVs</a
+          ><a
+            aria-current="page"
+            class="h-11 px-space-md flex items-center rounded-lg transition-all bg-primary-container text-on-primary-container font-body-md-medium"
+            data-path="editor-cv"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]">edit_document</span
+            >Editor en Vivo</a
+          ><a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="plantillas"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]"
+              >dashboard_customize</span
+            >Plantillas</a
+          ><a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="guias-y-consejos"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]">school</span>Guías
+            &amp; Consejos</a
+          ><a
+            class="h-11 px-space-md flex items-center rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all font-body-md text-body-md"
+            data-path="ajustes-cuenta"
+            href="#"
+            ><span class="material-symbols-outlined mr-space-sm text-[20px]">tune</span>Ajustes y
+            Exportación</a
+          >
+        </nav>
+      </div>
+      <div class="px-space-md pt-space-md bg-surface-container-low">
+        <div
+          class="p-space-sm rounded-xl bg-surface-container-lowest flex items-center gap-space-sm"
+        >
+          <span class="material-symbols-outlined text-primary text-[20px]">cloud_done</span>
+          <div class="flex flex-col">
+            <span class="font-label-badge text-label-badge text-tertiary uppercase"
+              >Sincronizado</span
+            ><span class="font-body-sm text-body-sm text-on-surface-variant"
+              >Guardado local &amp; nube</span
+            >
+          </div>
+        </div>
+      </div>
+    </aside>
+    <div class="pl-64">
+      <header
+        class="fixed top-0 left-64 right-0 h-16 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-30 px-space-lg flex items-center justify-between gap-space-md"
+      >
+        <div class="flex items-center gap-space-md">
+          <nav
+            aria-label="Ruta de navegación"
+            class="flex items-center gap-space-xs font-body-sm text-body-sm text-on-surface-variant"
+          >
+            <a
+              class="hover:text-on-surface transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 rounded"
+              data-path="mis-cvs"
+              href="#"
+              >Mis CVs</a
+            ><span class="material-symbols-outlined text-[14px]">chevron_right</span
+            ><span class="text-on-surface font-body-md-medium text-body-md-medium"
+              >CV Primer Empleo - Tecnología</span
+            >
+          </nav>
+          <span
+            class="hidden lg:inline-flex items-center gap-space-xs px-space-sm py-0.5 rounded-full bg-surface-container text-on-surface-variant font-label-badge text-label-badge"
+            ><span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Autoguardado activo</span
+          >
+        </div>
+        <div class="flex items-center gap-space-md">
+          <button
+            aria-label="Cambiar modo de tema"
+            class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+            title="Alternar tema claro u oscuro"
+            type="button"
+          >
+            <span class="material-symbols-outlined text-[20px]">dark_mode</span>
+          </button>
+          <div class="h-6 w-px bg-surface-container-highest"></div>
+          <div class="relative flex items-center gap-space-sm pl-space-xs">
+            <div class="flex items-center gap-space-sm">
+              <img
+                alt="Profile"
+                class="w-8 h-8 rounded-full object-cover"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuApV5JW_WJEsJ732xX45SnIJPSA1f6Xb6CBsJJ5jS0PkV9DTDZwRNZcf-CY9MK_YwplK_H0Vng1LDCyT4LCNSdR5CzthUBcWn4RahY5URBSFzHPxSFKhNInF39DVT0ycrW1cHvK0d8NVN03fXM35jk89MlMCcmsa27rrCP9gf-udbyerDGfXT3Rrg-1EbMzEisAuI4FEYPYtmInvfuzA6_7oGsHV9qOFUmTw5p1Rs80"
+              />
+              <div class="hidden sm:flex flex-col text-left">
+                <span class="font-body-md-medium text-body-md-medium text-on-surface leading-tight"
+                  >Camila Morales</span
+                ><span class="font-body-sm text-body-sm text-on-surface-variant"
+                  >Estudiante - U. Nacional</span
+                >
+              </div>
+            </div>
+            <button
+              aria-expanded="false"
+              aria-label="Abrir menú de usuario de Camila Morales"
+              class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+              type="button"
+            >
+              <span class="material-symbols-outlined text-[20px]">keyboard_arrow_down</span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <main class="relative w-full pt-16 bg-surface min-h-screen" id="main-content">
+        <div class="flex flex-col w-full">
+          <!-- Top Editor Toolbar & Completion Bar -->
+          <div
+            class="w-full bg-surface-container-lowest px-space-lg py-space-sm shadow-sm flex flex-col gap-space-sm"
+          >
+            <div class="flex flex-wrap items-center justify-between gap-space-md">
+              <!-- Title & Auto-Save -->
+              <div class="flex items-center flex-wrap gap-space-md min-w-0">
+                <div class="flex items-center gap-space-xs group">
+                  <input
+                    aria-label="Título del documento de currículum"
+                    class="font-headline-md text-headline-md text-on-surface bg-transparent rounded-lg px-space-xs py-1 hover:bg-surface-container-low focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 transition-colors min-w-[280px] md:w-96 truncate"
+                    id="doc-title-input"
+                    type="text"
+                    value="CV - Práctica Profesional Desarrollo Web"
+                  />
+                  <button
+                    aria-label="Renombrar documento"
+                    class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:text-primary hover:bg-surface-container-low focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 transition-colors"
+                    onclick="document.getElementById('doc-title-input').focus()"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                  </button>
+                </div>
+                <div
+                  class="flex items-center gap-1.5 px-space-sm py-1 rounded-full bg-tertiary-container/15 text-tertiary font-label-badge text-label-badge"
+                >
+                  <span class="material-symbols-outlined text-[16px] text-tertiary"
+                    >check_circle</span
+                  >
+                  <span>Guardado automáticamente a las 14:32</span>
+                </div>
+              </div>
+              <!-- Quick Document Status & Actions -->
+              <div class="flex items-center gap-space-sm">
+                <div
+                  class="hidden xl:flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-low text-on-surface-variant font-body-sm text-body-sm"
+                >
+                  <span class="material-symbols-outlined text-[18px] text-primary">verified</span>
+                  <span>Formato ATS • A4 Estándar</span>
+                </div>
+                <button
+                  aria-label="Historial de versiones anteriores"
+                  class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 transition-all"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[20px]">history</span>
+                </button>
+                <button
+                  aria-label="Ver documento en pantalla completa"
+                  class="lg:hidden h-11 px-space-md flex items-center gap-space-xs rounded-lg bg-primary text-on-primary font-body-md-medium text-body-md-medium shadow-sm focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                  id="toggle-preview-mobile-btn"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined text-[20px]">visibility</span>
+                  <span>Ver CV</span>
+                </button>
+              </div>
+            </div>
+            <!-- Completion Gauge & Tips for Students -->
+            <div
+              class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm pt-space-xs bg-surface-container-low/60 rounded-xl p-space-sm"
+            >
+              <div class="flex items-center gap-space-md flex-1">
+                <div class="flex items-center gap-space-xs">
+                  <span class="font-headline-sm text-headline-sm text-primary">85%</span>
+                  <span class="font-body-sm text-body-sm text-on-surface-variant font-medium"
+                    >Completitud del perfil</span
+                  >
+                </div>
+                <div
+                  aria-label="Progreso del currículum"
+                  aria-valuemax="100"
+                  aria-valuemin="0"
+                  aria-valuenow="85"
+                  class="flex-1 max-w-xs h-2 rounded-full bg-surface-container-high overflow-hidden"
+                  role="progressbar"
+                >
+                  <div
+                    class="h-full bg-primary rounded-full transition-all duration-500 ease-out"
+                    style="width: 85%"
+                  ></div>
+                </div>
+              </div>
+              <div class="flex items-center gap-space-xs text-primary font-body-sm text-body-sm">
+                <span class="material-symbols-outlined text-[18px]">lightbulb</span>
+                <span class="font-body-md-medium text-body-md-medium">Tip estudiantil:</span>
+                <span class="text-on-surface-variant"
+                  >Agrega tu portafolio o GitHub para sumar +15% de efectividad recruiter</span
+                >
+              </div>
+            </div>
+          </div>
+          <!-- Main Split Canvas: Left 50% Form / Right 50% Preview -->
+          <div class="w-full flex flex-col lg:flex-row min-h-[calc(100vh-140px)]">
+            <!-- LEFT COLUMN: Structured Form & Editors (50% Width) -->
+            <section
+              aria-label="Editor estructurado de currículum"
+              class="w-full lg:w-1/2 flex flex-col bg-surface p-space-md lg:p-space-lg space-y-space-lg overflow-y-auto"
+            >
+              <!-- Section Navigation Stepper Tabs (role="tablist") -->
+              <nav aria-label="Secciones del CV" class="w-full overflow-x-auto pb-1">
+                <div
+                  class="flex items-center gap-1.5 p-1 bg-surface-container-low rounded-xl min-w-max"
+                  role="tablist"
+                >
+                  <button
+                    aria-controls="panel-personal"
+                    aria-selected="true"
+                    class="tab-trigger flex items-center gap-space-xs h-11 px-space-md rounded-lg font-body-md-medium text-body-md-medium transition-all bg-surface-container-lowest text-primary shadow-sm"
+                    id="tab-btn-personal"
+                    onclick="switchCvTab('personal')"
+                    role="tab"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">person</span>
+                    <span>Personal</span>
+                  </button>
+                  <button
+                    aria-controls="panel-perfil"
+                    aria-selected="false"
+                    class="tab-trigger flex items-center gap-space-xs h-11 px-space-md rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"
+                    id="tab-btn-perfil"
+                    onclick="switchCvTab('perfil')"
+                    role="tab"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">psychology</span>
+                    <span>Perfil</span>
+                  </button>
+                  <button
+                    aria-controls="panel-experiencia"
+                    aria-selected="false"
+                    class="tab-trigger flex items-center gap-space-xs h-11 px-space-md rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"
+                    id="tab-btn-experiencia"
+                    onclick="switchCvTab('experiencia')"
+                    role="tab"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">work</span>
+                    <span>Experiencia</span>
+                  </button>
+                  <button
+                    aria-controls="panel-educacion"
+                    aria-selected="false"
+                    class="tab-trigger flex items-center gap-space-xs h-11 px-space-md rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"
+                    id="tab-btn-educacion"
+                    onclick="switchCvTab('educacion')"
+                    role="tab"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">school</span>
+                    <span>Estudios</span>
+                  </button>
+                  <button
+                    aria-controls="panel-habilidades"
+                    aria-selected="false"
+                    class="tab-trigger flex items-center gap-space-xs h-11 px-space-md rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"
+                    id="tab-btn-habilidades"
+                    onclick="switchCvTab('habilidades')"
+                    role="tab"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">code</span>
+                    <span>Habilidades</span>
+                  </button>
+                  <button
+                    aria-controls="panel-idiomas"
+                    aria-selected="false"
+                    class="tab-trigger flex items-center gap-space-xs h-11 px-space-md rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all"
+                    id="tab-btn-idiomas"
+                    onclick="switchCvTab('idiomas')"
+                    role="tab"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">translate</span>
+                    <span>Idiomas</span>
+                  </button>
+                </div>
+              </nav>
+              <!-- TAB PANEL 1: Datos Personales -->
+              <div
+                aria-labelledby="tab-btn-personal"
+                class="space-y-space-md"
+                id="panel-personal"
+                role="tabpanel"
+              >
+                <div
+                  class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md"
+                >
+                  <div class="flex items-center justify-between pb-space-xs">
+                    <div>
+                      <h2 class="font-headline-sm text-headline-sm text-on-surface">
+                        Información de Contacto e Identidad
+                      </h2>
+                      <p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Datos básicos visibles al reclutador y filtros automáticos ATS.
+                      </p>
+                    </div>
+                    <span
+                      class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded-full bg-tertiary-container/15 text-tertiary font-label-badge text-label-badge"
+                    >
+                      <span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span> Completo
+                    </span>
+                  </div>
+                  <!-- Photo upload toggle & preview -->
+                  <div
+                    class="flex items-center gap-space-md p-space-sm bg-surface-container-low rounded-xl"
+                  >
+                    <img
+                      class="w-14 h-14 rounded-full object-cover shadow-sm bg-surface-container"
+                      data-alt="Fotografía profesional de perfil estilo corporativo moderno de estudiante universitaria joven sonriendo amablemente fondo de luz de estudio neutro y vestimenta ejecutiva informal"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_nZx4BuHGkEE2jvkffJMTGt6Gk2YtFR99AWmAg5FI6eXo0oxgSTzi0EGTGaaQ0QKEgibwTO8yJt3M5pS8t_f352iAABIyTj0YMMDHVLqDFzLuG9CjU3TqdpeTuBgxJATUka-5hgWEJU7eVoWW4qQqMDxXkJ1GsG8VomGihkv2f33TpCWb8W7fL01nxpwoZzYd0IYtR5rTOui-8JElUpXUtRZE0zpL9-rQLX0P_CZI"
+                    />
+                    <div class="flex flex-col flex-1">
+                      <span class="font-body-md-medium text-body-md-medium text-on-surface"
+                        >Fotografía en el currículum</span
+                      >
+                      <span class="font-body-sm text-body-sm text-on-surface-variant"
+                        >Recomendado para Colombia/LatAm y opcional para EE.UU.</span
+                      >
+                    </div>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                      <input
+                        aria-label="Incluir foto en el CV"
+                        checked=""
+                        class="sr-only peer"
+                        id="photo-toggle"
+                        type="checkbox"
+                      />
+                      <div
+                        class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"
+                      ></div>
+                    </label>
+                  </div>
+                  <!-- Grid form fields -->
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+                    <!-- Full Name -->
+                    <div class="flex flex-col gap-1">
+                      <label
+                        class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        for="input-fullname"
+                        >Nombre y Apellidos</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 transition-all shadow-inner"
+                        id="input-fullname"
+                        type="text"
+                        value="Camila Morales Castro"
+                      />
+                    </div>
+                    <!-- Professional Headline -->
+                    <div class="flex flex-col gap-1">
+                      <label
+                        class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        for="input-headline"
+                        >Título o Enfoque Profesional</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 transition-all shadow-inner"
+                        id="input-headline"
+                        type="text"
+                        value="Estudiante de Ingeniería de Sistemas | Frontend Dev"
+                      />
+                    </div>
+                    <!-- Email -->
+                    <div class="flex flex-col gap-1">
+                      <label
+                        class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        for="input-email"
+                        >Correo institucional o profesional</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 transition-all shadow-inner"
+                        id="input-email"
+                        type="email"
+                        value="camila.morales@unal.edu.co"
+                      />
+                    </div>
+                    <!-- Phone -->
+                    <div class="flex flex-col gap-1">
+                      <label
+                        class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        for="input-phone"
+                        >Número de teléfono / WhatsApp</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 transition-all shadow-inner"
+                        id="input-phone"
+                        type="tel"
+                        value="+57 312 458 9021"
+                      />
+                    </div>
+                    <!-- City / Country -->
+                    <div class="flex flex-col gap-1">
+                      <label
+                        class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        for="input-location"
+                        >Ciudad y País</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 transition-all shadow-inner"
+                        id="input-location"
+                        type="text"
+                        value="Bogotá, Colombia"
+                      />
+                    </div>
+                    <!-- LinkedIn -->
+                    <div class="flex flex-col gap-1">
+                      <label
+                        class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        for="input-linkedin"
+                        >Enlace LinkedIn / Portafolio</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 transition-all shadow-inner"
+                        id="input-linkedin"
+                        type="url"
+                        value="linkedin.com/in/camilamorales-dev"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- TAB PANEL 2: Perfil Profesional -->
+              <div
+                aria-labelledby="tab-btn-perfil"
+                class="space-y-space-md hidden"
+                id="panel-perfil"
+                role="tabpanel"
+              >
+                <div
+                  class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md"
+                >
+                  <div class="flex items-center justify-between pb-space-xs">
+                    <div>
+                      <h2 class="font-headline-sm text-headline-sm text-on-surface">
+                        Extracto Profesional / Perfil
+                      </h2>
+                      <p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Sintetiza tu valor, aspiración y fortalezas académicas en 3-4 oraciones.
+                      </p>
+                    </div>
+                    <span
+                      class="font-label-code text-label-code text-on-surface-variant px-2.5 py-1 bg-surface-container-low rounded-md"
+                      >320 / 500 caract.</span
+                    >
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <textarea
+                      aria-label="Resumen del perfil profesional"
+                      class="w-full p-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 transition-all leading-relaxed shadow-inner"
+                      id="profile-summary-text"
+                      rows="5"
+                    >
+Estudiante de 8.° semestre de Ingeniería de Sistemas con sólida formación en desarrollo web frontend (React, TypeScript) y arquitectura de software. Apasionada por el diseño de interfaces accesibles, el trabajo colaborativo ágil y la resolución estructurada de problemas computacionales. Busco incorporarme como practicante o desarrolladora junior para contribuir en proyectos reales de alto impacto técnico.</textarea>
+                  </div>
+                  <!-- Suggested Action Verbs -->
+                  <div
+                    class="flex flex-col gap-space-xs bg-surface-container-low p-space-sm rounded-xl"
+                  >
+                    <span
+                      class="font-body-sm text-body-sm font-medium text-on-surface-variant flex items-center gap-1"
+                    >
+                      <span class="material-symbols-outlined text-[16px] text-primary"
+                        >auto_fix_high</span
+                      >
+                      Sugerencias de verbos de acción para estudiantes:
+                    </span>
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                      <button
+                        class="px-space-sm py-1 rounded-full bg-surface-container-lowest text-primary font-body-sm text-body-sm hover:bg-primary-container hover:text-on-primary-container transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="button"
+                      >
+                        + Diseñé
+                      </button>
+                      <button
+                        class="px-space-sm py-1 rounded-full bg-surface-container-lowest text-primary font-body-sm text-body-sm hover:bg-primary-container hover:text-on-primary-container transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="button"
+                      >
+                        + Implementé
+                      </button>
+                      <button
+                        class="px-space-sm py-1 rounded-full bg-surface-container-lowest text-primary font-body-sm text-body-sm hover:bg-primary-container hover:text-on-primary-container transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="button"
+                      >
+                        + Optimicé
+                      </button>
+                      <button
+                        class="px-space-sm py-1 rounded-full bg-surface-container-lowest text-primary font-body-sm text-body-sm hover:bg-primary-container hover:text-on-primary-container transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="button"
+                      >
+                        + Colaboré
+                      </button>
+                      <button
+                        class="px-space-sm py-1 rounded-full bg-surface-container-lowest text-primary font-body-sm text-body-sm hover:bg-primary-container hover:text-on-primary-container transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="button"
+                      >
+                        + Coordiné
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- TAB PANEL 3: Experiencia Laboral & Pasantías -->
+              <div
+                aria-labelledby="tab-btn-experiencia"
+                class="space-y-space-md hidden"
+                id="panel-experiencia"
+                role="tabpanel"
+              >
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h2 class="font-headline-sm text-headline-sm text-on-surface">
+                      Experiencia y Pasantías
+                    </h2>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Prácticas, ayudantías de investigación, voluntariado o roles freelance.
+                    </p>
+                  </div>
+                  <button
+                    class="h-11 px-space-md flex items-center gap-space-xs rounded-lg bg-primary text-on-primary font-body-md-medium text-body-md-medium shadow-sm hover:bg-primary-container hover:text-on-primary-container transition-all focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">add</span>
+                    <span>Agregar Puesto</span>
+                  </button>
+                </div>
+                <!-- Draggable Experience Card 1 -->
+                <div
+                  class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm group"
+                >
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-space-sm">
+                      <button
+                        aria-label="Reordenar experiencia"
+                        class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-low cursor-grab active:cursor-grabbing focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+                      </button>
+                      <div>
+                        <span class="font-body-md-medium text-body-md-medium text-on-surface"
+                          >Asistente Técnica de Desarrollo Web (Monitoría)</span
+                        >
+                        <span class="block font-body-sm text-body-sm text-on-surface-variant"
+                          >Laboratorio de Software • U. Nacional • Ago 2023 - Presente</span
+                        >
+                      </div>
+                    </div>
+                    <div class="flex items-center gap-space-xs">
+                      <button
+                        aria-label="Colapsar puesto"
+                        class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-low focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[20px]">expand_less</span>
+                      </button>
+                      <button
+                        aria-label="Eliminar puesto"
+                        class="w-11 h-11 flex items-center justify-center rounded-lg text-error hover:bg-error-container/40 focus-visible:outline focus-visible:outline-3 focus-visible:outline-error focus-visible:outline-offset-2"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[20px]">delete</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm pt-space-xs">
+                    <div class="flex flex-col gap-1">
+                      <label class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        >Cargo o Rol</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="text"
+                        value="Asistente Técnica de Desarrollo Frontend"
+                      />
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <label class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        >Empresa u Organización</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="text"
+                        value="Universidad Nacional de Colombia"
+                      />
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <label class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        >Fecha de Inicio</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="text"
+                        value="Agosto 2023"
+                      />
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <label class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        >Fecha de Fin</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="text"
+                        value="Actualmente laborando"
+                      />
+                    </div>
+                    <div class="col-span-full flex flex-col gap-1">
+                      <label class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        >Logros y Responsabilidades (bullets recomendados)</label
+                      >
+                      <textarea
+                        class="p-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        rows="3"
+                      >
+• Rediseñé el portal interno de reservas de laboratorios reduciendo los tiempos de carga en un 40%.
+• Desarrollé componentes reutilizables en React y Tailwind CSS para 5 aplicaciones internas.
+• Asistí a más de 120 estudiantes en talleres de Git, metodologías ágiles y estándares web.</textarea>
+                    </div>
+                  </div>
+                </div>
+                <!-- Draggable Experience Card 2 (Colapsado) -->
+                <div
+                  class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex items-center justify-between"
+                >
+                  <div class="flex items-center gap-space-sm">
+                    <button
+                      aria-label="Reordenar experiencia"
+                      class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-low cursor-grab focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                      type="button"
+                    >
+                      <span class="material-symbols-outlined text-[20px]">drag_indicator</span>
+                    </button>
+                    <div>
+                      <span class="font-body-md-medium text-body-md-medium text-on-surface"
+                        >Desarrolladora Web Freelance • Proyectos Pymes</span
+                      >
+                      <span class="block font-body-sm text-body-sm text-on-surface-variant"
+                        >Independiente • Ene 2023 - Jun 2023</span
+                      >
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-space-xs">
+                    <button
+                      aria-label="Expandir puesto"
+                      class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-low focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                      type="button"
+                    >
+                      <span class="material-symbols-outlined text-[20px]">expand_more</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- TAB PANEL 4: Educación / Estudios -->
+              <div
+                aria-labelledby="tab-btn-educacion"
+                class="space-y-space-md hidden"
+                id="panel-educacion"
+                role="tabpanel"
+              >
+                <div class="flex items-center justify-between">
+                  <div>
+                    <h2 class="font-headline-sm text-headline-sm text-on-surface">
+                      Formación Universitaria y Estudios
+                    </h2>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Institución, carrera, año de grado previsto y méritos académicos.
+                    </p>
+                  </div>
+                  <button
+                    class="h-11 px-space-md flex items-center gap-space-xs rounded-lg bg-primary text-on-primary font-body-md-medium text-body-md-medium shadow-sm hover:bg-primary-container hover:text-on-primary-container transition-all focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">add</span>
+                    <span>Agregar Estudio</span>
+                  </button>
+                </div>
+                <div
+                  class="bg-surface-container-lowest rounded-xl p-space-md shadow-sm flex flex-col gap-space-sm"
+                >
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-space-sm">
+                    <div class="flex flex-col gap-1">
+                      <label class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        >Universidad o Instituto</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="text"
+                        value="Universidad Nacional de Colombia"
+                      />
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <label class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        >Carrera o Título Obtenido</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="text"
+                        value="Pregrado en Ingeniería de Sistemas"
+                      />
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <label class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        >Fecha Prevista de Graduación</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="text"
+                        value="Diciembre 2025 (8.° semestre actual)"
+                      />
+                    </div>
+                    <div class="flex flex-col gap-1">
+                      <label class="font-body-sm text-body-sm font-medium text-on-surface-variant"
+                        >Promedio / Honores (Opcional)</label
+                      >
+                      <input
+                        class="h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                        type="text"
+                        value="Promedio Ponderado: 4.6 / 5.0 (Top 5% de cohorte)"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- TAB PANEL 5: Habilidades Técnicas y Blandas -->
+              <div
+                aria-labelledby="tab-btn-habilidades"
+                class="space-y-space-md hidden"
+                id="panel-habilidades"
+                role="tabpanel"
+              >
+                <div
+                  class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md"
+                >
+                  <div>
+                    <h2 class="font-headline-sm text-headline-sm text-on-surface">
+                      Habilidades Técnicas y Blandas
+                    </h2>
+                    <p class="font-body-sm text-body-sm text-on-surface-variant">
+                      Agrega tags de competencias comprobadas en proyectos de aula o prácticas.
+                    </p>
+                  </div>
+                  <!-- Active tags list -->
+                  <div class="flex flex-wrap gap-2 pt-1" id="skills-badge-list">
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface font-body-sm text-body-sm"
+                    >
+                      React.js
+                      <button
+                        aria-label="Remover React"
+                        class="w-5 h-5 flex items-center justify-center rounded-full hover:bg-surface-container-highest text-on-surface-variant hover:text-error"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[14px]">close</span>
+                      </button>
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface font-body-sm text-body-sm"
+                    >
+                      TypeScript
+                      <button
+                        aria-label="Remover TypeScript"
+                        class="w-5 h-5 flex items-center justify-center rounded-full hover:bg-surface-container-highest text-on-surface-variant hover:text-error"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[14px]">close</span>
+                      </button>
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface font-body-sm text-body-sm"
+                    >
+                      Tailwind CSS
+                      <button
+                        aria-label="Remover Tailwind CSS"
+                        class="w-5 h-5 flex items-center justify-center rounded-full hover:bg-surface-container-highest text-on-surface-variant hover:text-error"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[14px]">close</span>
+                      </button>
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface font-body-sm text-body-sm"
+                    >
+                      Git &amp; GitHub
+                      <button
+                        aria-label="Remover Git"
+                        class="w-5 h-5 flex items-center justify-center rounded-full hover:bg-surface-container-highest text-on-surface-variant hover:text-error"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[14px]">close</span>
+                      </button>
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary-container/50 text-secondary font-body-sm text-body-sm"
+                    >
+                      Trabajo en Equipo
+                      <button
+                        aria-label="Remover Trabajo en equipo"
+                        class="w-5 h-5 flex items-center justify-center rounded-full hover:bg-secondary-container text-secondary"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[14px]">close</span>
+                      </button>
+                    </span>
+                    <span
+                      class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary-container/50 text-secondary font-body-sm text-body-sm"
+                    >
+                      Metodologías Ágiles (Scrum)
+                      <button
+                        aria-label="Remover Scrum"
+                        class="w-5 h-5 flex items-center justify-center rounded-full hover:bg-secondary-container text-secondary"
+                        type="button"
+                      >
+                        <span class="material-symbols-outlined text-[14px]">close</span>
+                      </button>
+                    </span>
+                  </div>
+                  <!-- Add skill input -->
+                  <div class="flex items-center gap-space-sm pt-space-xs">
+                    <input
+                      aria-label="Escribir nueva habilidad"
+                      class="flex-1 h-11 px-space-md rounded-lg bg-surface-container-low text-on-surface font-body-md text-body-md focus:bg-surface-container-lowest focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2 transition-all shadow-inner"
+                      placeholder="Ej: Node.js, SQL, Pensamiento Crítico..."
+                      type="text"
+                    />
+                    <button
+                      class="h-11 px-space-md rounded-lg bg-surface-container-high text-on-surface font-body-md-medium text-body-md-medium hover:bg-primary-container hover:text-on-primary-container transition-all focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                      type="button"
+                    >
+                      Agregar Tag
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <!-- TAB PANEL 6: Idiomas -->
+              <div
+                aria-labelledby="tab-btn-idiomas"
+                class="space-y-space-md hidden"
+                id="panel-idiomas"
+                role="tabpanel"
+              >
+                <div
+                  class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm flex flex-col gap-space-md"
+                >
+                  <div class="flex items-center justify-between">
+                    <div>
+                      <h2 class="font-headline-sm text-headline-sm text-on-surface">
+                        Idiomas y Competencia
+                      </h2>
+                      <p class="font-body-sm text-body-sm text-on-surface-variant">
+                        Estándar según el Marco Común Europeo (MCER).
+                      </p>
+                    </div>
+                    <button
+                      class="h-11 px-space-md flex items-center gap-space-xs rounded-lg bg-primary text-on-primary font-body-md-medium text-body-md-medium shadow-sm hover:bg-primary-container hover:text-on-primary-container transition-all focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                      type="button"
+                    >
+                      <span class="material-symbols-outlined text-[18px]">add</span>
+                      <span>Añadir Idioma</span>
+                    </button>
+                  </div>
+                  <div class="space-y-space-sm">
+                    <div
+                      class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-xl"
+                    >
+                      <div class="flex items-center gap-space-md">
+                        <span class="material-symbols-outlined text-primary">public</span>
+                        <div>
+                          <span class="font-body-md-medium text-body-md-medium text-on-surface"
+                            >Español</span
+                          >
+                          <span class="block font-body-sm text-body-sm text-on-surface-variant"
+                            >Lengua Materna / Nativo</span
+                          >
+                        </div>
+                      </div>
+                      <span
+                        class="font-label-badge text-label-badge px-space-sm py-1 bg-surface-container-highest rounded-full text-on-surface"
+                        >Nativo</span
+                      >
+                    </div>
+                    <div
+                      class="flex items-center justify-between p-space-sm bg-surface-container-low rounded-xl"
+                    >
+                      <div class="flex items-center gap-space-md">
+                        <span class="material-symbols-outlined text-primary">public</span>
+                        <div>
+                          <span class="font-body-md-medium text-body-md-medium text-on-surface"
+                            >Inglés</span
+                          >
+                          <span class="block font-body-sm text-body-sm text-on-surface-variant"
+                            >B2 - Intermedio Avanzado (Conversacional y Técnico)</span
+                          >
+                        </div>
+                      </div>
+                      <span
+                        class="font-label-badge text-label-badge px-space-sm py-1 bg-surface-container-highest rounded-full text-on-surface"
+                        >B2 Profesional</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- RIGHT COLUMN: Interactive Live Preview Pane (50% Width) -->
+            <section
+              aria-label="Vista previa interactiva del currículum"
+              class="w-full lg:w-1/2 flex flex-col bg-surface-container-low p-space-md lg:p-space-lg space-y-space-md"
+            >
+              <!-- Preview Control Toolbar -->
+              <div
+                class="w-full bg-surface-container-lowest rounded-xl p-space-sm shadow-sm flex flex-wrap items-center justify-between gap-space-sm"
+              >
+                <!-- Template Switcher Pills -->
+                <div
+                  aria-label="Seleccionar plantilla de CV"
+                  class="flex items-center gap-1 p-1 bg-surface-container-low rounded-lg"
+                  role="radiogroup"
+                >
+                  <button
+                    aria-checked="true"
+                    class="h-9 px-space-sm rounded font-body-sm font-medium transition-all bg-surface-container-lowest text-primary shadow-xs"
+                    id="template-btn-teal"
+                    onclick="setTemplateStyle('teal')"
+                    role="radio"
+                    type="button"
+                  >
+                    Académica Teal
+                  </button>
+                  <button
+                    aria-checked="false"
+                    class="h-9 px-space-sm rounded font-body-sm font-medium transition-all text-on-surface-variant hover:text-on-surface hover:bg-surface-container"
+                    id="template-btn-minimal"
+                    onclick="setTemplateStyle('minimal')"
+                    role="radio"
+                    type="button"
+                  >
+                    Minimalista
+                  </button>
+                  <button
+                    aria-checked="false"
+                    class="h-9 px-space-sm rounded font-body-sm font-medium transition-all text-on-surface-variant hover:text-on-surface hover:bg-surface-container"
+                    id="template-btn-tech"
+                    onclick="setTemplateStyle('tech')"
+                    role="radio"
+                    type="button"
+                  >
+                    Tech Grid
+                  </button>
+                </div>
+                <!-- Zoom & Scale Controls -->
+                <div class="flex items-center gap-1">
+                  <button
+                    aria-label="Reducir zoom de vista previa"
+                    class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-low focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    id="zoom-out-btn"
+                    onclick="adjustZoom(-0.1)"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">zoom_out</span>
+                  </button>
+                  <span
+                    class="font-label-code text-label-code text-on-surface-variant px-space-xs min-w-[48px] text-center"
+                    id="zoom-indicator"
+                    >100%</span
+                  >
+                  <button
+                    aria-label="Aumentar zoom de vista previa"
+                    class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-low focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    id="zoom-in-btn"
+                    onclick="adjustZoom(0.1)"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">zoom_in</span>
+                  </button>
+                  <button
+                    aria-label="Ajustar tamaño a la pantalla"
+                    class="w-11 h-11 flex items-center justify-center rounded-lg text-on-surface-variant hover:bg-surface-container-low focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    onclick="resetZoom()"
+                    title="Ajustar página"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">fit_screen</span>
+                  </button>
+                </div>
+                <!-- Primary Action CTA Buttons -->
+                <div class="flex items-center gap-space-xs ml-auto">
+                  <button
+                    class="h-11 px-space-md flex items-center gap-space-xs rounded-lg bg-surface-container text-on-surface font-body-md-medium text-body-md-medium hover:bg-surface-container-high transition-colors focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">share</span>
+                    <span class="hidden sm:inline">Compartir</span>
+                  </button>
+                  <button
+                    class="h-11 px-space-md flex items-center gap-space-xs rounded-lg bg-primary text-on-primary font-body-md-medium text-body-md-medium shadow-sm hover:bg-primary-container hover:text-on-primary-container transition-all focus-visible:outline focus-visible:outline-3 focus-visible:outline-primary focus-visible:outline-offset-2"
+                    type="button"
+                  >
+                    <span class="material-symbols-outlined text-[18px]">download</span>
+                    <span>Descargar PDF</span>
+                  </button>
+                </div>
+              </div>
+              <!-- Live A4 CV Sheet Container (Paper Space on Desk) -->
+              <div
+                class="flex-1 w-full flex justify-center items-start overflow-auto p-space-sm md:p-space-md bg-surface-dim/40 rounded-2xl"
+              >
+                <div
+                  class="bg-surface-container-lowest text-on-surface shadow-2xl rounded-sm transition-transform duration-200 ease-out flex flex-col"
+                  id="cv-paper-document"
+                  style="width: 210mm; min-height: 297mm; transform-origin: top center"
+                >
+                  <!-- Dynamic CV Template Render -->
+                  <div class="flex flex-row w-full min-h-[297mm]">
+                    <!-- Left Lateral Column (Accent Teal #0f766e) -->
+                    <aside
+                      class="w-1/3 bg-primary text-on-primary p-7 flex flex-col justify-between space-y-6"
+                    >
+                      <div class="space-y-6">
+                        <!-- Profile Avatar on CV -->
+                        <div class="flex flex-col items-center text-center space-y-3">
+                          <div
+                            class="w-28 h-28 rounded-full overflow-hidden p-1 bg-surface-container-lowest/20 shadow-md"
+                          >
+                            <img
+                              class="w-full h-full object-cover rounded-full"
+                              data-alt="Retrato profesional de perfil en estudio de Camila Morales estudiante universitaria de ingeniería con fondo limpio"
+                              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAaxcH_LI88iWrFg0xIttNQXmXQLhpE3ZM6w3QIWu0xsWlnoQozaHHKBVKQChDcoY7yHX7N5rgZAYkYYLljm0O0F54GFMPZpQxZOz0dPsdp73IVYwgcOnskoZPJgPanU-6PBsyhLY5lPdoMLWRhLHx45bpai4-AhRKvG8oNLj1pe_ZmCZ5DG4VTmhfypooLG0jQ83-cgZJ7u1BckdtX6ahu64iWeLID4FyBaMQTpnI"
+                            />
+                          </div>
+                          <div>
+                            <h2
+                              class="font-headline-sm text-headline-sm text-on-primary font-bold leading-tight"
+                            >
+                              Camila Morales
+                            </h2>
+                            <span class="font-body-sm text-body-sm text-on-primary/80"
+                              >Estudiante de Ingeniería de Sistemas</span
+                            >
+                          </div>
+                        </div>
+                        <!-- Contact & Socials -->
+                        <div class="space-y-3 pt-3 border-t border-on-primary/15">
+                          <h3
+                            class="font-label-badge text-label-badge uppercase tracking-wider text-secondary-fixed"
+                          >
+                            Contacto
+                          </h3>
+                          <div class="space-y-2.5 font-body-sm text-body-sm text-on-primary/90">
+                            <div class="flex items-center gap-2">
+                              <span
+                                class="material-symbols-outlined text-[16px] text-secondary-fixed"
+                                >mail</span
+                              >
+                              <span class="truncate">camila.morales@unal.edu.co</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                              <span
+                                class="material-symbols-outlined text-[16px] text-secondary-fixed"
+                                >call</span
+                              >
+                              <span>+57 312 458 9021</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                              <span
+                                class="material-symbols-outlined text-[16px] text-secondary-fixed"
+                                >location_on</span
+                              >
+                              <span>Bogotá, Colombia</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                              <span
+                                class="material-symbols-outlined text-[16px] text-secondary-fixed"
+                                >link</span
+                              >
+                              <span class="truncate">linkedin.com/in/camilamorales-dev</span>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- Skills & Technologies -->
+                        <div class="space-y-3 pt-3 border-t border-on-primary/15">
+                          <h3
+                            class="font-label-badge text-label-badge uppercase tracking-wider text-secondary-fixed"
+                          >
+                            Habilidades Técnicas
+                          </h3>
+                          <div class="flex flex-wrap gap-1.5 font-label-badge text-label-badge">
+                            <span
+                              class="px-2 py-0.5 rounded bg-surface-container-lowest/15 text-on-primary"
+                              >React.js</span
+                            >
+                            <span
+                              class="px-2 py-0.5 rounded bg-surface-container-lowest/15 text-on-primary"
+                              >TypeScript</span
+                            >
+                            <span
+                              class="px-2 py-0.5 rounded bg-surface-container-lowest/15 text-on-primary"
+                              >JavaScript ES6+</span
+                            >
+                            <span
+                              class="px-2 py-0.5 rounded bg-surface-container-lowest/15 text-on-primary"
+                              >Tailwind CSS</span
+                            >
+                            <span
+                              class="px-2 py-0.5 rounded bg-surface-container-lowest/15 text-on-primary"
+                              >HTML5 / CSS3</span
+                            >
+                            <span
+                              class="px-2 py-0.5 rounded bg-surface-container-lowest/15 text-on-primary"
+                              >Git &amp; GitHub</span
+                            >
+                            <span
+                              class="px-2 py-0.5 rounded bg-surface-container-lowest/15 text-on-primary"
+                              >REST APIs</span
+                            >
+                            <span
+                              class="px-2 py-0.5 rounded bg-surface-container-lowest/15 text-on-primary"
+                              >PostgreSQL</span
+                            >
+                          </div>
+                        </div>
+                        <!-- Languages -->
+                        <div class="space-y-2.5 pt-3 border-t border-on-primary/15">
+                          <h3
+                            class="font-label-badge text-label-badge uppercase tracking-wider text-secondary-fixed"
+                          >
+                            Idiomas
+                          </h3>
+                          <div class="font-body-sm text-body-sm space-y-1">
+                            <div class="flex justify-between">
+                              <span class="font-medium text-on-primary">Español</span>
+                              <span class="text-on-primary/80">Nativo</span>
+                            </div>
+                            <div class="flex justify-between">
+                              <span class="font-medium text-on-primary">Inglés</span>
+                              <span class="text-on-primary/80">B2 Profesional</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Footer Verification Stamp -->
+                      <div class="pt-4 border-t border-on-primary/15 text-center">
+                        <span class="font-label-badge text-[10px] text-on-primary/60 tracking-wider"
+                          >GENERADO VÍA GENERADORCV • VERIFICADO</span
+                        >
+                      </div>
+                    </aside>
+                    <!-- Main Right Column of the CV Page -->
+                    <main
+                      class="w-2/3 p-8 flex flex-col justify-between space-y-6 bg-surface-container-lowest"
+                    >
+                      <div class="space-y-6">
+                        <!-- Header Title on Document -->
+                        <div class="border-b-2 border-primary pb-4">
+                          <h1
+                            class="font-headline-xl text-headline-xl text-primary font-bold tracking-tight"
+                          >
+                            CAMILA MORALES CASTRO
+                          </h1>
+                          <p
+                            class="font-body-md-medium text-body-md-medium text-on-surface-variant uppercase tracking-wider mt-1"
+                          >
+                            Estudiante de Ingeniería de Sistemas • Desarrollo Frontend
+                          </p>
+                        </div>
+                        <!-- Profile Paragraph -->
+                        <div class="space-y-2">
+                          <div class="flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary text-[20px]"
+                              >psychology</span
+                            >
+                            <h2
+                              class="font-headline-sm text-headline-sm text-primary uppercase tracking-wide"
+                            >
+                              Perfil Profesional
+                            </h2>
+                          </div>
+                          <p
+                            class="font-body-md text-body-md text-on-surface leading-relaxed text-justify"
+                          >
+                            Estudiante de 8.° semestre de Ingeniería de Sistemas con sólida
+                            formación en desarrollo web frontend (React, TypeScript) y arquitectura
+                            de software. Apasionada por el diseño de interfaces accesibles, el
+                            trabajo colaborativo ágil y la resolución estructurada de problemas
+                            computacionales. Busco incorporarme como practicante o desarrolladora
+                            junior para contribuir en proyectos reales de alto impacto técnico.
+                          </p>
+                        </div>
+                        <!-- Academic Experience & Internships -->
+                        <div class="space-y-4">
+                          <div
+                            class="flex items-center gap-2 border-b border-surface-container-high pb-1"
+                          >
+                            <span class="material-symbols-outlined text-primary text-[20px]"
+                              >work</span
+                            >
+                            <h2
+                              class="font-headline-sm text-headline-sm text-primary uppercase tracking-wide"
+                            >
+                              Experiencia y Pasantías
+                            </h2>
+                          </div>
+                          <!-- Role 1 -->
+                          <div class="space-y-1.5">
+                            <div class="flex justify-between items-baseline">
+                              <span
+                                class="font-body-md-medium text-body-md-medium text-on-surface font-bold"
+                                >Asistente Técnica de Desarrollo Web (Monitoría)</span
+                              >
+                              <span class="font-label-code text-label-code text-on-surface-variant"
+                                >Ago 2023 - Presente</span
+                              >
+                            </div>
+                            <span class="font-body-sm text-body-sm text-primary font-medium"
+                              >Universidad Nacional de Colombia • Bogotá</span
+                            >
+                            <ul
+                              class="list-disc list-inside font-body-sm text-body-sm text-on-surface space-y-1 pt-1 leading-normal"
+                            >
+                              <li>
+                                Rediseñé el portal interno de reservas de laboratorios reduciendo
+                                los tiempos de carga en un 40%.
+                              </li>
+                              <li>
+                                Desarrollé componentes reutilizables en React y Tailwind CSS para 5
+                                aplicaciones internas.
+                              </li>
+                              <li>
+                                Asistí a más de 120 estudiantes en talleres de Git, metodologías
+                                ágiles y estándares web.
+                              </li>
+                            </ul>
+                          </div>
+                          <!-- Role 2 -->
+                          <div class="space-y-1.5 pt-2">
+                            <div class="flex justify-between items-baseline">
+                              <span
+                                class="font-body-md-medium text-body-md-medium text-on-surface font-bold"
+                                >Desarrolladora Frontend Junior (Proyecto Académico)</span
+                              >
+                              <span class="font-label-code text-label-code text-on-surface-variant"
+                                >Feb 2023 - Jun 2023</span
+                              >
+                            </div>
+                            <span class="font-body-sm text-body-sm text-primary font-medium"
+                              >Iniciativa Universitaria de Vinculación con PYMES</span
+                            >
+                            <ul
+                              class="list-disc list-inside font-body-sm text-body-sm text-on-surface space-y-1 pt-1 leading-normal"
+                            >
+                              <li>
+                                Construí el catálogo digital de productos para comercio minorista
+                                local usando TypeScript y Next.js.
+                              </li>
+                              <li>
+                                Integración con API REST de pagos y panel administrativo con
+                                métricas de ventas.
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <!-- Education -->
+                        <div class="space-y-3">
+                          <div
+                            class="flex items-center gap-2 border-b border-surface-container-high pb-1"
+                          >
+                            <span class="material-symbols-outlined text-primary text-[20px]"
+                              >school</span
+                            >
+                            <h2
+                              class="font-headline-sm text-headline-sm text-primary uppercase tracking-wide"
+                            >
+                              Educación Universitaria
+                            </h2>
+                          </div>
+                          <div class="space-y-1">
+                            <div class="flex justify-between items-baseline">
+                              <span
+                                class="font-body-md-medium text-body-md-medium text-on-surface font-bold"
+                                >Universidad Nacional de Colombia</span
+                              >
+                              <span class="font-label-code text-label-code text-on-surface-variant"
+                                >Graduación Prevista: Dic 2025</span
+                              >
+                            </div>
+                            <div class="flex justify-between text-body-sm text-body-sm">
+                              <span class="text-on-surface"
+                                >Pregrado en Ingeniería de Sistemas y Computación</span
+                              >
+                              <span class="text-tertiary font-medium"
+                                >Promedio: 4.6 / 5.0 (Top 5%)</span
+                              >
+                            </div>
+                            <p
+                              class="font-body-sm text-body-sm text-on-surface-variant italic pt-0.5"
+                            >
+                              Beca por Excelencia Académica (Semestre 2023-II y 2024-I)
+                            </p>
+                          </div>
+                        </div>
+                        <!-- Academic Highlights / Awards -->
+                        <div class="space-y-2">
+                          <div
+                            class="flex items-center gap-2 border-b border-surface-container-high pb-1"
+                          >
+                            <span class="material-symbols-outlined text-primary text-[20px]"
+                              >award_star</span
+                            >
+                            <h2
+                              class="font-headline-sm text-headline-sm text-primary uppercase tracking-wide"
+                            >
+                              Reconocimientos &amp; Proyectos
+                            </h2>
+                          </div>
+                          <div
+                            class="font-body-sm text-body-sm text-on-surface space-y-1 leading-normal"
+                          >
+                            <p>
+                              <span class="font-medium text-on-surface"
+                                >1er Puesto Hackathon Estudiantil UNAL (2023):</span
+                              >
+                              Solución de telemetría IoT y dashboard en tiempo real.
+                            </p>
+                            <p>
+                              <span class="font-medium text-on-surface"
+                                >Proyecto Open-Source 'EduAccess':</span
+                              >
+                              Librería de componentes UI accesibles certificada WCAG 2.1 AA.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- Page Counter Stamp -->
+                      <div
+                        class="pt-4 flex justify-between items-center text-on-surface-variant font-label-code text-[11px]"
+                      >
+                        <span>Página 1 de 1 • Curriculum Vitae</span>
+                        <span>Bogotá, Colombia</span>
+                      </div>
+                    </main>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+        <script>
+          // Tab Switcher for Editor Left Column
+          function switchCvTab(tabName) {
+            const tabs = [
+              "personal",
+              "perfil",
+              "experiencia",
+              "educacion",
+              "habilidades",
+              "idiomas",
+            ];
+            tabs.forEach((t) => {
+              const panel = document.getElementById("panel-" + t);
+              const btn = document.getElementById("tab-btn-" + t);
+              if (panel && btn) {
+                if (t === tabName) {
+                  panel.classList.remove("hidden");
+                  btn.setAttribute("aria-selected", "true");
+                  btn.className =
+                    "tab-trigger flex items-center gap-space-xs h-11 px-space-md rounded-lg font-body-md-medium text-body-md-medium transition-all bg-surface-container-lowest text-primary shadow-sm";
+                } else {
+                  panel.classList.add("hidden");
+                  btn.setAttribute("aria-selected", "false");
+                  btn.className =
+                    "tab-trigger flex items-center gap-space-xs h-11 px-space-md rounded-lg font-body-md text-body-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all";
+                }
+              }
+            });
+          }
+
+          // Live Zoom controls for Preview Document
+          let currentZoom = 0.82; // Default scale for comfortable side-by-side desktop fit
+          const cvDoc = document.getElementById("cv-paper-document");
+          const zoomText = document.getElementById("zoom-indicator");
+
+          function applyZoom() {
+            if (cvDoc && zoomText) {
+              cvDoc.style.transform = "scale(" + currentZoom + ")";
+              zoomText.textContent = Math.round(currentZoom * 100) + "%";
+            }
+          }
+
+          function adjustZoom(delta) {
+            currentZoom = Math.min(Math.max(currentZoom + delta, 0.4), 1.4);
+            applyZoom();
+          }
+
+          function resetZoom() {
+            currentZoom = 0.82;
+            applyZoom();
+          }
+
+          // Template Style Switcher
+          function setTemplateStyle(styleName) {
+            const tealBtn = document.getElementById("template-btn-teal");
+            const minBtn = document.getElementById("template-btn-minimal");
+            const techBtn = document.getElementById("template-btn-tech");
+
+            [tealBtn, minBtn, techBtn].forEach((b) => {
+              if (b) {
+                b.setAttribute("aria-checked", "false");
+                b.className =
+                  "h-9 px-space-sm rounded font-body-sm font-medium transition-all text-on-surface-variant hover:text-on-surface hover:bg-surface-container";
+              }
+            });
+
+            const activeBtn = document.getElementById("template-btn-" + styleName);
+            if (activeBtn) {
+              activeBtn.setAttribute("aria-checked", "true");
+              activeBtn.className =
+                "h-9 px-space-sm rounded font-body-sm font-medium transition-all bg-surface-container-lowest text-primary shadow-xs";
+            }
+          }
+
+          // Init Zoom on Load
+          window.addEventListener("DOMContentLoaded", () => {
+            applyZoom();
+          });
+        </script>
+      </main>
+    </div>
+  </body>
+</html>
