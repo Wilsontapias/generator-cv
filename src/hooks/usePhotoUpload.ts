@@ -33,10 +33,10 @@ export function usePhotoUpload(): UsePhotoUploadResult {
       // Crear un nuevo File con la imagen reducida
       const reducedFile = new File([reducedBlob], file.name, { type: file.type });
 
-      // Subir a Vercel Blob
+      // Subir a Vercel Blob (store privado)
       const pathname = `usuarios/${uid}/foto-perfil.${file.name.split(".").pop()}`;
       const blob = await upload(pathname, reducedFile, {
-        access: "public",
+        access: "private",
         handleUploadUrl: "/api/upload",
       });
 
@@ -54,7 +54,8 @@ export function usePhotoUpload(): UsePhotoUploadResult {
         throw new Error("Error al registrar la foto");
       }
 
-      return blob.url;
+      // Se guarda el pathname; la foto se sirve por /api/foto verificando al dueño
+      return blob.pathname;
     } catch (err) {
       console.error("Error subiendo foto:", err);
       setError(err instanceof Error ? err.message : "Error al subir la foto");

@@ -1,16 +1,18 @@
 import React from "react";
 import Image from "next/image";
 import type { CV } from "@/schemas/cv";
+import { urlFoto } from "@/utils/foto";
 
 interface TemplateProps {
   data: CV;
 }
 
 function ModernaPhoto({ fotoUrl, nombre }: { fotoUrl: string | null; nombre: string }) {
-  if (fotoUrl) {
+  const src = urlFoto(fotoUrl);
+  if (src) {
     return (
       <div className="cv-photo">
-        <Image src={fotoUrl} alt={nombre} width={120} height={120} />
+        <Image src={src} alt={nombre} width={120} height={120} unoptimized />
       </div>
     );
   }

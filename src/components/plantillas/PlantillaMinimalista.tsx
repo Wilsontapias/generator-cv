@@ -1,16 +1,18 @@
 import React from "react";
 import Image from "next/image";
 import type { CV } from "@/schemas/cv";
+import { urlFoto } from "@/utils/foto";
 
 interface TemplateProps {
   data: CV;
 }
 
 function MinimalistaPhoto({ fotoUrl, nombre }: { fotoUrl: string | null; nombre: string }) {
-  if (!fotoUrl) return null;
+  const src = urlFoto(fotoUrl);
+  if (!src) return null;
   return (
     <div className="cv-photo">
-      <Image src={fotoUrl} alt={nombre} width={100} height={100} />
+      <Image src={src} alt={nombre} width={100} height={100} unoptimized />
     </div>
   );
 }

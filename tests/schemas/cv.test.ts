@@ -48,3 +48,22 @@ describe("datosPersonalesSchema", () => {
     expect(result.fotoUrl).toBeNull();
   });
 });
+
+describe("fotoUrl", () => {
+  it("debe aceptar un pathname válido de foto", () => {
+    const result = datosPersonalesSchema.parse({
+      nombre: "Wilson",
+      fotoUrl: "usuarios/abc123/foto-perfil-Ab12Cd.jpg",
+    });
+    expect(result.fotoUrl).toBe("usuarios/abc123/foto-perfil-Ab12Cd.jpg");
+  });
+
+  it("debe rechazar un pathname de foto inválido", () => {
+    expect(() =>
+      datosPersonalesSchema.parse({
+        nombre: "Wilson",
+        fotoUrl: "https://ejemplo.com/foto.jpg",
+      })
+    ).toThrow();
+  });
+});

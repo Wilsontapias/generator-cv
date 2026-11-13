@@ -56,14 +56,14 @@ export function reducirImagen(file: File, maxWidth: number = 400): Promise<Blob>
   });
 }
 
-export async function eliminarFoto(url: string, uid: string): Promise<void> {
-  // Verificar que la URL pertenezca al usuario
-  if (!url.includes(`usuarios/${uid}/`)) {
+export async function eliminarFoto(pathname: string, uid: string): Promise<void> {
+  // Verificar que el pathname pertenezca al usuario
+  if (!pathname.startsWith(`usuarios/${uid}/`)) {
     throw new ForbiddenError("No tiene permiso para eliminar este archivo");
   }
 
   try {
-    await del(url);
+    await del(pathname);
   } catch {
     throw new NotFoundError("Archivo no encontrado");
   }

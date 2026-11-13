@@ -10,19 +10,18 @@ interface HandlerResult {
   headers?: Record<string, string>;
 }
 
-type Handler = (
+type RouteContext<P = Record<string, string>> = { params: Promise<P> };
+
+type Handler<P = Record<string, string>> = (
   request: Request,
-  context: { params: Promise<Record<string, string>> }
+  context: RouteContext<P>
 ) => Promise<HandlerResult | NextResponse>;
 
 /**
  * Envuelve un handler de Route Handler para manejar errores de forma consistente
  */
-export function manejar(handler: Handler) {
-  return async (
-    request: Request,
-    context: { params: Promise<Record<string, string>> }
-  ): Promise<NextResponse> => {
+export function manejar<P = Record<string, string>>(handler: Handler<P>) {
+  return async (request: Request, context: RouteContext<P>): Promise<NextResponse> => {
     try {
       const result = await handler(request, context);
 

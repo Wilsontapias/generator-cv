@@ -96,12 +96,12 @@ Checklist completo para el desarrollo del Generador de Hoja de Vida.
 
 ## 7. Vercel Blob
 
-- [ ] **7.1** Crear store privado con `vercel blob create-store <nombre> --access private`
+- [ ] **7.1** Crear store **privado** de Vercel Blob (dashboard → Storage → Blob → Access: `Private`, o `vercel blob create-store <nombre> --access private`)
 - [ ] **7.2** Configurar `BLOB_READ_WRITE_TOKEN` solo en servidor
-- [ ] **7.3** Implementar subida directa desde navegador con `@vercel/blob/client`
-- [ ] **7.4** Implementar notificación al servidor con `onUploadCompleted`
-- [ ] **7.5** Implementar entrega de archivos a través de API verificando dueño
-- [ ] **7.6** Implementar eliminación de archivos con verificación de propietario
+- [x] **7.3** Implementar subida directa desde navegador con `@vercel/blob/client`
+- [x] **7.4** Implementar notificación al servidor con `onUploadCompleted`
+- [x] **7.5** Implementar entrega de archivos a través de API verificando dueño
+- [x] **7.6** Implementar eliminación de archivos con verificación de propietario
 
 ---
 
@@ -301,12 +301,12 @@ Checklist completo para el desarrollo del Generador de Hoja de Vida.
 
 ## 22. Despliegue
 
-- [ ] **22.1** Crear proyecto en Vercel
-- [ ] **22.2** Configurar variables de entorno en Vercel
-- [ ] **22.3** Crear store de Vercel Blob
-- [ ] **22.4** Desplegar con `vercel deploy --prod`
-- [ ] **22.5** Comprobar `GET /api/auth/yo` en producción
-- [ ] **22.6** Comprobar flujo de inicio de sesión en producción
+- [x] **22.1** Crear proyecto en Vercel
+- [x] **22.2** Configurar variables de entorno en Vercel
+- [x] **22.3** Crear store de Vercel Blob
+- [x] **22.4** Desplegar con `vercel deploy --prod`
+- [x] **22.5** Comprobar `GET /api/auth/yo` en producción
+- [x] **22.6** Comprobar flujo de inicio de sesión en producción
 - [ ] **22.7** Comprobar subida de fotos en producción
 - [ ] **22.8** Comprobar enlace público en producción
 

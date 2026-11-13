@@ -23,7 +23,13 @@ export const datosPersonalesSchema = z.object({
     .max(200, "El enlace del portfolio no puede exceder 200 caracteres")
     .optional()
     .default(""),
-  fotoUrl: z.string().url("URL inválida").nullable().default(null),
+  // Pathname del blob privado: usuarios/<uid>/<archivo> (no es una URL pública)
+  fotoUrl: z
+    .string()
+    .max(300, "La ruta de la foto no puede exceder 300 caracteres")
+    .regex(/^usuarios\/[A-Za-z0-9_-]+\/[A-Za-z0-9._-]+$/, "Ruta de foto inválida")
+    .nullable()
+    .default(null),
 });
 
 // Schema para perfil profesional

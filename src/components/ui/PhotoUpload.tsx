@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import Image from "next/image";
 import { usePhotoUpload } from "@/hooks/usePhotoUpload";
 import { useAuth } from "@/hooks/useAuth";
+import { urlFoto } from "@/utils/foto";
 
 interface PhotoUploadProps {
   currentPhotoUrl: string | null;
@@ -17,9 +18,9 @@ export function PhotoUpload({ currentPhotoUrl, onPhotoChange }: PhotoUploadProps
     const file = e.target.files?.[0];
     if (!file || !user) return;
 
-    const url = await uploadPhoto(file, user.uid);
-    if (url) {
-      onPhotoChange(url);
+    const pathname = await uploadPhoto(file, user.uid);
+    if (pathname) {
+      onPhotoChange(pathname);
     }
   };
 
@@ -50,15 +51,17 @@ export function PhotoUpload({ currentPhotoUrl, onPhotoChange }: PhotoUploadProps
 }
 
 function PhotoPreview({ currentPhotoUrl }: { currentPhotoUrl: string | null }) {
-  if (currentPhotoUrl) {
+  const src = urlFoto(currentPhotoUrl);
+  if (src) {
     return (
       <div className="photo-preview">
         <Image
-          src={currentPhotoUrl}
+          src={src}
           alt="Foto de perfil"
           width={120}
           height={120}
           className="photo-image"
+          unoptimized
         />
       </div>
     );
