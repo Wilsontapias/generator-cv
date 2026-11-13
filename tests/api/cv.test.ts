@@ -30,7 +30,7 @@ describe("API CV - GET", () => {
       method: "GET",
     });
 
-    const response = await GET(request);
+    const response = await GET(request, { params: Promise.resolve({}) });
     expect(response.status).toBe(401);
   });
 });
@@ -43,7 +43,7 @@ describe("API CV - POST", () => {
       body: JSON.stringify({ titulo: "Test CV" }),
     });
 
-    const response = await POST(request);
+    const response = await POST(request, { params: Promise.resolve({}) });
     expect(response.status).toBe(401);
   });
 
@@ -57,7 +57,7 @@ describe("API CV - POST", () => {
       body: JSON.stringify({}),
     });
 
-    const response = await POST(request);
+    const response = await POST(request, { params: Promise.resolve({}) });
     // Con sesión válida pero datos inválidos, retorna 400
     expect(response.status).toBe(400);
   });
