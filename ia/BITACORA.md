@@ -96,6 +96,29 @@ Cada entrada sigue este formato:
 
 ---
 
+### 2026-11-12: Implementación completa del proyecto
+
+**Propósito:** Completar las secciones pendientes de `ESTANDARES.md` (editor de CV, plantillas, API con Firebase Admin, subida de fotos y despliegue en Vercel) siguiendo la especificación `29-generador-de-cv.md`.
+
+**Prompt usado:** "Implementa las secciones pendientes de `ESTANDARES.md` siguiendo la especificación."
+
+**Respuesta de la IA:**
+
+- Editor de CV con vista previa y 3 plantillas (moderna, clásica, minimalista)
+- API de CV con sesión verificada, validación Zod y autorización por objeto
+- Subida de fotos a Vercel Blob
+- Pruebas con Vitest y despliegue en Vercel
+
+**Validación:** `npm run check` ✅ y `npm run build` ✅ tras cada entrega significativa.
+
+**Decisión:** Aceptado con correcciones (ver Casos 4–6).
+
+**Razón:** El código cumplió los estándares, pero se corrigieron decisiones de arquitectura y de seguridad (Blob privado, dependencia y recomendaciones).
+
+**Evidencia:** Historial de commits del repositorio.
+
+---
+
 ## Casos de Rechazo o Corrección
 
 ### Caso 1: 2026-11-12 - Ajuste de dependencias
@@ -146,6 +169,52 @@ Cada entrada sigue este formato:
 
 ---
 
+### Caso 4: 2026-11-12 - Store de Blob público → privado
+
+**Contexto:** Se creó inicialmente un store de Vercel Blob **público** para las fotos de perfil.
+
+**Problema:** La especificación `29-generador-de-cv.md` (sección 9.5) exige un store **privado** y entregar los archivos **a través de la API verificando el dueño**, nunca con una URL pública. Con el store público no se cumplía 9.5 ni el item 7.5 de `ESTANDARES.md`.
+
+**Corrección:** Se revirtió a store privado:
+
+- Subida con `access: "private"` y se guarda el `pathname` (`usuarios/<uid>/<archivo>`)
+- Nueva ruta `GET /api/foto/[...pathname]` que valida sesión y dueño
+- `fotoUrl` pasa a validar un pathname; plantillas y `PhotoUpload` usan el helper `urlFoto()` con `unoptimized`
+
+**Lección:** Verificar la especificación **antes** de decidir arquitectura. La opción "más fácil" (público) incumplía la tarea.
+
+**Evidencia:** Commit `e8d5128`.
+
+---
+
+### Caso 5: 2026-11-12 - Actualización de `@vercel/blob`
+
+**Contexto:** La IA detectó que `@vercel/blob@0.27` no soporta stores privados (no exporta `get`, y `access` solo acepta `"public"`).
+
+**Problema:** Sin actualizar la dependencia, el código del store privado no compilaba.
+
+**Corrección:** Se pidió autorización al usuario y se actualizó a `@vercel/blob@^2.9.0` (requiere Node ≥ 20). Se validó con `npm run check` y `npm run build`.
+
+**Lección:** No instalar ni actualizar dependencias sin preguntar (regla del proyecto).
+
+**Evidencia:** `package.json`, commit `e8d5128`.
+
+---
+
+### Caso 6: 2026-11-12 - Recomendación prohibida (`vercel env pull`)
+
+**Contexto:** La IA sugirió `vercel env pull .env.local` para probar en local.
+
+**Problema:** El material del curso prohíbe `vercel env pull` porque baja los secretos de producción al disco ("sin secretos reales en el disco de desarrollo").
+
+**Corrección:** Se retiró la recomendación y se documentó usar Firebase Emulator Suite o un proyecto de desarrollo (`FIREBASE-SETUP.md` §6).
+
+**Lección:** Contrastar los consejos con las reglas del curso, no solo con que "funcione".
+
+**Evidencia:** `FIREBASE-SETUP.md` §6.
+
+---
+
 ## Lecciones Aprendidas
 
 1. **Especificidad en prompts:** Ser muy específico sobre lo que se quiere reduce iteraciones.
@@ -158,25 +227,28 @@ Cada entrada sigue este formato:
 
 5. **Seguridad primero:** Siempre que la IA proponga código que maneje autenticación, datos sensibles o permisos, revisar cuidadosamente.
 
+6. **Contrastar con la especificación y el curso:** antes de aceptar una decisión de arquitectura o un consejo, verificar que cumpla `29-generador-de-cv.md` y las reglas del curso (p. ej. store de Blob privado, no bajar secretos de producción al disco).
+
 ---
 
 ## Estadísticas
 
 | Métrica                          | Valor |
 | -------------------------------- | ----- |
-| Total de interacciones           | 3     |
+| Total de interacciones           | 4     |
 | Aceptadas sin cambios            | 1     |
-| Aceptadas con modificaciones     | 2     |
+| Aceptadas con modificaciones     | 3     |
 | Rechazadas completamente         | 0     |
-| Casos de corrección documentados | 3     |
+| Casos de corrección documentados | 6     |
 
 ---
 
 ## Próximos Pasos
 
-- [ ] Implementar el editor de CV y registrar interacciones con la IA
-- [ ] Documentar al menos 3 casos adicionales de corrección o rechazo
-- [ ] Actualizar estadísticas mensualmente
+- [ ] Completar las evidencias de rendimiento (sección 18) y calidad (sección 21) de `ESTANDARES.md`
+- [ ] Verificar en producción la subida de fotos (22.7) y el enlace público (22.8)
+- [ ] Ejecutar las pruebas de contención restantes (Pruebas 2, 3 y 5 de `ia/PRUEBAS-CONTENCION.md`)
+- [ ] Registrar cada interacción relevante con la IA en esta bitácora
 
 ---
 

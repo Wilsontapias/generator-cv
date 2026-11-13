@@ -57,7 +57,6 @@ Este documento resume el estado actual de la implementación de la configuració
 - ✅ `ia/CONFIGURACION.md` - Documentación detallada de barreras
 - ✅ `ia/PRUEBAS-CONTENCION.md` - Plan de pruebas de seguridad
 - ✅ `ia/BITACORA.md` - Registro de interacciones con IA
-- ✅ `.env.local` - Archivo de prueba con canario (NO commitear)
 
 ### Documentación
 
@@ -166,39 +165,39 @@ sudo apt-get install bubblewrap socat
 
 ---
 
-## Retos de Excelencia Opcionales (No Implementados)
+## Retos de Excelencia Opcionales
 
-Los siguientes retos pueden implementarse para mayor seguridad:
+El curso pide elegir **al menos 2** retos y justificarlos con evidencia. Estado actual:
 
 ### 1. Hook `PreToolUse` Personalizado
 
 Implementar hook que bloquee `.env*`, rutas fuera del proyecto y `curl`/`wget`/`sudo`, con 10 pruebas automatizadas.
 
-**Estado:** ⚠️ No implementado
+**Estado:** ⚠️ Documentado, no implementado. Ver `ia/HOOK-PRETOOLUSE.md`.
 
 ### 2. Escaneo de Secretos
 
 Configurar `gitleaks` en pre-commit y CI, probado con una clave falsa plantada.
 
-**Estado:** ⚠️ No implementado
+**Estado:** ⚠️ Documentado, no implementado. Ver `ia/GITLEAKS.md`.
 
 ### 3. Subagente Revisor
 
 Crear comando o subagente de solo lectura que corra `check` y revise el diff contra `AGENTS.md`.
 
-**Estado:** ⚠️ No implementado
+**Estado:** ✅ Implementado en `.opencode/agents/reviewer.md`.
 
 ### 4. Auditoría de Comandos
 
 Implementar hook que registre lo que ejecutó la IA, con pruebas de mutación (Stryker ≥ 60%).
 
-**Estado:** ⚠️ No implementado
+**Estado:** ⚠️ No implementado.
 
 ### 5. Informe de Inyección
 
 Documentar 3 ataques (archivo, respuesta de API, dependencia) y cómo los frena la configuración.
 
-**Estado:** ⚠️ No implementado
+**Estado:** ✅ Documentado en `ia/INYECCION.md`.
 
 ---
 

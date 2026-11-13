@@ -32,6 +32,13 @@
       "effect": "allow",
     },
 
+    // Bloquear cualquier acceso fuera de la carpeta del proyecto
+    {
+      "action": "external_directory",
+      "resource": "*",
+      "effect": "deny",
+    },
+
     // Denegar comandos peligrosos
     {
       "action": "shell",
@@ -51,6 +58,16 @@
     {
       "action": "shell",
       "resource": "git reset --hard *",
+      "effect": "deny",
+    },
+    {
+      "action": "shell",
+      "resource": "curl*",
+      "effect": "deny",
+    },
+    {
+      "action": "shell",
+      "resource": "wget*",
       "effect": "deny",
     },
     {
@@ -120,6 +137,16 @@
     {
       "action": "tool.use",
       "resource": "shell:rm -rf *",
+      "effect": "deny",
+    },
+    {
+      "action": "tool.use",
+      "resource": "shell:curl*",
+      "effect": "deny",
+    },
+    {
+      "action": "tool.use",
+      "resource": "shell:wget*",
       "effect": "deny",
     },
   ],

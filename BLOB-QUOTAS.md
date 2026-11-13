@@ -129,8 +129,8 @@ Configurar alertas en Vercel para:
 
 ## Checklist de Verificación
 
-- [ ] Store de Vercel Blob creado con `--access private`
-- [ ] `BLOB_READ_WRITE_TOKEN` configurado solo en servidor
+- [x] Store de Vercel Blob creado con `--access private`
+- [x] `BLOB_READ_WRITE_TOKEN` configurado solo en servidor
 - [ ] Validación de tamaño (máx 5MB) implementada
 - [ ] Reducción de imagen en navegador implementada
 - [ ] Validación de pathname implementada

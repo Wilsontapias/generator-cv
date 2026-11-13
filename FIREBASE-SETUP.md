@@ -90,20 +90,35 @@ O manualmente en la consola:
 
 ## 6. Configurar Variables de Entorno
 
-Crear archivo `.env.local` con los valores obtenidos:
+> **Regla del proyecto:** en el disco de desarrollo **nunca** debe haber secretos reales de producción. Producción vive únicamente en Vercel (variables de entorno del proyecto). El comando `vercel env pull` está **prohibido** porque baja esos secretos al disco.
+
+Para el desarrollo local, usa **una de estas dos opciones** (nunca la cuenta de servicio de producción):
+
+1. **Firebase Emulator Suite** (recomendado): no requiere credenciales reales.
+
+   ```bash
+   firebase emulators:start
+   ```
+
+2. **Proyecto de Firebase solo de desarrollo**, con una cuenta de servicio de **mínimo privilegio** distinta de la de producción.
+
+Las variables se definen en tu entorno (o en un `.env.local` **local, ignorado por Git y con valores de desarrollo**). Usa `env.example` como plantilla (valores ficticios):
 
 ```env
 # Públicas
-NEXT_PUBLIC_FIREBASE_API_KEY=tu-api-key
-NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=tu-proyecto.firebaseapp.com
-NEXT_PUBLIC_FIREBASE_PROJECT_ID=tu-project-id
-NEXT_PUBLIC_FIREBASE_APP_ID=tu-app-id
+NEXT_PUBLIC_FIREBASE_API_KEY=tu-api-key-de-desarrollo
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=tu-proyecto-dev.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=tu-project-id-dev
+NEXT_PUBLIC_FIREBASE_APP_ID=tu-app-id-dev
 
 # Privadas (solo servidor)
-FIREBASE_PROJECT_ID=tu-project-id
-FIREBASE_CLIENT_EMAIL=tu-cuenta-de-servicio@tu-proyecto.iam.gserviceaccount.com
-FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nTU_CLAVE_PRIVADA\n-----END PRIVATE KEY-----\n"
+FIREBASE_PROJECT_ID=tu-project-id-dev
+FIREBASE_CLIENT_EMAIL=tu-cuenta-de-servicio-dev@tu-proyecto-dev.iam.gserviceaccount.com
+FIREBASE_PRIVATE_KEY="-----BEGIN PRIVATE KEY-----\nCLAVE_DE_DESARROLLO\n-----END PRIVATE KEY-----\n"
 ```
+
+- `.env.local` está en `.gitignore`: **nunca** se commitea.
+- Si una clave real se filtra: **rótala**; borrarla no basta.
 
 ---
 

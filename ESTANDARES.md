@@ -96,8 +96,8 @@ Checklist completo para el desarrollo del Generador de Hoja de Vida.
 
 ## 7. Vercel Blob
 
-- [ ] **7.1** Crear store **privado** de Vercel Blob (dashboard → Storage → Blob → Access: `Private`, o `vercel blob create-store <nombre> --access private`)
-- [ ] **7.2** Configurar `BLOB_READ_WRITE_TOKEN` solo en servidor
+- [x] **7.1** Crear store **privado** de Vercel Blob (dashboard → Storage → Blob → Access: `Private`, o `vercel blob create-store <nombre> --access private`)
+- [x] **7.2** Configurar `BLOB_READ_WRITE_TOKEN` solo en servidor
 - [x] **7.3** Implementar subida directa desde navegador con `@vercel/blob/client`
 - [x] **7.4** Implementar notificación al servidor con `onUploadCompleted`
 - [x] **7.5** Implementar entrega de archivos a través de API verificando dueño
