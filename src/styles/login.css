@@ -10,7 +10,7 @@
 
 .login-container {
   width: 100%;
-  max-width: 400px;
+  max-width: 28rem;
   padding: var(--spacing-2xl);
   background-color: var(--color-surface);
   border-radius: var(--radius-lg);
@@ -63,7 +63,7 @@
 .form-group input:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.1);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .form-group input:disabled {
@@ -72,13 +72,15 @@
 }
 
 .error-container {
-  min-height: 24px;
+  min-height: 0;
+  margin: -0.5rem 0;
 }
 
 .error-message {
-  color: var(--color-error);
+  color: #dc2626;
   font-size: 0.875rem;
   margin: 0;
+  line-height: 1.2;
 }
 
 .btn-full {

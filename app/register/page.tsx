@@ -22,8 +22,7 @@ export default function RegisterPage() {
       await register(email, password);
       router.push("/mis-cv");
     } catch (err) {
-      console.error("Error de registro:", err);
-      setError("Error al crear la cuenta. Intenta de nuevo.");
+      setError(err instanceof Error ? err.message : "Error al crear la cuenta. Intenta de nuevo.");
     }
   };
 

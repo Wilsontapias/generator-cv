@@ -2,7 +2,7 @@ import React from "react";
 
 export function CtaFinalSection() {
   return (
-    <section className="cta-final" aria-labelledby="cta-title">
+    <section className="cta-final" aria-labelledby="cta-title" data-reveal suppressHydrationWarning>
       <h2 id="cta-title">¿Listo para crear tu CV profesional?</h2>
       <p>Comienza ahora y destaca entre los candidatos.</p>
       <a href="/login" className="btn btn-primary btn-lg">

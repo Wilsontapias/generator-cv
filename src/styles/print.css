@@ -20,7 +20,25 @@
     margin: 0;
     padding: 0;
     background: white;
-    font-size: 10pt;
+    font-size: 11pt;
+  }
+
+  /* Preservar la estructura de las plantillas en impresión */
+  .cv-template,
+  .cv-moderna,
+  .cv-clasica,
+  .cv-minimalista {
+    display: revert;
+  }
+
+  .cv-moderna {
+    grid-template-columns: 33% 1fr !important;
+  }
+
+  .cv-moderna .cv-sidebar {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    border-right: 1px solid var(--color-primary);
   }
 
   main {
@@ -82,6 +100,13 @@
     page-break-inside: avoid;
   }
 
+  /* Habilidades sin contorno en impresión */
+  .cv-skills span {
+    border: none !important;
+    background: transparent !important;
+    padding: 0;
+  }
+
   /* Links */
   a {
     text-decoration: none;
@@ -100,6 +125,11 @@
 }
 
 .print-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
   background-color: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -109,14 +139,15 @@
 
 .print-controls h2 {
   font-size: 1.25rem;
-  margin-bottom: var(--spacing-md);
+  margin: 0;
 }
 
 .print-options {
   display: flex;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-sm);
   align-items: center;
   flex-wrap: wrap;
+  margin-left: auto;
 }
 
 .print-options label {
@@ -129,7 +160,8 @@
 .cv-print {
   background-color: white;
   padding: var(--spacing-2xl);
-  max-width: 800px;
+  width: 100%;
+  max-width: 50rem;
   margin: 0 auto;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -139,7 +171,8 @@
 .cv-public {
   background-color: white;
   padding: var(--spacing-2xl);
-  max-width: 800px;
+  width: 100%;
+  max-width: 50rem;
   margin: 0 auto;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);

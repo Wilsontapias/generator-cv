@@ -39,6 +39,43 @@ async function deleteSessionCookie() {
   });
 }
 
+function errorCode(error: unknown): string | undefined {
+  return (error as { code?: string } | null)?.code;
+}
+
+function mapLoginError(error: unknown): string {
+  const code = errorCode(error);
+  switch (code) {
+    case "auth/invalid-credential":
+    case "auth/user-not-found":
+    case "auth/wrong-password":
+    case "auth/invalid-email":
+      return "Correo o contraseña incorrectos.";
+    case "auth/too-many-requests":
+      return "Demasiados intentos. Intenta más tarde.";
+    case "auth/user-disabled":
+      return "Esta cuenta está deshabilitada.";
+    default:
+      return "No se pudo iniciar sesión. Intenta de nuevo.";
+  }
+}
+
+function mapRegisterError(error: unknown): string {
+  const code = errorCode(error);
+  switch (code) {
+    case "auth/email-already-in-use":
+      return "Este correo ya está registrado.";
+    case "auth/weak-password":
+      return "La contraseña es muy débil (mínimo 6 caracteres).";
+    case "auth/invalid-email":
+      return "Correo electrónico inválido.";
+    case "auth/too-many-requests":
+      return "Demasiados intentos. Intenta más tarde.";
+    default:
+      return "No se pudo crear la cuenta. Intenta de nuevo.";
+  }
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -60,19 +97,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const login = async (email: string, password: string) => {
     if (!auth) throw new Error("Firebase Auth no está inicializado");
 
-    const credential = await signInWithEmailAndPassword(auth, email, password);
-    // Forzar refresh del token para obtener auth_time reciente
-    const idToken = await credential.user.getIdToken(true);
-    await createSessionCookie(idToken);
+    try {
+      const credential = await signInWithEmailAndPassword(auth, email, password);
+      // Forzar refresh del token para obtener auth_time reciente
+      const idToken = await credential.user.getIdToken(true);
+      await createSessionCookie(idToken);
+    } catch (error) {
+      throw new Error(mapLoginError(error));
+    }
   };
 
   const register = async (email: string, password: string) => {
     if (!auth) throw new Error("Firebase Auth no está inicializado");
 
-    const credential = await createUserWithEmailAndPassword(auth, email, password);
-    // Forzar refresh del token para obtener auth_time reciente
-    const idToken = await credential.user.getIdToken(true);
-    await createSessionCookie(idToken);
+    try {
+      const credential = await createUserWithEmailAndPassword(auth, email, password);
+      // Forzar refresh del token para obtener auth_time reciente
+      const idToken = await credential.user.getIdToken(true);
+      await createSessionCookie(idToken);
+    } catch (error) {
+      throw new Error(mapRegisterError(error));
+    }
   };
 
   const logout = async () => {

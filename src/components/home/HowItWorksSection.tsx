@@ -27,10 +27,18 @@ const steps = [
 export function HowItWorksSection() {
   return (
     <section className="how-it-works" aria-labelledby="how-title">
-      <h2 id="how-title">¿Cómo funciona?</h2>
+      <h2 id="how-title" data-reveal suppressHydrationWarning>
+        ¿Cómo funciona?
+      </h2>
       <div className="steps">
-        {steps.map((step) => (
-          <div key={step.number} className="step">
+        {steps.map((step, index) => (
+          <div
+            key={step.number}
+            className="step"
+            data-reveal
+            suppressHydrationWarning
+            style={{ animationDelay: `${index * 70}ms` }}
+          >
             <div className="step-number">{step.number}</div>
             <h3>{step.title}</h3>
             <p>{step.description}</p>

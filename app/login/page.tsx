@@ -9,14 +9,15 @@ import { useRouter } from "next/navigation";
 export default function LoginPage() {
   const { login, isLoading: authLoading } = useAuth();
   const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
 
   const handleLogin = async (email: string, password: string) => {
+    setIsSubmitting(true);
     try {
       await login(email, password);
       router.push("/mis-cv");
-    } catch (error) {
-      console.error("Error de login:", error);
-      throw error;
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -28,7 +29,7 @@ export default function LoginPage() {
           <p>Accede a tus hojas de vida</p>
         </div>
 
-        <LoginForm onSubmit={handleLogin} isLoading={authLoading} />
+        <LoginForm onSubmit={handleLogin} isLoading={isSubmitting} disabled={authLoading} />
         <LoginFooter />
       </div>
     </div>

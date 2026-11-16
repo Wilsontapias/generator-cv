@@ -1,9 +1,8 @@
 export { Button } from "./Button";
 export { Input } from "./Input";
-export { TextArea } from "./TextArea";
-export { Select } from "./Select";
-export { Modal } from "./Modal";
 export { Toast } from "./Toast";
 export { Skeleton } from "./Skeleton";
-export { EmptyState } from "./EmptyState";
-export { ErrorMessage } from "./ErrorMessage";
+export { Icon, type IconName } from "./Icon";
+export { LoadingOverlay } from "./LoadingOverlay";
+export { ScrollReveal } from "./ScrollReveal";
+export { Spinner } from "./Spinner";

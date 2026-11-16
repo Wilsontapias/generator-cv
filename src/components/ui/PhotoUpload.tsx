@@ -3,6 +3,8 @@ import Image from "next/image";
 import { usePhotoUpload } from "@/hooks/usePhotoUpload";
 import { useAuth } from "@/hooks/useAuth";
 import { urlFoto } from "@/utils/foto";
+import { Icon } from "@/components/ui/Icon";
+import { Spinner } from "@/components/ui/Spinner";
 
 interface PhotoUploadProps {
   currentPhotoUrl: string | null;
@@ -69,7 +71,9 @@ function PhotoPreview({ currentPhotoUrl }: { currentPhotoUrl: string | null }) {
   return (
     <div className="photo-preview">
       <div className="photo-placeholder">
-        <span aria-hidden="true">📷</span>
+        <span aria-hidden="true">
+          <Icon name="camera" />
+        </span>
         <span>Sin foto</span>
       </div>
     </div>
@@ -105,7 +109,9 @@ function PhotoActions({
         className="btn btn-secondary btn-sm"
         onClick={() => fileInputRef.current?.click()}
         disabled={isUploading}
+        aria-busy={isUploading}
       >
+        {isUploading && <Spinner />}
         {isUploading ? "Subiendo..." : "Subir foto"}
       </button>
       {currentPhotoUrl && (

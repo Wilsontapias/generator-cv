@@ -5,9 +5,10 @@ import React from "react";
 interface LoginFormProps {
   onSubmit: (email: string, password: string) => Promise<void>;
   isLoading: boolean;
+  disabled?: boolean;
 }
 
-export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
+export function LoginForm({ onSubmit, isLoading, disabled = false }: LoginFormProps) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
@@ -18,17 +19,21 @@ export function LoginForm({ onSubmit, isLoading }: LoginFormProps) {
 
     try {
       await onSubmit(email, password);
-    } catch {
-      setError("Credenciales inválidas. Intenta de nuevo.");
+    } catch (error) {
+      setError(
+        error instanceof Error ? error.message : "Credenciales inválidas. Intenta de nuevo."
+      );
     }
   };
+
+  const canSubmit = email.trim().length > 0 && password.trim().length > 0 && !isLoading;
 
   return (
     <form onSubmit={handleSubmit} className="login-form">
       <EmailField value={email} onChange={setEmail} disabled={isLoading} />
       <PasswordField value={password} onChange={setPassword} disabled={isLoading} />
       <ErrorDisplay error={error} />
-      <SubmitButton isLoading={isLoading} />
+      <SubmitButton isLoading={isLoading} disabled={disabled || !canSubmit} />
     </form>
   );
 }
@@ -96,9 +101,13 @@ function ErrorDisplay({ error }: { error: string }) {
   );
 }
 
-function SubmitButton({ isLoading }: { isLoading: boolean }) {
+function SubmitButton({ isLoading, disabled }: { isLoading: boolean; disabled: boolean }) {
   return (
-    <button type="submit" className="btn btn-primary btn-lg btn-full" disabled={isLoading}>
+    <button
+      type="submit"
+      className="btn btn-primary btn-lg btn-full"
+      disabled={isLoading || disabled}
+    >
       {isLoading ? "Iniciando sesión..." : "Iniciar Sesión"}
     </button>
   );

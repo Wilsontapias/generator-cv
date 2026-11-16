@@ -2,7 +2,7 @@ import React from "react";
 
 export function HeroSection() {
   return (
-    <section className="hero" aria-labelledby="hero-title">
+    <section className="hero" aria-labelledby="hero-title" data-reveal suppressHydrationWarning>
       <div className="hero-content">
         <h1 id="hero-title">Crea tu hoja de vida profesional</h1>
         <p className="hero-subtitle">

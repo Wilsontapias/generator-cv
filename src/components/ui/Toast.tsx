@@ -1,4 +1,5 @@
 import React from "react";
+import { Icon } from "@/components/ui/Icon";
 
 type ToastType = "success" | "error" | "warning" | "info";
 
@@ -16,7 +17,7 @@ export function Toast({ message, type = "info", isVisible, onClose }: ToastProps
     <div className={`toast toast-${type}`} role="alert" aria-live="polite">
       <span className="toast-message">{message}</span>
       <button className="toast-close" onClick={onClose} aria-label="Cerrar notificación">
-        ×
+        <Icon name="close" />
       </button>
     </div>
   );

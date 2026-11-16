@@ -2,12 +2,23 @@
 
 import React from "react";
 import { LoadingState, ErrorState, EmptyState, CVList } from "@/components/mis-cv/MisCVContent";
+import { Toast } from "@/components/ui";
 import { useAuth } from "@/hooks/useAuth";
 import { useCVList } from "@/hooks/useCVList";
 
 export default function MisCVPage() {
   const { user } = useAuth();
-  const { cvs, isLoading, error, loadCVs, createCV, deleteCV } = useCVList();
+  const {
+    cvs,
+    isLoading,
+    isCreating,
+    error,
+    errorCreacion,
+    limpiarErrorCreacion,
+    loadCVs,
+    createCV,
+    deleteCV,
+  } = useCVList();
 
   React.useEffect(() => {
     if (user) loadCVs();
@@ -15,6 +26,20 @@ export default function MisCVPage() {
 
   if (isLoading) return <LoadingState />;
   if (error) return <ErrorState error={error} onRetry={loadCVs} />;
-  if (cvs.length === 0) return <EmptyState onCreateCV={createCV} />;
-  return <CVList cvs={cvs} onCreateCV={createCV} onDeleteCV={deleteCV} />;
+
+  return (
+    <>
+      <Toast
+        message={errorCreacion}
+        type="error"
+        isVisible={Boolean(errorCreacion)}
+        onClose={limpiarErrorCreacion}
+      />
+      {cvs.length === 0 ? (
+        <EmptyState onCreateCV={createCV} isCreating={isCreating} />
+      ) : (
+        <CVList cvs={cvs} onCreateCV={createCV} onDeleteCV={deleteCV} isCreating={isCreating} />
+      )}
+    </>
+  );
 }

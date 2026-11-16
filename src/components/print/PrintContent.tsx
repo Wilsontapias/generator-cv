@@ -1,6 +1,9 @@
-import React from "react";
+"use client";
 
-export function PrintControls() {
+import React from "react";
+import Link from "next/link";
+
+export function PrintControls({ cvId }: { cvId: string }) {
   return (
     <div className="print-controls noprint">
       <h2>Imprimir CV</h2>
@@ -12,6 +15,9 @@ export function PrintControls() {
         <button className="btn btn-primary" onClick={() => window.print()}>
           Imprimir / Descargar PDF
         </button>
+        <Link href={`/cv/${cvId}/editar`} className="btn btn-secondary">
+          Atrás
+        </Link>
       </div>
     </div>
   );
