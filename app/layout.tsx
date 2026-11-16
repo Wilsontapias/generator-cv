@@ -4,7 +4,11 @@ import Link from "next/link";
 import "@/styles/globals.css";
 import "@/styles/ui.css";
 import "@/styles/templates.css";
+import "@/styles/reveal.css";
 import { ClientLayout } from "@/components/ClientLayout";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
+import { WebVitals } from "@/components/ui/WebVitals";
+import { SessionNav } from "@/components/nav/SessionNav";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,6 +18,9 @@ export const metadata: Metadata = {
     "Crea tu hoja de vida profesional con plantillas modernas. Editor intuitivo con vista previa en vivo y exportación a PDF.",
   keywords: ["hoja de vida", "CV", "resume", "generador", "plantillas"],
   authors: [{ name: "Wilson Tapias Posada" }],
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({
@@ -28,6 +35,8 @@ export default function RootLayout({
           Saltar al contenido
         </a>
         <ClientLayout>
+          <WebVitals />
+          <ScrollReveal />
           <header className="app-header" role="banner">
             <nav className="app-nav" aria-label="Navegación principal">
               <div className="nav-container">
@@ -35,12 +44,7 @@ export default function RootLayout({
                   GeneradorCV
                 </Link>
                 <ul className="nav-links">
-                  <li>
-                    <Link href="/mis-cv">Mis CVs</Link>
-                  </li>
-                  <li>
-                    <Link href="/login">Iniciar Sesión</Link>
-                  </li>
+                  <SessionNav />
                 </ul>
               </div>
             </nav>
