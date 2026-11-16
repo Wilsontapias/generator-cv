@@ -215,6 +215,48 @@ Cada entrada sigue este formato:
 
 ---
 
+### Caso 7: 2026-11-16 - Tests de cobertura con suposiciones incorrectas
+
+**Contexto:** Se escribieron tests de cobertura para `reorder.ts` y `sanitize.ts` asumiendo comportamientos sin verificar.
+
+**Problema:** 2 tests fallaron: `moveItem` con destino fuera de rango no ignora el movimiento (lo envía al final), y `containsHtml("a < b y c > d")` retorna `true` porque el patrón `/<[^>]*>/` coincide con `< b y c >`.
+
+**Corrección:** Se ajustaron los tests al comportamiento real de la implementación y se documentó cada caso. No se cambió el código de producción porque su comportamiento es aceptable para el uso actual.
+
+**Lección:** Escribir tests a partir del código real, no de suposiciones. Un test que "parece obvio" también debe validarse.
+
+**Evidencia:** `tests/utils/reorder.test.ts`, `tests/utils/sanitize.test.ts`.
+
+---
+
+### Caso 8: 2026-11-16 - Capturas con contenido invisible (ScrollReveal)
+
+**Contexto:** Se generaron capturas de pantalla automáticas con Playwright para las evidencias de calidad.
+
+**Problema:** Las capturas de página completa mostraban secciones vacías porque `ScrollReveal` deja los elementos `[data-reveal]` invisibles hasta que entran en el viewport.
+
+**Corrección:** En lugar de parchear el CSS, se usó la emulación de `reducedMotion: "reduce"` de Playwright: el componente ya respeta `prefers-reduced-motion` y muestra todo sin animar.
+
+**Lección:** Antes de simular comportamiento del navegador, verificar si la aplicación ya implementa la media query correspondiente.
+
+**Evidencia:** `scripts/evidencias.mjs`, `calidad/capturas/`.
+
+---
+
+### Caso 9: 2026-11-16 - Errores W3C de una librería de terceros
+
+**Contexto:** La validación W3C del HTML reportó 3 errores "CSS: Parse Error" en todas las páginas.
+
+**Problema:** Los errores no provienen del CSS del proyecto sino del `<style>` inline que inyecta la librería Sonner (toasts) con cálculos internos.
+
+**Corrección:** Se documentaron como falsos positivos de terceros en `CALIDAD.md`. El HTML propio no reporta errores.
+
+**Lección:** Al validar con herramientas automáticas, clasificar los hallazgos: propios, configurables o de terceros, antes de corregir.
+
+**Evidencia:** `calidad/validador-html/*.json`.
+
+---
+
 ## Lecciones Aprendidas
 
 1. **Especificidad en prompts:** Ser muy específico sobre lo que se quiere reduce iteraciones.
@@ -235,11 +277,11 @@ Cada entrada sigue este formato:
 
 | Métrica                          | Valor |
 | -------------------------------- | ----- |
-| Total de interacciones           | 4     |
+| Total de interacciones           | 7     |
 | Aceptadas sin cambios            | 1     |
-| Aceptadas con modificaciones     | 3     |
+| Aceptadas con modificaciones     | 6     |
 | Rechazadas completamente         | 0     |
-| Casos de corrección documentados | 6     |
+| Casos de corrección documentados | 9     |
 
 ---
 
