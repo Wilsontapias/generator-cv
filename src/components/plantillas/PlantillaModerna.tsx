@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import type { CV } from "@/schemas/cv";
+import { formatearRangoFecha } from "@/utils/fecha";
 import { urlFoto } from "@/utils/foto";
 
 interface TemplateProps {
@@ -9,14 +10,15 @@ interface TemplateProps {
 
 function ModernaPhoto({ fotoUrl, nombre }: { fotoUrl: string | null; nombre: string }) {
   const src = urlFoto(fotoUrl);
-  if (src) {
-    return (
-      <div className="cv-photo">
-        <Image src={src} alt={nombre} width={120} height={120} unoptimized />
-      </div>
-    );
-  }
-  return <div className="cv-photo-placeholder">{nombre.charAt(0)}</div>;
+  return (
+    <div className="cv-photo">
+      {src ? (
+        <Image src={src} alt={nombre} width={80} height={80} unoptimized />
+      ) : (
+        <div className="cv-photo-placeholder">{nombre.charAt(0).toUpperCase()}</div>
+      )}
+    </div>
+  );
 }
 
 function ModernaContact({ datos }: { datos: CV["datos"] }) {
@@ -63,11 +65,10 @@ function ModernaLanguages({ idiomas }: { idiomas: CV["idiomas"] }) {
 }
 
 function ModernaProfile({ perfil }: { perfil: string }) {
-  if (!perfil) return null;
   return (
     <section className="cv-section">
       <h2>Perfil Profesional</h2>
-      <p>{perfil}</p>
+      <p>{perfil || "Describe tu perfil profesional en 3-4 líneas…"}</p>
     </section>
   );
 }
@@ -82,7 +83,7 @@ function ModernaExperience({ experiencia }: { experiencia: CV["experiencia"] }) 
           <div className="cv-entry-header">
             <h3>{exp.cargo}</h3>
             <span className="cv-entry-date">
-              {exp.fechaInicio} - {exp.fechaFin}
+              {formatearRangoFecha(exp.fechaInicio, exp.fechaFin)}
             </span>
           </div>
           <p className="cv-entry-company">{exp.empresa}</p>
@@ -103,7 +104,7 @@ function ModernaEducation({ estudios }: { estudios: CV["estudios"] }) {
           <div className="cv-entry-header">
             <h3>{est.titulo}</h3>
             <span className="cv-entry-date">
-              {est.fechaInicio} - {est.fechaFin}
+              {formatearRangoFecha(est.fechaInicio, est.fechaFin)}
             </span>
           </div>
           <p className="cv-entry-company">{est.institucion}</p>
@@ -119,8 +120,8 @@ export function PlantillaModerna({ data }: TemplateProps) {
     <div className="cv-template cv-moderna">
       <div className="cv-sidebar">
         <ModernaPhoto fotoUrl={data.datos.fotoUrl} nombre={data.datos.nombre} />
-        <h1 className="cv-name">{data.datos.nombre}</h1>
-        <p className="cv-title">{data.datos.cargo}</p>
+        <h1 className="cv-name">{data.datos.nombre || "Tu nombre"}</h1>
+        <p className="cv-title">{data.datos.cargo || "Tu cargo profesional"}</p>
         <ModernaContact datos={data.datos} />
         <ModernaSkills habilidades={data.habilidades} />
         <ModernaLanguages idiomas={data.idiomas} />

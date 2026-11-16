@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import type { CV } from "@/schemas/cv";
+import { formatearRangoFecha } from "@/utils/fecha";
 import { urlFoto } from "@/utils/foto";
 
 interface TemplateProps {
@@ -9,10 +10,13 @@ interface TemplateProps {
 
 function ClasicaPhoto({ fotoUrl, nombre }: { fotoUrl: string | null; nombre: string }) {
   const src = urlFoto(fotoUrl);
-  if (!src) return null;
   return (
     <div className="cv-photo">
-      <Image src={src} alt={nombre} width={80} height={80} unoptimized />
+      {src ? (
+        <Image src={src} alt={nombre} width={96} height={96} unoptimized />
+      ) : (
+        <div className="cv-photo-placeholder">{nombre.charAt(0).toUpperCase()}</div>
+      )}
     </div>
   );
 }
@@ -29,11 +33,10 @@ function ClasicaContact({ datos }: { datos: CV["datos"] }) {
 }
 
 function ClasicaProfile({ perfil }: { perfil: string }) {
-  if (!perfil) return null;
   return (
     <section className="cv-section">
       <h2>Perfil Profesional</h2>
-      <p>{perfil}</p>
+      <p className="cv-profile">{perfil || "Describe tu perfil profesional en 3-4 líneas…"}</p>
     </section>
   );
 }
@@ -45,14 +48,14 @@ function ClasicaExperience({ experiencia }: { experiencia: CV["experiencia"] }) 
       <h2>Experiencia Laboral</h2>
       {experiencia.map((exp) => (
         <article key={exp.id} className="cv-entry">
-          <div className="cv-entry-header">
+          <span className="cv-entry-date">
+            {formatearRangoFecha(exp.fechaInicio, exp.fechaFin)}
+          </span>
+          <div className="cv-entry-body">
             <h3>{exp.cargo}</h3>
-            <span className="cv-entry-date">
-              {exp.fechaInicio} - {exp.fechaFin}
-            </span>
+            <p className="cv-entry-company">{exp.empresa}</p>
+            {exp.descripcion && <p className="cv-entry-desc">{exp.descripcion}</p>}
           </div>
-          <p className="cv-entry-company">{exp.empresa}</p>
-          {exp.descripcion && <p>{exp.descripcion}</p>}
         </article>
       ))}
     </section>
@@ -66,14 +69,14 @@ function ClasicaEducation({ estudios }: { estudios: CV["estudios"] }) {
       <h2>Educación</h2>
       {estudios.map((est) => (
         <article key={est.id} className="cv-entry">
-          <div className="cv-entry-header">
+          <span className="cv-entry-date">
+            {formatearRangoFecha(est.fechaInicio, est.fechaFin)}
+          </span>
+          <div className="cv-entry-body">
             <h3>{est.titulo}</h3>
-            <span className="cv-entry-date">
-              {est.fechaInicio} - {est.fechaFin}
-            </span>
+            <p className="cv-entry-company">{est.institucion}</p>
+            {est.descripcion && <p className="cv-entry-desc">{est.descripcion}</p>}
           </div>
-          <p className="cv-entry-company">{est.institucion}</p>
-          {est.descripcion && <p>{est.descripcion}</p>}
         </article>
       ))}
     </section>
@@ -85,7 +88,11 @@ function ClasicaSkills({ habilidades }: { habilidades: CV["habilidades"] }) {
   return (
     <section className="cv-section">
       <h2>Habilidades</h2>
-      <p className="cv-skills-list">{habilidades.map((h) => h.nombre).join(", ")}</p>
+      <ul className="cv-skills-list">
+        {habilidades.map((h) => (
+          <li key={h.id}>{h.nombre}</li>
+        ))}
+      </ul>
     </section>
   );
 }
@@ -95,27 +102,39 @@ function ClasicaLanguages({ idiomas }: { idiomas: CV["idiomas"] }) {
   return (
     <section className="cv-section">
       <h2>Idiomas</h2>
-      <p className="cv-languages-list">
-        {idiomas.map((i) => `${i.nombre} (${i.nivel})`).join(", ")}
-      </p>
+      <ul className="cv-languages-list">
+        {idiomas.map((i) => (
+          <li key={i.id}>
+            {i.nombre} <span className="cv-level">({i.nivel})</span>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
 
 export function PlantillaClasica({ data }: TemplateProps) {
+  const tieneHabilidades = data.habilidades.length > 0;
+  const tieneIdiomas = data.idiomas.length > 0;
   return (
     <div className="cv-template cv-clasica">
       <div className="cv-header">
+        <div className="cv-header-info">
+          <h1 className="cv-name">{data.datos.nombre || "Tu nombre"}</h1>
+          <p className="cv-title">{data.datos.cargo || "Tu cargo profesional"}</p>
+          <ClasicaContact datos={data.datos} />
+        </div>
         <ClasicaPhoto fotoUrl={data.datos.fotoUrl} nombre={data.datos.nombre} />
-        <h1 className="cv-name">{data.datos.nombre}</h1>
-        <p className="cv-title">{data.datos.cargo}</p>
-        <ClasicaContact datos={data.datos} />
       </div>
       <ClasicaProfile perfil={data.perfil} />
       <ClasicaExperience experiencia={data.experiencia} />
       <ClasicaEducation estudios={data.estudios} />
-      <ClasicaSkills habilidades={data.habilidades} />
-      <ClasicaLanguages idiomas={data.idiomas} />
+      {tieneHabilidades || tieneIdiomas ? (
+        <div className="cv-columns">
+          <ClasicaSkills habilidades={data.habilidades} />
+          <ClasicaLanguages idiomas={data.idiomas} />
+        </div>
+      ) : null}
     </div>
   );
 }
