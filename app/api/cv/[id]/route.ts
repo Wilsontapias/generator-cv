@@ -32,19 +32,31 @@ export const PUT = manejar(async (request, context) => {
   };
 });
 
-export const DELETE = manejar(async (request, context) => {
-  if (!verificarOrigin(request)) {
-    throw new (await import("@/lib/errors")).ForbiddenError("Origen no permitido");
+export const DELETE = async (request: Request, context: { params: Promise<{ id: string }> }) => {
+  try {
+    if (!verificarOrigin(request)) {
+      return Response.json({ error: "Origen no permitido" }, { status: 403 });
+    }
+
+    const uid = await requerirUsuario(request);
+    const params = await context.params;
+    const id = params?.id || "";
+
+    console.error("DELETE DIAG: uid=", uid, "id=", id);
+
+    try {
+      await eliminarCV(uid, id);
+    } catch (error) {
+      const mensaje = error instanceof Error ? error.message : "Error desconocido";
+      const stack = error instanceof Error ? error.stack : "";
+      console.error("DELETE CV error:", mensaje, stack);
+      return Response.json({ error: `[diag] ${mensaje}` }, { status: 500 });
+    }
+
+    return new Response(null, { status: 204 });
+  } catch (error) {
+    const mensaje = error instanceof Error ? error.message : "Error desconocido";
+    console.error("DELETE outer error:", mensaje, error instanceof Error ? error.stack : "");
+    return Response.json({ error: `[diag-outer] ${mensaje}` }, { status: 500 });
   }
-
-  const uid = await requerirUsuario(request);
-  const params = await context.params;
-  const id = params?.id || "";
-
-  await eliminarCV(uid, id);
-
-  return {
-    status: 204,
-    body: null,
-  };
-});
+};

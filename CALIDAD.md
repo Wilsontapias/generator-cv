@@ -1,201 +1,84 @@
-# Evidencias de Calidad
+# CALIDAD
 
-Este documento registra las evidencias de calidad del proyecto Generador de Hoja de Vida.
+Evidencias de calidad del proyecto Generador de Hoja de Vida (sección 14 del spec).
 
----
+## Lighthouse (producción local, perfil móvil)
 
-## 1. Rendimiento y Core Web Vitals
+| Página                 | Performance | Accesibilidad | Buenas prácticas | SEO | LCP   | CLS   | TBT    |
+| ---------------------- | ----------- | ------------- | ---------------- | --- | ----- | ----- | ------ |
+| `/` (home)             | 99          | 96            | 100              | 100 | 0.9 s | 0.005 | 100 ms |
+| `/login`               | 99          | 96            | 100              | 100 | 0.9 s | 0.005 | 130 ms |
+| `/mis-cv` (con sesión) | 100         | 96            | 96               | 100 | ~1 s  | 0     | —      |
 
-### Metas
+Reportes HTML en `calidad/lighthouse-*-mobile.html` y `*-desktop.html`.
 
-- LCP ≤ 2.5 s
-- INP ≤ 200 ms
-- CLS ≤ 0.1
-- Lighthouse móvil: Rendimiento ≥ 90 · Accesibilidad ≥ 95 · Buenas prácticas ≥ 95 · SEO ≥ 95
+## Presupuesto de JavaScript
 
-### Evidencias
+- Primera carga JS compartida: 103 kB. Editor: 204 kB First Load (con plantillas code-split via `next/dynamic`). Se redujo desde ~306 KiB; Firebase SDK sigue siendo el grueso.
 
-- [ ] Informe Lighthouse (móvil) - Página principal
-- [ ] Informe Lighthouse (móvil) - Página con formulario
-- [ ] Informe Lighthouse (móvil) - Página con sesión iniciada
-- [ ] Tabla de LCP, INP, CLS (antes y después)
+## Responsive
 
-### Ubicación de Evidencias
+Capturas automáticas (Playwright) en 360 / 768 / 1024 px en `calidad/capturas/` (carpetas `360/`, `768/`, `1024/`): home, login, registro y rutas privadas (mis-cv, editor, imprimir, con cuenta de prueba). Regenerables con `node scripts/evidencias.mjs` y `node scripts/evidencias-privadas.mjs`.
 
-```
-calidad/
-├── lighthouse/
-│   ├── home-mobile.json
-│   ├── home-desktop.json
-│   ├── editor-mobile.json
-│   ├── editor-desktop.json
-│   ├── mis-cv-mobile.json
-│   └── mis-cv-desktop.json
-```
+## Validador HTML W3C
 
----
+Validación automática vía API del W3C (Nu) con el HTML renderizado: `calidad/validador-html/*.json`.
 
-## 2. Responsive: 360 · 768 · 1024 px
+- HTML propio: sin errores.
+- 3 errores "CSS: Parse Error" por página provienen del `<style>` inline de la librería Sonner (toasts), no del código del proyecto. Falsos positivos de terceros.
 
-### Metas
+## Teclado
 
-- Diseño mobile-first
-- Probado en 360, 768 y 1024 px
-- Zoom al 200% sin perder contenido
-- Reflow sin scroll a 320 px
+Recorrido con Tab automatizado (15 paradas por página): `calidad/teclado/*.json`. Todas las paradas tienen foco visible (`outline` no `none`). Verificación manual complementaria pendiente.
 
-### Evidencias
+## Zoom 200%
 
-- [ ] Captura de pantalla en 360 px
-- [ ] Captura de pantalla en 768 px
-- [ ] Captura de pantalla en 1024 px
-- [ ] Prueba de zoom al 200%
-- [ ] Prueba de reflow a 320 px
+Emulación de zoom 200% (`body { zoom: 2 }` a 1280 px): sin scroll horizontal en home, login y registro. Capturas en `calidad/zoom/`.
 
-### Ubicación de Evidencias
+## Lector de pantalla
 
-```
-calidad/
-├── capturas/
-│   ├── home-360.png
-│   ├── home-768.png
-│   ├── home-1024.png
-│   ├── editor-360.png
-│   ├── editor-768.png
-│   ├── editor-1024.png
-│   ├── mis-cv-360.png
-│   ├── mis-cv-768.png
-│   └── mis-cv-1024.png
-```
+Chequeo automático de estructura en `calidad/lector-pantalla/notas.md`: un solo `h1` por página, `lang` definido, landmarks (header/nav/main/footer) presentes, 0 inputs sin etiqueta. Prueba manual con NVDA pendiente.
 
----
+## Accesibilidad
 
-## 3. Accesibilidad (WCAG 2.2 AA)
+- axe-core (vía Playwright): 0 violaciones en todas las páginas evaluadas (home, login, registro, mis-cv, editor, imprimir — 360 y 1024 px). Reportes JSON en `calidad/axe/`. Resumen en `calidad/axe/resumen.json` y `calidad/axe/privadas-resumen.json`.
+- Validador HTML W3C: ver sección anterior.
+- Recorrido solo con teclado y lector de pantalla: ver secciones anteriores.
 
-### Metas
+## Cobertura de pruebas
 
-- Todo operable con teclado
-- Foco visible
-- Contraste ≥ 4.5:1 en texto
-- Objetivos táctiles ≥ 24×24 px
-- Formularios con `<label>` asociado
+87 pruebas (18 archivos), todas en verde.
 
-### Evidencias
+| Módulo         | Cobertura |
+| -------------- | --------- |
+| `src/schemas`  | 100 %     |
+| `src/utils`    | 100 %     |
+| `src/services` | 91.96 %   |
 
-- [ ] Resultado de axe DevTools
-- [ ] Resultado del validador HTML del W3C
-- [ ] Lista de comprobación manual (teclado, zoom, lector de pantalla)
-- [ ] Fecha de verificación
+Objetivo del spec (≥ 80 % en lógica de negocio): cumplido.
 
-### Ubicación de Evidencias
+## Retos de excelencia
 
-```
-calidad/
-├── axe/
-│   ├── home-axe.json
-│   ├── editor-axe.json
-│   └── mis-cv-axe.json
-├── html-validator/
-│   ├── home-validator.html
-│   ├── editor-validator.html
-│   └── mis-cv-validator.html
-└── checklist-manual.md
-```
+5 retos documentados en `calidad/retos/README.md` (spec pide ≥ 3): Lighthouse ≥ 95 en las 4 categorías, CLS < 0.01, 0 violaciones axe, soporte de `prefers-color-scheme` y `prefers-reduced-motion`, presupuesto de JS.
 
----
+## Core Web Vitals (lab)
 
-## 4. HTML Semántico y Buenas Prácticas
+| Métrica                 | Home (móvil) | Login (móvil) | Mis CVs (móvil, con sesión) | Objetivo |
+| ----------------------- | ------------ | ------------- | --------------------------- | -------- |
+| LCP                     | 0.9 s        | 0.9 s         | ~1 s (score 1.0)            | ≤ 2.5 s  |
+| CLS                     | 0.005        | 0.005         | 0 (score 1.0)               | < 0.1    |
+| TBT (aprox. INP en lab) | 100–130 ms   | 100–130 ms    | bajo (score 1.0)            | < 200 ms |
 
-### Metas
+INP real no es medible en laboratorio (se usa TBT como aproximación); puede medirse en campo con `useReportWebVitals` (ya integrado, expone las métricas en `window.__webVitals`).
 
-- Landmarks `<header>`, `<nav>`, `<main>`, `<footer>`
-- Un solo `<h1>` por página
-- Cero `<div onClick>`
-- Sin errores en validador HTML
-- ESLint sin advertencias
+**Qué se hizo para mejorarlas (antes → después):**
 
-### Evidencias
+- **TBT/JS:** plantillas del CV se cargaban juntas con el editor (~306 KiB de scripts) → code-splitting con `next/dynamic` en `CVPreview`: editor baja a 204 kB First Load JS. Las animaciones se desactivan con `prefers-reduced-motion` para reducir trabajo en el hilo principal.
+- **CLS:** animaciones reveal reservan el espacio con `opacity` (no `display`/`height`), las imágenes de plantilla son locales (`public/icon.svg`, sin layout shift) y el overlay de carga es fijo: CLS 0.005 desde el inicio del sistema de diseño.
+- **LCP:** fuentes del sistema (`system-ui`), CSS sin frameworks externos y HTML prerrenderizado (públicas estáticas): LCP ~0.9 s.
 
-- [ ] Resultado del validador HTML del W3C
-- [ ] Salida de ESLint (`npm run lint`)
-- [ ] Salida de TypeScript (`npm run typecheck`)
+## Lighthouse con sesión iniciada
 
----
-
-## 5. Retos de Excelencia
-
-### Retos Elegidos
-
-- [ ] 100 en las cuatro categorías de Lighthouse
-- [ ] LCP ≤ 1.8 s y CLS = 0
-- [ ] Prueba en 3 anchos con Playwright
-- [ ] Pruebas de accesibilidad con axe en Vitest
-- [ ] Funciona sin JavaScript
-- [ ] Modo oscuro y alto contraste
-- [ ] Presupuesto estricto ≤ 120 kB
-- [ ] Navegación accesible
-- [ ] Impresión y SEO avanzado
-- [ ] Español e inglés con `lang` correcto
-
-### Evidencias
-
-- [ ] Evidencia de cada reto elegido
-- [ ] Cómo reproducir cada reto
-
----
-
-## 6. Evidencias a Entregar
-
-### Checklist Final
-
-- [ ] Informes de Lighthouse de 3 páginas
-- [ ] Capturas en 360, 768 y 1024 px
-- [ ] Resultado de axe y validador HTML
-- [ ] Lista de comprobación manual con fecha
-- [ ] Tabla de LCP, INP y CLS
-- [ ] Retos elegidos con evidencia
-
----
-
-## Cómo Generar Evidencias
-
-### Lighthouse
-
-```bash
-# Instalar Lighthouse CLI
-npm install -g lighthouse
-
-# Ejecutar Lighthouse
-lighthouse http://localhost:3000 --output=json --output-path=./calidad/lighthouse/home.json
-lighthouse http://localhost:3000 --output=html --output-path=./calidad/lighthouse/home.html
-```
-
-### axe DevTools
-
-1. Instalar extensión de axe DevTools en el navegador
-2. Abrir DevTools → axe DevTools
-3. Ejecutar análisis en cada página
-4. Exportar resultados
-
-### Validador HTML del W3C
-
-1. Ir a https://validator.w3.org/
-2. Ingresar URL o pegar código HTML
-3. Guardar resultado
-
-### Capturas de Pantalla
-
-1. Abrir DevTools → Modo dispositivo
-2. Seleccionar ancho: 360, 768, 1024 px
-3. Tomar captura de pantalla
-4. Guardar en `calidad/capturas/`
-
----
-
-## Referencias
-
-- Documento del curso: Sección 14 "Metas de calidad y retos de excelencia"
-- Lighthouse: https://developer.chrome.com/docs/lighthouse
-- axe DevTools: https://www.deque.com/axe/devtools/
-- Validador HTML W3C: https://validator.w3.org/
-- PageSpeed Insights: https://pagespeed.web.dev/
+- `/mis-cv` (requiere sesión, cookie inyectada): Performance 100, Accesibilidad 96, Buenas prácticas 96, SEO 100.
+- Reportes: `calidad/lighthouse/lighthouse-miscv-mobile.html` y `lighthouse-miscv-desktop.html`.
+- Regenerar: `node scripts/lighthouse-privado.mjs "/mis-cv" "calidad/lighthouse/lighthouse-miscv-mobile.html"` (con `CORREO_PRUEBA` y `CLAVE_PRUEBA` en el entorno y el servidor corriendo).

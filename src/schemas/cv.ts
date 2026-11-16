@@ -131,7 +131,10 @@ export const crearCvSchema = z.object({
     .string()
     .min(1, "El título es obligatorio")
     .max(100, "El título no puede exceder 100 caracteres"),
-  plantilla: z.enum(["moderna", "clasica", "minimalista"]).optional().default("moderna"),
+  plantilla: z
+    .enum(["moderna", "clasica", "minimalista", "corporativa"])
+    .optional()
+    .default("moderna"),
   datos: cvSchema,
 });
 

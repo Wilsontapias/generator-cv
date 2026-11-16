@@ -18,6 +18,21 @@ export function validarArchivo(file: File): { valid: boolean; error?: string } {
   return { valid: true };
 }
 
+/**
+ * Convierte un error de subida en un mensaje comprensible.
+ * El caso más común: el servidor no pudo generar el token de Vercel Blob
+ * (falta BLOB_READ_WRITE_TOKEN) y el SDK responde con un error en inglés.
+ */
+export function mensajeErrorSubida(error: unknown): string {
+  const mensaje = error instanceof Error ? error.message : "Error al subir la foto";
+
+  if (mensaje.includes("Failed to retrieve the client token")) {
+    return "El servidor no autorizó la subida. Falta configurar BLOB_READ_WRITE_TOKEN de Vercel Blob.";
+  }
+
+  return mensaje.replace(/^Vercel Blob: /, "");
+}
+
 export function reducirImagen(file: File, maxWidth: number = 400): Promise<Blob> {
   return new Promise((resolve, reject) => {
     const img = new Image();
