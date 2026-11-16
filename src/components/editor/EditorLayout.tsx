@@ -2,37 +2,129 @@
 
 import React from "react";
 import Link from "next/link";
+import { Icon } from "@/components/ui/Icon";
+import { useLoading } from "@/hooks/useLoading";
 
 export function EditorHeader({
+  cvId,
+  titulo,
+  setTitulo,
   template,
   onTemplateChange,
+  onSave,
+  isSaving,
+  canSave,
 }: {
+  cvId: string;
+  titulo: string;
+  setTitulo: (t: string) => void;
   template: string;
   onTemplateChange: (value: string) => void;
+  onSave: () => void;
+  isSaving: boolean;
+  canSave: boolean;
 }) {
   return (
     <div className="editor-header">
-      <Link href="/mis-cv" className="btn btn-secondary">
-        ← Volver
-      </Link>
       <h1>Editor de CV</h1>
-      <div className="editor-actions">
-        <select
-          value={template}
-          onChange={(e) => onTemplateChange(e.target.value)}
-          className="template-selector"
-          aria-label="Seleccionar plantilla"
-        >
-          <option value="moderna">Moderna</option>
-          <option value="clasica">Clásica</option>
-          <option value="minimalista">Minimalista</option>
-        </select>
-        <button className="btn btn-primary">Guardar</button>
-        <Link href="/cv/1/imprimir" className="btn btn-secondary">
-          Imprimir
-        </Link>
-      </div>
+      <EditorHeaderRight
+        cvId={cvId}
+        titulo={titulo}
+        setTitulo={setTitulo}
+        template={template}
+        onTemplateChange={onTemplateChange}
+        onSave={onSave}
+        isSaving={isSaving}
+        canSave={canSave}
+      />
     </div>
+  );
+}
+
+function EditorHeaderRight({
+  cvId,
+  titulo,
+  setTitulo,
+  template,
+  onTemplateChange,
+  onSave,
+  isSaving,
+  canSave,
+}: {
+  cvId: string;
+  titulo: string;
+  setTitulo: (t: string) => void;
+  template: string;
+  onTemplateChange: (value: string) => void;
+  onSave: () => void;
+  isSaving: boolean;
+  canSave: boolean;
+}) {
+  const { showLoading } = useLoading();
+  return (
+    <div className="editor-header-right">
+      <input
+        type="text"
+        className="cv-title-input"
+        value={titulo}
+        onChange={(e) => setTitulo(e.target.value)}
+        placeholder="Nombre de la hoja de vida"
+        aria-label="Nombre de la hoja de vida"
+      />
+      <Link href="/mis-cv" className="btn btn-secondary">
+        <Icon name="back" />
+        Volver
+      </Link>
+      <TemplateSelector value={template} onChange={onTemplateChange} />
+      <SaveButton onSave={onSave} isSaving={isSaving} canSave={canSave} />
+      <Link
+        href={`/cv/${cvId}/imprimir`}
+        className="btn btn-secondary"
+        onClick={() => showLoading("Preparando impresión…")}
+      >
+        <Icon name="print" />
+        Imprimir
+      </Link>
+    </div>
+  );
+}
+
+function SaveButton({
+  onSave,
+  isSaving,
+  canSave,
+}: {
+  onSave: () => void;
+  isSaving: boolean;
+  canSave: boolean;
+}) {
+  return (
+    <button
+      className="btn btn-primary"
+      onClick={onSave}
+      disabled={isSaving || !canSave}
+      aria-busy={isSaving}
+      title={!canSave ? "El nombre debe tener al menos 2 caracteres" : undefined}
+    >
+      <Icon name="save" />
+      {isSaving ? "Guardando…" : "Guardar"}
+    </button>
+  );
+}
+
+function TemplateSelector({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  return (
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className="template-selector"
+      aria-label="Seleccionar plantilla"
+    >
+      <option value="moderna">Moderna</option>
+      <option value="clasica">Clásica</option>
+      <option value="minimalista">Minimalista</option>
+      <option value="corporativa">Corporativa</option>
+    </select>
   );
 }
 
@@ -61,24 +153,5 @@ export function EditorNavigation({
         </button>
       ))}
     </nav>
-  );
-}
-
-export function EditorPreview({ template }: { template: string }) {
-  return (
-    <div className="editor-preview">
-      <div className="preview-header">
-        <h2>Vista Previa</h2>
-        <span className="template-badge">{template}</span>
-      </div>
-      <div className="preview-container">
-        <div className="cv-preview">
-          <p>Vista previa del CV con plantilla {template}</p>
-          <p className="preview-hint">
-            La vista previa se actualizará en tiempo real conforme edites tu CV.
-          </p>
-        </div>
-      </div>
-    </div>
   );
 }
