@@ -8,6 +8,21 @@ export default tseslint.config(
   {
     ignores: [".next/", "node_modules/", "coverage/", "*.config.*", "next-env.d.ts"],
   },
+  {
+    files: ["scripts/**/*.mjs"],
+    languageOptions: {
+      globals: {
+        process: "readonly",
+        console: "readonly",
+        document: "readonly",
+        window: "readonly",
+        location: "readonly",
+        setTimeout: "readonly",
+        fetch: "readonly",
+        getComputedStyle: "readonly",
+      },
+    },
+  },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
   {

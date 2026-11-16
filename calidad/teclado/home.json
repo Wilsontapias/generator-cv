@@ -1,0 +1,75 @@
+{
+  "url": "http://localhost:3000/",
+  "paradas": [
+    {
+      "etiqueta": "a",
+      "texto": "Saltar al contenido",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "GeneradorCV",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Iniciar Sesión",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Comenzar ahora",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Conocer más",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Crear mi CV gratis",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Wilson Tapias Posada",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Saltar al contenido",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "GeneradorCV",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Iniciar Sesión",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Comenzar ahora",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Conocer más",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Crear mi CV gratis",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Wilson Tapias Posada",
+      "focoVisible": true
+    }
+  ]
+}

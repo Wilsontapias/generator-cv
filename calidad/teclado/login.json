@@ -1,0 +1,75 @@
+{
+  "url": "http://localhost:3000/login",
+  "paradas": [
+    {
+      "etiqueta": "a",
+      "texto": "Saltar al contenido",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "GeneradorCV",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Iniciar Sesión",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "input",
+      "texto": "",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "input",
+      "texto": "",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Regístrate",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "¿Olvidaste tu contraseña?",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Wilson Tapias Posada",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Saltar al contenido",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "GeneradorCV",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Iniciar Sesión",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "input",
+      "texto": "",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "input",
+      "texto": "",
+      "focoVisible": true
+    },
+    {
+      "etiqueta": "a",
+      "texto": "Regístrate",
+      "focoVisible": true
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "pagina": "miscv",
+    "ancho": 360,
+    "violaciones": 0
+  },
+  {
+    "pagina": "miscv",
+    "ancho": 1024,
+    "violaciones": 0
+  },
+  {
+    "pagina": "editor",
+    "ancho": 360,
+    "violaciones": 0
+  },
+  {
+    "pagina": "editor",
+    "ancho": 1024,
+    "violaciones": 0
+  },
+  {
+    "pagina": "imprimir",
+    "ancho": 360,
+    "violaciones": 0
+  },
+  {
+    "pagina": "imprimir",
+    "ancho": 1024,
+    "violaciones": 0
+  }
+]

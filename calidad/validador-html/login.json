@@ -1,0 +1,79 @@
+{
+  "url": "http://localhost:3000/login",
+  "errores": [
+    {
+      "type": "error",
+      "lastLine": 1,
+      "lastColumn": 7786,
+      "message": "CSS: Parse Error.",
+      "extract": "ore) * 0.05 + 1;--y:translateY",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 1,
+      "lastColumn": 7881,
+      "message": "CSS: Parse Error.",
+      "extract": " var(--scale)));height:var(--f",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    },
+    {
+      "type": "error",
+      "lastLine": 1,
+      "lastColumn": 7914,
+      "message": "CSS: Parse Error.",
+      "extract": "t-toast-height)}[data-sonner-t",
+      "hiliteStart": 15,
+      "hiliteLength": 1
+    }
+  ],
+  "advertencias": [
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 1469,
+      "firstColumn": 1447,
+      "subType": "warning",
+      "message": "The “type” attribute for the “style” element is not needed and should be omitted.",
+      "extract": "></script><style type=\"text/css\">[data-",
+      "hiliteStart": 10,
+      "hiliteLength": 23
+    },
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 16660,
+      "firstColumn": 16620,
+      "subType": "warning",
+      "message": "The “banner” role is unnecessary for element “header”.",
+      "extract": "tenido</a><header class=\"app-header\" role=\"banner\"><nav c",
+      "hiliteStart": 10,
+      "hiliteLength": 41
+    },
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 16914,
+      "firstColumn": 16879,
+      "subType": "warning",
+      "message": "The “main” role is unnecessary for element “main”.",
+      "extract": "></header><main id=\"main-content\" role=\"main\"><div c",
+      "hiliteStart": 10,
+      "hiliteLength": 36
+    },
+    {
+      "type": "info",
+      "lastLine": 1,
+      "lastColumn": 17831,
+      "firstColumn": 17786,
+      "subType": "warning",
+      "message": "The “contentinfo” role is unnecessary for element “footer”.",
+      "extract": "--></main><footer class=\"app-footer\" role=\"contentinfo\"><div c",
+      "hiliteStart": 10,
+      "hiliteLength": 46
+    }
+  ],
+  "total": 7
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "pagina": "home",
+    "ancho": 360,
+    "violaciones": 0,
+    "pasa": 36
+  },
+  {
+    "pagina": "home",
+    "ancho": 1024,
+    "violaciones": 0,
+    "pasa": 36
+  },
+  {
+    "pagina": "login",
+    "ancho": 360,
+    "violaciones": 0,
+    "pasa": 41
+  },
+  {
+    "pagina": "login",
+    "ancho": 1024,
+    "violaciones": 0,
+    "pasa": 41
+  },
+  {
+    "pagina": "registro",
+    "ancho": 360,
+    "violaciones": 0,
+    "pasa": 41
+  },
+  {
+    "pagina": "registro",
+    "ancho": 1024,
+    "violaciones": 0,
+    "pasa": 41
+  }
+]
